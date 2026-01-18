@@ -209,18 +209,18 @@ export function LooperPanel({
             className="absolute h-full bg-[#00ffff] transition-all duration-75"
             style={{ width: `${currentPosition * 100}%` }}
           />
-          {/* Beat markers */}
+          {/* Beat markers - highlight bar boundaries */}
           {Array.from({ length: totalBeats }).map((_, i) => (
             <div
               key={i}
               className={`absolute top-0 bottom-0 w-px ${
-                i % 4 === 0 ? 'bg-[#444]' : 'bg-[#2a2a2a]'
+                i % beatsPerBar === 0 ? 'bg-[#444]' : 'bg-[#2a2a2a]'
               }`}
               style={{ left: `${(i / totalBeats) * 100}%` }}
             />
           ))}
         </div>
-        {/* Beat numbers */}
+        {/* Bar numbers */}
         <div className="flex justify-between mt-1">
           {Array.from({ length: bars }).map((_, i) => (
             <span key={i} className="text-[10px] text-[#555] font-mono">

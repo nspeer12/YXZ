@@ -6,7 +6,7 @@ import { HarmonicEditor } from '@/components/HarmonicEditor';
 import { Piano } from '@/components/Piano';
 import { EnvelopeEditor } from '@/components/EnvelopeEditor';
 import { ScaleSelector } from '@/components/ScaleSelector';
-import { FilterEditor } from '@/components/FilterEditor';
+import { EffectsRackPanel } from '@/components/EffectsRackPanel';
 import { LiveVisualizer } from '@/components/LiveVisualizer';
 import { LooperPanel } from '@/components/LooperPanel';
 import { CollapsibleSection } from '@/components/CollapsibleSection';
@@ -14,7 +14,7 @@ import { useAudioEngine } from '@/hooks/useAudioEngine';
 import { useLooper } from '@/hooks/useLooper';
 import { useMIDI } from '@/hooks/useMIDI';
 import { NoteName } from '@/lib/music-theory';
-import { WaveformType } from '@/lib/audio-engine';
+import { WaveformType, EffectType, EffectParams } from '@/lib/audio-engine';
 
 export default function Home() {
   const {
@@ -27,10 +27,15 @@ export default function Home() {
     setCustomWaveform,
     setCustomHarmonics,
     setPresetWaveform,
-    setFilter,
     setEnvelope,
     getAnalyserData,
     getOutputGain,
+    effects,
+    addEffect,
+    removeEffect,
+    updateEffect,
+    toggleEffect,
+    moveEffect,
   } = useAudioEngine();
 
   const outputGain = isReady ? getOutputGain() : null;
@@ -46,8 +51,6 @@ export default function Home() {
   const [decay, setDecay] = useState(0.2);
   const [sustain, setSustain] = useState(0.5);
   const [release, setRelease] = useState(0.5);
-  const [filterCutoff, setFilterCutoff] = useState(5000);
-  const [filterResonance, setFilterResonance] = useState(1);
   const [showKeyboardOverlay, setShowKeyboardOverlay] = useState(true);
   const [midiActiveNotes, setMidiActiveNotes] = useState<Set<string>>(new Set());
   
@@ -154,11 +157,26 @@ export default function Home() {
     setEnvelope(a, d, s, r);
   }, [setEnvelope]);
 
-  const handleFilterChange = useCallback((cutoff: number, resonance: number) => {
-    setFilterCutoff(cutoff);
-    setFilterResonance(resonance);
-    setFilter(cutoff, resonance);
-  }, [setFilter]);
+  // Effects handlers
+  const handleAddEffect = useCallback((type: EffectType) => {
+    addEffect(type);
+  }, [addEffect]);
+
+  const handleRemoveEffect = useCallback((id: string) => {
+    removeEffect(id);
+  }, [removeEffect]);
+
+  const handleUpdateEffect = useCallback((id: string, params: Partial<EffectParams[EffectType]>) => {
+    updateEffect(id, params);
+  }, [updateEffect]);
+
+  const handleToggleEffect = useCallback((id: string, enabled: boolean) => {
+    toggleEffect(id, enabled);
+  }, [toggleEffect]);
+
+  const handleMoveEffect = useCallback((id: string, direction: 'up' | 'down') => {
+    moveEffect(id, direction);
+  }, [moveEffect]);
 
   if (!isReady) {
     return (
@@ -322,13 +340,18 @@ export default function Home() {
               />
             </CollapsibleSection>
 
-            {/* Filter - Collapsed by default */}
-            <CollapsibleSection title="Filter" defaultExpanded={false} badge={`${Math.round(filterCutoff)}Hz`}>
-              <FilterEditor
-                cutoff={filterCutoff}
-                resonance={filterResonance}
-                onChange={handleFilterChange}
-              />
+            {/* Effects Rack - Expanded by default */}
+            <CollapsibleSection title="Effects" defaultExpanded={true} badge={`${effects.length} active`}>
+              <div className="p-2">
+                <EffectsRackPanel
+                  effects={effects}
+                  onAddEffect={handleAddEffect}
+                  onRemoveEffect={handleRemoveEffect}
+                  onUpdateEffect={handleUpdateEffect}
+                  onToggleEffect={handleToggleEffect}
+                  onMoveEffect={handleMoveEffect}
+                />
+              </div>
             </CollapsibleSection>
           </div>
         </div>

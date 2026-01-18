@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { getAudioEngine, AudioEngine, WaveformType } from '@/lib/audio-engine';
+import { getAudioEngine, AudioEngine, WaveformType, Effect, EffectType, EffectParams } from '@/lib/audio-engine';
 import * as Tone from 'tone';
 
 export function useAudioEngine() {
@@ -11,12 +11,23 @@ export function useAudioEngine() {
   const [isRecording, setIsRecording] = useState(false);
   const [recordingBlob, setRecordingBlob] = useState<Blob | null>(null);
   const [recordingUrl, setRecordingUrl] = useState<string | null>(null);
+  const [effects, setEffects] = useState<Effect[]>([]);
   const engineRef = useRef<AudioEngine | null>(null);
 
   useEffect(() => {
     engineRef.current = getAudioEngine();
     setWaveform(engineRef.current.getWaveform());
     setHarmonics(engineRef.current.getHarmonics());
+    setEffects(engineRef.current.getEffects());
+
+    // Subscribe to effects changes
+    const unsubscribe = engineRef.current.onEffectsChange(() => {
+      if (engineRef.current) {
+        setEffects(engineRef.current.getEffects());
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const init = useCallback(async () => {
@@ -58,24 +69,34 @@ export function useAudioEngine() {
     setHarmonics(engineRef.current.getHarmonics());
   }, []);
 
-  const setFilter = useCallback((cutoff: number, resonance: number) => {
-    engineRef.current?.setFilter(cutoff, resonance);
-  }, []);
-
   const setEnvelope = useCallback((attack: number, decay: number, sustain: number, release: number) => {
     engineRef.current?.setEnvelope(attack, decay, sustain, release);
   }, []);
 
-  const setDistortion = useCallback((amount: number) => {
-    engineRef.current?.setDistortion(amount);
+  // Effects chain methods
+  const addEffect = useCallback((type: EffectType): Effect | null => {
+    if (!engineRef.current) return null;
+    return engineRef.current.addEffect(type);
   }, []);
 
-  const setDelay = useCallback((time: number, feedback: number, wet: number) => {
-    engineRef.current?.setDelay(time, feedback, wet);
+  const removeEffect = useCallback((id: string) => {
+    engineRef.current?.removeEffect(id);
   }, []);
 
-  const setReverb = useCallback((decay: number, wet: number) => {
-    engineRef.current?.setReverb(decay, wet);
+  const updateEffect = useCallback((id: string, params: Partial<EffectParams[EffectType]>) => {
+    engineRef.current?.updateEffectParams(id, params);
+    // Manually update the state since param changes don't trigger the listener
+    if (engineRef.current) {
+      setEffects(engineRef.current.getEffects());
+    }
+  }, []);
+
+  const toggleEffect = useCallback((id: string, enabled: boolean) => {
+    engineRef.current?.setEffectEnabled(id, enabled);
+  }, []);
+
+  const moveEffect = useCallback((id: string, direction: 'up' | 'down') => {
+    engineRef.current?.moveEffect(id, direction);
   }, []);
 
   const getAnalyserData = useCallback(() => {
@@ -145,11 +166,7 @@ export function useAudioEngine() {
     setCustomWaveform,
     setCustomHarmonics,
     setPresetWaveform,
-    setFilter,
     setEnvelope,
-    setDistortion,
-    setDelay,
-    setReverb,
     getAnalyserData,
     getAnalyser,
     getOutputGain,
@@ -159,5 +176,12 @@ export function useAudioEngine() {
     stopRecording,
     downloadRecording,
     clearRecording,
+    // Effects chain
+    effects,
+    addEffect,
+    removeEffect,
+    updateEffect,
+    toggleEffect,
+    moveEffect,
   };
 }

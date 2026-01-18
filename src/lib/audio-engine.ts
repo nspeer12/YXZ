@@ -2,6 +2,73 @@ import * as Tone from 'tone';
 
 export type WaveformType = 'sine' | 'square' | 'sawtooth' | 'triangle' | 'custom';
 
+export type EffectType = 
+  | 'filter'
+  | 'distortion'
+  | 'delay'
+  | 'reverb'
+  | 'chorus'
+  | 'phaser'
+  | 'tremolo'
+  | 'bitcrusher'
+  | 'compressor'
+  | 'eq'
+  | 'vibrato'
+  | 'autowah';
+
+export interface EffectParams {
+  filter: { frequency: number; resonance: number; type: 'lowpass' | 'highpass' | 'bandpass' };
+  distortion: { amount: number };
+  delay: { time: number; feedback: number; wet: number };
+  reverb: { decay: number; wet: number };
+  chorus: { frequency: number; depth: number; wet: number };
+  phaser: { frequency: number; octaves: number; wet: number };
+  tremolo: { frequency: number; depth: number; wet: number };
+  bitcrusher: { bits: number; wet: number };
+  compressor: { threshold: number; ratio: number; attack: number; release: number };
+  eq: { low: number; mid: number; high: number };
+  vibrato: { frequency: number; depth: number; wet: number };
+  autowah: { baseFrequency: number; octaves: number; sensitivity: number; wet: number };
+}
+
+export interface Effect<T extends EffectType = EffectType> {
+  id: string;
+  type: T;
+  enabled: boolean;
+  params: EffectParams[T];
+  node: Tone.ToneAudioNode | null;
+}
+
+export const DEFAULT_EFFECT_PARAMS: EffectParams = {
+  filter: { frequency: 5000, resonance: 1, type: 'lowpass' },
+  distortion: { amount: 0.4 },
+  delay: { time: 0.25, feedback: 0.3, wet: 0.3 },
+  reverb: { decay: 2, wet: 0.3 },
+  chorus: { frequency: 1.5, depth: 0.7, wet: 0.5 },
+  phaser: { frequency: 0.5, octaves: 3, wet: 0.5 },
+  tremolo: { frequency: 4, depth: 0.5, wet: 0.5 },
+  bitcrusher: { bits: 4, wet: 0.5 },
+  compressor: { threshold: -24, ratio: 4, attack: 0.003, release: 0.25 },
+  eq: { low: 0, mid: 0, high: 0 },
+  vibrato: { frequency: 5, depth: 0.1, wet: 0.5 },
+  autowah: { baseFrequency: 100, octaves: 6, sensitivity: 0, wet: 0.5 },
+};
+
+export const EFFECT_LABELS: Record<EffectType, string> = {
+  filter: 'Filter',
+  distortion: 'Distortion',
+  delay: 'Delay',
+  reverb: 'Reverb',
+  chorus: 'Chorus',
+  phaser: 'Phaser',
+  tremolo: 'Tremolo',
+  bitcrusher: 'Bitcrusher',
+  compressor: 'Compressor',
+  eq: 'EQ',
+  vibrato: 'Vibrato',
+  autowah: 'Auto-Wah',
+};
+
 export interface AudioEngineState {
   isPlaying: boolean;
   waveform: Float32Array;
@@ -20,10 +87,6 @@ export class AudioEngine {
   private synth: Tone.Synth | null = null;
   private customOscillator: Tone.ToneOscillatorNode | null = null;
   private periodicWave: PeriodicWave | null = null;
-  private filter: Tone.Filter | null = null;
-  private reverb: Tone.Reverb | null = null;
-  private delay: Tone.FeedbackDelay | null = null;
-  private distortion: Tone.Distortion | null = null;
   private analyser: Tone.Analyser | null = null;
   private recorder: Tone.Recorder | null = null;
   private outputGain: Tone.Gain | null = null;
@@ -31,6 +94,8 @@ export class AudioEngine {
   private isRecording = false;
   private currentWaveform: Float32Array;
   private harmonics: number[];
+  private effects: Effect[] = [];
+  private effectsChangeListeners: (() => void)[] = [];
   
   constructor() {
     this.currentWaveform = this.generateSineWave();
@@ -42,30 +107,6 @@ export class AudioEngine {
     if (this.isInitialized) return;
     
     await Tone.start();
-    
-    // Create effects chain
-    this.filter = new Tone.Filter({
-      frequency: 5000,
-      type: 'lowpass',
-      rolloff: -24,
-      Q: 1,
-    });
-    
-    this.distortion = new Tone.Distortion({
-      distortion: 0,
-      wet: 0,
-    });
-    
-    this.delay = new Tone.FeedbackDelay({
-      delayTime: 0.25,
-      feedback: 0.3,
-      wet: 0,
-    });
-    
-    this.reverb = new Tone.Reverb({
-      decay: 2,
-      wet: 0.2,
-    });
     
     // Create analyser for visualization (waveform)
     this.analyser = new Tone.Analyser('waveform', 256);
@@ -89,11 +130,280 @@ export class AudioEngine {
       },
     });
     
-    // Connect chain: synth -> filter -> distortion -> delay -> reverb -> outputGain -> analyser -> output
-    this.synth.chain(this.filter, this.distortion, this.delay, this.reverb, this.outputGain, this.analyser, Tone.getDestination());
+    // Initial connection (no effects)
+    this.rebuildEffectsChain();
     this.outputGain.connect(this.recorder);
     
     this.isInitialized = true;
+  }
+
+  private createEffectNode(type: EffectType, params: EffectParams[EffectType]): Tone.ToneAudioNode {
+    switch (type) {
+      case 'filter': {
+        const p = params as EffectParams['filter'];
+        return new Tone.Filter({ frequency: p.frequency, type: p.type, Q: p.resonance, rolloff: -24 });
+      }
+      case 'distortion': {
+        const p = params as EffectParams['distortion'];
+        return new Tone.Distortion({ distortion: p.amount, wet: p.amount > 0 ? 1 : 0 });
+      }
+      case 'delay': {
+        const p = params as EffectParams['delay'];
+        return new Tone.FeedbackDelay({ delayTime: p.time, feedback: p.feedback, wet: p.wet });
+      }
+      case 'reverb': {
+        const p = params as EffectParams['reverb'];
+        return new Tone.Reverb({ decay: p.decay, wet: p.wet });
+      }
+      case 'chorus': {
+        const p = params as EffectParams['chorus'];
+        return new Tone.Chorus({ frequency: p.frequency, depth: p.depth, wet: p.wet }).start();
+      }
+      case 'phaser': {
+        const p = params as EffectParams['phaser'];
+        return new Tone.Phaser({ frequency: p.frequency, octaves: p.octaves, wet: p.wet });
+      }
+      case 'tremolo': {
+        const p = params as EffectParams['tremolo'];
+        return new Tone.Tremolo({ frequency: p.frequency, depth: p.depth, wet: p.wet }).start();
+      }
+      case 'bitcrusher': {
+        const p = params as EffectParams['bitcrusher'];
+        const bitcrusher = new Tone.BitCrusher(p.bits);
+        bitcrusher.wet.value = p.wet;
+        return bitcrusher;
+      }
+      case 'compressor': {
+        const p = params as EffectParams['compressor'];
+        return new Tone.Compressor({ threshold: p.threshold, ratio: p.ratio, attack: p.attack, release: p.release });
+      }
+      case 'eq': {
+        const p = params as EffectParams['eq'];
+        return new Tone.EQ3({ low: p.low, mid: p.mid, high: p.high });
+      }
+      case 'vibrato': {
+        const p = params as EffectParams['vibrato'];
+        return new Tone.Vibrato({ frequency: p.frequency, depth: p.depth, wet: p.wet });
+      }
+      case 'autowah': {
+        const p = params as EffectParams['autowah'];
+        return new Tone.AutoWah({ baseFrequency: p.baseFrequency, octaves: p.octaves, sensitivity: p.sensitivity, wet: p.wet });
+      }
+    }
+  }
+
+  private rebuildEffectsChain(): void {
+    if (!this.synth || !this.outputGain || !this.analyser) return;
+
+    // Disconnect everything
+    this.synth.disconnect();
+    this.effects.forEach(effect => {
+      if (effect.node) {
+        effect.node.disconnect();
+      }
+    });
+
+    // Get enabled effects in order
+    const enabledEffects = this.effects.filter(e => e.enabled && e.node);
+
+    if (enabledEffects.length === 0) {
+      // Direct connection
+      this.synth.chain(this.outputGain, this.analyser, Tone.getDestination());
+    } else {
+      // Build chain: synth -> effect1 -> effect2 -> ... -> outputGain -> analyser -> destination
+      const nodes: Tone.ToneAudioNode[] = [
+        this.synth,
+        ...enabledEffects.map(e => e.node!),
+        this.outputGain,
+        this.analyser,
+        Tone.getDestination(),
+      ];
+      
+      for (let i = 0; i < nodes.length - 1; i++) {
+        nodes[i].connect(nodes[i + 1]);
+      }
+    }
+  }
+
+  private notifyEffectsChange(): void {
+    this.effectsChangeListeners.forEach(listener => listener());
+  }
+
+  onEffectsChange(listener: () => void): () => void {
+    this.effectsChangeListeners.push(listener);
+    return () => {
+      this.effectsChangeListeners = this.effectsChangeListeners.filter(l => l !== listener);
+    };
+  }
+
+  addEffect(type: EffectType): Effect {
+    const params = { ...DEFAULT_EFFECT_PARAMS[type] };
+    const node = this.createEffectNode(type, params);
+    
+    const effect: Effect = {
+      id: `${type}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      type,
+      enabled: true,
+      params,
+      node,
+    };
+    
+    this.effects.push(effect);
+    this.rebuildEffectsChain();
+    this.notifyEffectsChange();
+    return effect;
+  }
+
+  removeEffect(id: string): void {
+    const effect = this.effects.find(e => e.id === id);
+    if (effect?.node) {
+      effect.node.dispose();
+    }
+    this.effects = this.effects.filter(e => e.id !== id);
+    this.rebuildEffectsChain();
+    this.notifyEffectsChange();
+  }
+
+  updateEffectParams(id: string, params: Partial<EffectParams[EffectType]>): void {
+    const effect = this.effects.find(e => e.id === id);
+    if (!effect) return;
+
+    effect.params = { ...effect.params, ...params };
+
+    // Update the node parameters
+    if (effect.node) {
+      this.applyEffectParams(effect);
+    }
+  }
+
+  private applyEffectParams(effect: Effect): void {
+    if (!effect.node) return;
+
+    switch (effect.type) {
+      case 'filter': {
+        const node = effect.node as Tone.Filter;
+        const p = effect.params as EffectParams['filter'];
+        node.frequency.value = p.frequency;
+        node.Q.value = p.resonance;
+        node.type = p.type;
+        break;
+      }
+      case 'distortion': {
+        const node = effect.node as Tone.Distortion;
+        const p = effect.params as EffectParams['distortion'];
+        node.distortion = p.amount;
+        node.wet.value = p.amount > 0 ? 1 : 0;
+        break;
+      }
+      case 'delay': {
+        const node = effect.node as Tone.FeedbackDelay;
+        const p = effect.params as EffectParams['delay'];
+        node.delayTime.value = p.time;
+        node.feedback.value = p.feedback;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'reverb': {
+        const node = effect.node as Tone.Reverb;
+        const p = effect.params as EffectParams['reverb'];
+        node.decay = p.decay;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'chorus': {
+        const node = effect.node as Tone.Chorus;
+        const p = effect.params as EffectParams['chorus'];
+        node.frequency.value = p.frequency;
+        node.depth = p.depth;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'phaser': {
+        const node = effect.node as Tone.Phaser;
+        const p = effect.params as EffectParams['phaser'];
+        node.frequency.value = p.frequency;
+        node.octaves = p.octaves;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'tremolo': {
+        const node = effect.node as Tone.Tremolo;
+        const p = effect.params as EffectParams['tremolo'];
+        node.frequency.value = p.frequency;
+        node.depth.value = p.depth;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'bitcrusher': {
+        const node = effect.node as Tone.BitCrusher;
+        const p = effect.params as EffectParams['bitcrusher'];
+        node.bits.value = p.bits;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'compressor': {
+        const node = effect.node as Tone.Compressor;
+        const p = effect.params as EffectParams['compressor'];
+        node.threshold.value = p.threshold;
+        node.ratio.value = p.ratio;
+        node.attack.value = p.attack;
+        node.release.value = p.release;
+        break;
+      }
+      case 'eq': {
+        const node = effect.node as Tone.EQ3;
+        const p = effect.params as EffectParams['eq'];
+        node.low.value = p.low;
+        node.mid.value = p.mid;
+        node.high.value = p.high;
+        break;
+      }
+      case 'vibrato': {
+        const node = effect.node as Tone.Vibrato;
+        const p = effect.params as EffectParams['vibrato'];
+        node.frequency.value = p.frequency;
+        node.depth.value = p.depth;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'autowah': {
+        const node = effect.node as Tone.AutoWah;
+        const p = effect.params as EffectParams['autowah'];
+        node.baseFrequency = p.baseFrequency;
+        node.octaves = p.octaves;
+        node.sensitivity = p.sensitivity;
+        node.wet.value = p.wet;
+        break;
+      }
+    }
+  }
+
+  setEffectEnabled(id: string, enabled: boolean): void {
+    const effect = this.effects.find(e => e.id === id);
+    if (!effect) return;
+    effect.enabled = enabled;
+    this.rebuildEffectsChain();
+    this.notifyEffectsChange();
+  }
+
+  moveEffect(id: string, direction: 'up' | 'down'): void {
+    const index = this.effects.findIndex(e => e.id === id);
+    if (index === -1) return;
+
+    const newIndex = direction === 'up' ? index - 1 : index + 1;
+    if (newIndex < 0 || newIndex >= this.effects.length) return;
+
+    // Swap
+    [this.effects[index], this.effects[newIndex]] = [this.effects[newIndex], this.effects[index]];
+    this.rebuildEffectsChain();
+    this.notifyEffectsChange();
+  }
+
+  getEffects(): Effect[] {
+    return this.effects.map(e => ({
+      ...e,
+      params: { ...e.params },
+    }));
   }
 
   generateSineWave(): Float32Array {
@@ -267,37 +577,12 @@ export class AudioEngine {
     return this.harmonics;
   }
 
-  setFilter(cutoff: number, resonance: number): void {
-    if (!this.filter) return;
-    this.filter.frequency.value = cutoff;
-    this.filter.Q.value = resonance;
-  }
-
   setEnvelope(attack: number, decay: number, sustain: number, release: number): void {
     if (!this.synth) return;
     this.synth.envelope.attack = attack;
     this.synth.envelope.decay = decay;
     this.synth.envelope.sustain = sustain;
     this.synth.envelope.release = release;
-  }
-
-  setDistortion(amount: number): void {
-    if (!this.distortion) return;
-    this.distortion.distortion = amount;
-    this.distortion.wet.value = amount > 0 ? 1 : 0;
-  }
-
-  setDelay(time: number, feedback: number, wet: number): void {
-    if (!this.delay) return;
-    this.delay.delayTime.value = time;
-    this.delay.feedback.value = feedback;
-    this.delay.wet.value = wet;
-  }
-
-  setReverb(decay: number, wet: number): void {
-    if (!this.reverb) return;
-    this.reverb.decay = decay;
-    this.reverb.wet.value = wet;
   }
 
   playNote(note: string, duration?: string): void {
@@ -351,10 +636,8 @@ export class AudioEngine {
 
   dispose(): void {
     this.synth?.dispose();
-    this.filter?.dispose();
-    this.distortion?.dispose();
-    this.delay?.dispose();
-    this.reverb?.dispose();
+    this.effects.forEach(effect => effect.node?.dispose());
+    this.effects = [];
     this.analyser?.dispose();
     this.recorder?.dispose();
     this.outputGain?.dispose();

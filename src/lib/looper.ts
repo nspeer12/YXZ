@@ -60,17 +60,24 @@ export class Looper {
   private beatCallback: ((beat: number) => void) | null = null;
   private stateCallback: ((state: LooperState) => void) | null = null;
   private recordingTrackId: string | null = null;
-  private recordingStartTime: number = 0;
+  private recordingStartPosition: number = 0;
   private inputNode: Tone.Gain | null = null;
   private currentNoteStart: number | null = null;
   private currentNote: string | null = null;
+  private pendingRecordStop: boolean = false;
 
   constructor() {
     this.tracks = [];
   }
 
+  private metronomeEventId: number | null = null;
+
   async init(inputNode: Tone.Gain): Promise<void> {
     this.inputNode = inputNode;
+    
+    // Reduce latency for tighter sync
+    const context = Tone.getContext();
+    context.lookAhead = 0.01; // Reduce lookAhead for tighter visual sync
     
     // Create metronome sounds
     this.metronome = new Tone.MembraneSynth({
@@ -100,29 +107,63 @@ export class Looper {
     this.updateLoopLength();
 
     // Schedule metronome and beat tracking
-    this.transport.scheduleRepeat((time) => {
-      const position = this.transport.position as string;
-      const [bar, beat] = position.split(':').map(Number);
-      const totalBeats = bar * 4 + beat;
-      this.currentBeat = totalBeats;
+    this.scheduleMetronome();
+
+    // Add initial empty track
+    this.addTrack();
+  }
+
+  private getSubdivision(): Tone.Unit.Time {
+    // Map beatsPerBar to Tone.js subdivision
+    switch (this.beatsPerBar) {
+      case 4: return '4n';   // Quarter notes
+      case 8: return '8n';   // Eighth notes
+      case 12: return '8t';  // Triplet eighths
+      case 16: return '16n'; // Sixteenth notes
+      default: return '4n';
+    }
+  }
+
+  private scheduleMetronome(): void {
+    // Clear existing schedule if any
+    if (this.metronomeEventId !== null) {
+      this.transport.clear(this.metronomeEventId);
+    }
+
+    const subdivision = this.getSubdivision();
+    let beatCounter = 0;
+
+    this.metronomeEventId = this.transport.scheduleRepeat((time) => {
+      // Calculate which beat we're on within the bar
+      const beatInBar = beatCounter % this.beatsPerBar;
+      const barNumber = Math.floor(beatCounter / this.beatsPerBar);
+      
+      this.currentBeat = beatCounter;
       
       if (this.beatCallback) {
         Tone.Draw.schedule(() => {
-          this.beatCallback!(totalBeats);
+          this.beatCallback!(beatCounter);
         }, time);
       }
 
       if (this.metronomeEnabled && this.isPlaying) {
-        if (beat === 0) {
+        if (beatInBar === 0) {
+          // Downbeat accent
           this.metronomeAccent?.triggerAttackRelease('C2', '16n', time);
         } else {
+          // Regular beat
           this.metronome?.triggerAttackRelease('C3', '32n', time);
         }
       }
-    }, '4n');
 
-    // Add initial empty track
-    this.addTrack();
+      beatCounter++;
+      
+      // Reset counter when loop restarts
+      const totalBeats = this.bars * this.beatsPerBar;
+      if (beatCounter >= totalBeats) {
+        beatCounter = 0;
+      }
+    }, subdivision);
   }
 
   private updateLoopLength(): void {
@@ -215,6 +256,8 @@ export class Looper {
     if (validBeats.includes(beats)) {
       this.beatsPerBar = beats;
       this.updateLoopLength();
+      // Reschedule metronome with new subdivision
+      this.scheduleMetronome();
       this.notifyStateChange();
     }
   }
@@ -306,14 +349,18 @@ export class Looper {
   play(): void {
     if (this.isPlaying) return;
     this.isPlaying = true;
-    this.transport.start();
     
-    // Start all track players synced to transport
+    // Sync all track players before starting transport
     this.tracks.forEach(track => {
       if (track.player && track.buffer) {
+        // Unsync first to ensure clean state
+        track.player.unsync();
         track.player.sync().start(0);
       }
     });
+    
+    // Start transport after syncing players
+    this.transport.start();
     
     this.notifyStateChange();
   }
@@ -334,6 +381,9 @@ export class Looper {
         track.player.unsync().stop();
       }
     });
+    
+    // Reschedule metronome to reset beat counter
+    this.scheduleMetronome();
     
     this.notifyStateChange();
   }
@@ -359,9 +409,15 @@ export class Looper {
     track.isRecording = true;
     this.isRecording = true;
 
+    // Reset to beginning of loop for clean alignment
+    // This ensures the recording starts at position 0
+    if (this.isPlaying) {
+      this.transport.position = 0;
+    }
+    this.recordingStartPosition = 0;
+
     // Start recording
     await this.recorder.start();
-    this.recordingStartTime = this.transport.seconds;
 
     // Auto-start playback if not already playing
     if (!this.isPlaying) {
@@ -391,14 +447,17 @@ export class Looper {
     if (track.player) {
       track.player.dispose();
     }
-    track.player = new Tone.Player(track.buffer).toDestination();
-    track.player.loop = true;
-    track.player.volume.value = track.volume;
     
-    // Calculate loop length based on bars
-    const loopDuration = (60 / this.bpm) * 4 * this.bars;
-    track.player.loopStart = 0;
-    track.player.loopEnd = loopDuration;
+    // Calculate loop length based on bars (using 4/4 time)
+    const loopDuration = this.getLoopDuration();
+    
+    track.player = new Tone.Player({
+      url: track.buffer,
+      loop: true,
+      loopStart: 0,
+      loopEnd: loopDuration,
+    }).toDestination();
+    track.player.volume.value = track.volume;
 
     // If still playing, sync and start the new track
     if (this.isPlaying) {
@@ -406,6 +465,7 @@ export class Looper {
     }
 
     this.recordingTrackId = null;
+    this.recordingStartPosition = 0;
     this.notifyStateChange();
   }
 
@@ -443,7 +503,8 @@ export class Looper {
   }
 
   getLoopDuration(): number {
-    return (60 / this.bpm) * this.beatsPerBar * this.bars;
+    // Loop duration is based on bars * 4 beats per bar (standard 4/4 time in Tone.js)
+    return (60 / this.bpm) * 4 * this.bars;
   }
 
   getTotalBeats(): number {
@@ -452,8 +513,11 @@ export class Looper {
 
   getCurrentPosition(): number {
     if (!this.isPlaying) return 0;
-    const loopDuration = this.getLoopDuration();
-    return (this.transport.seconds % loopDuration) / loopDuration;
+    
+    // Use transport.progress for accurate loop position (0-1)
+    // This is synced with the audio engine
+    const progress = this.transport.progress;
+    return typeof progress === 'number' ? progress : 0;
   }
 
   dispose(): void {
