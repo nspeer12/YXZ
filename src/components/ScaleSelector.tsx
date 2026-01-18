@@ -23,9 +23,8 @@ export function ScaleSelector({
   const notesInScale = getNotesInScale(rootNote, scaleName);
 
   return (
-    <div className="bg-[#0a0a0a] rounded-lg border border-[#2a2a2a] p-4">
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="text-sm font-medium text-[#ededed]">Scale & Key</h3>
+    <div>
+      <div className="flex items-center justify-end mb-3">
         <button
           onClick={() => onScaleLockChange(!scaleLock)}
           className={`flex items-center gap-1.5 px-3 py-1 text-xs rounded-full transition-colors ${

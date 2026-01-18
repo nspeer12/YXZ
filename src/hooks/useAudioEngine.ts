@@ -86,6 +86,10 @@ export function useAudioEngine() {
     return engineRef.current?.getAnalyser() || null;
   }, []);
 
+  const getOutputGain = useCallback((): Tone.Gain | null => {
+    return engineRef.current?.getOutputGain() || null;
+  }, []);
+
   const startRecording = useCallback(async () => {
     if (!engineRef.current) return;
     // Clean up previous recording URL
@@ -148,6 +152,7 @@ export function useAudioEngine() {
     setReverb,
     getAnalyserData,
     getAnalyser,
+    getOutputGain,
     isRecording,
     recordingUrl,
     startRecording,

@@ -26,6 +26,7 @@ export class AudioEngine {
   private distortion: Tone.Distortion | null = null;
   private analyser: Tone.Analyser | null = null;
   private recorder: Tone.Recorder | null = null;
+  private outputGain: Tone.Gain | null = null;
   private isInitialized = false;
   private isRecording = false;
   private currentWaveform: Float32Array;
@@ -69,6 +70,9 @@ export class AudioEngine {
     // Create analyser for visualization (waveform)
     this.analyser = new Tone.Analyser('waveform', 256);
     
+    // Create output gain for routing to looper
+    this.outputGain = new Tone.Gain(1);
+    
     // Create recorder for recording
     this.recorder = new Tone.Recorder();
     
@@ -85,9 +89,9 @@ export class AudioEngine {
       },
     });
     
-    // Connect chain: synth -> filter -> distortion -> delay -> reverb -> analyser -> recorder -> output
-    this.synth.chain(this.filter, this.distortion, this.delay, this.reverb, this.analyser, Tone.getDestination());
-    this.analyser.connect(this.recorder);
+    // Connect chain: synth -> filter -> distortion -> delay -> reverb -> outputGain -> analyser -> output
+    this.synth.chain(this.filter, this.distortion, this.delay, this.reverb, this.outputGain, this.analyser, Tone.getDestination());
+    this.outputGain.connect(this.recorder);
     
     this.isInitialized = true;
   }
@@ -324,6 +328,10 @@ export class AudioEngine {
     return this.analyser;
   }
 
+  getOutputGain(): Tone.Gain | null {
+    return this.outputGain;
+  }
+
   async startRecording(): Promise<void> {
     if (!this.recorder || this.isRecording) return;
     await this.recorder.start();
@@ -349,6 +357,7 @@ export class AudioEngine {
     this.reverb?.dispose();
     this.analyser?.dispose();
     this.recorder?.dispose();
+    this.outputGain?.dispose();
     this.isInitialized = false;
   }
 }
