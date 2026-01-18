@@ -103,6 +103,10 @@ export function useAudioEngine() {
     return engineRef.current?.getAnalyserData() || new Float32Array(256);
   }, []);
 
+  const getFFTData = useCallback(() => {
+    return engineRef.current?.getFFTData() || new Float32Array(256);
+  }, []);
+
   const getAnalyser = useCallback((): Tone.Analyser | null => {
     return engineRef.current?.getAnalyser() || null;
   }, []);
@@ -168,6 +172,7 @@ export function useAudioEngine() {
     setPresetWaveform,
     setEnvelope,
     getAnalyserData,
+    getFFTData,
     getAnalyser,
     getOutputGain,
     isRecording,

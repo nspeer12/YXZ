@@ -47,10 +47,7 @@ export function useLooper(inputNode: Tone.Gain | null) {
 
   // Update position for progress indicator
   useEffect(() => {
-    if (!looperRef.current || !state.isPlaying) {
-      setCurrentPosition(0);
-      return;
-    }
+    if (!looperRef.current) return;
 
     const updatePosition = () => {
       if (looperRef.current) {
@@ -64,14 +61,22 @@ export function useLooper(inputNode: Tone.Gain | null) {
     return () => {
       cancelAnimationFrame(animationRef.current);
     };
-  }, [state.isPlaying]);
+  }, [isInitialized]);
 
   const play = useCallback(() => {
     looperRef.current?.play();
   }, []);
 
+  const pause = useCallback(() => {
+    looperRef.current?.pause();
+  }, []);
+
   const stop = useCallback(() => {
     looperRef.current?.stop();
+  }, []);
+
+  const seekTo = useCallback((position: number) => {
+    looperRef.current?.seekTo(position);
   }, []);
 
   const startRecording = useCallback((trackId?: string) => {
@@ -143,7 +148,9 @@ export function useLooper(inputNode: Tone.Gain | null) {
     currentPosition,
     isInitialized,
     play,
+    pause,
     stop,
+    seekTo,
     startRecording,
     stopRecording,
     setBpm,

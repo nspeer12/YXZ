@@ -14,7 +14,12 @@ export type EffectType =
   | 'compressor'
   | 'eq'
   | 'vibrato'
-  | 'autowah';
+  | 'autowah'
+  | 'stereoWidener'
+  | 'pingPongDelay'
+  | 'limiter'
+  | 'autoFilter'
+  | 'chebyshev';
 
 export interface EffectParams {
   filter: { frequency: number; resonance: number; type: 'lowpass' | 'highpass' | 'bandpass' };
@@ -29,6 +34,11 @@ export interface EffectParams {
   eq: { low: number; mid: number; high: number };
   vibrato: { frequency: number; depth: number; wet: number };
   autowah: { baseFrequency: number; octaves: number; sensitivity: number; wet: number };
+  stereoWidener: { width: number };
+  pingPongDelay: { delayTime: number; feedback: number; wet: number };
+  limiter: { threshold: number };
+  autoFilter: { frequency: number; depth: number; baseFrequency: number; octaves: number; wet: number };
+  chebyshev: { order: number; wet: number };
 }
 
 export interface Effect<T extends EffectType = EffectType> {
@@ -52,6 +62,11 @@ export const DEFAULT_EFFECT_PARAMS: EffectParams = {
   eq: { low: 0, mid: 0, high: 0 },
   vibrato: { frequency: 5, depth: 0.1, wet: 0.5 },
   autowah: { baseFrequency: 100, octaves: 6, sensitivity: 0, wet: 0.5 },
+  stereoWidener: { width: 0.5 },
+  pingPongDelay: { delayTime: 0.25, feedback: 0.4, wet: 0.3 },
+  limiter: { threshold: -6 },
+  autoFilter: { frequency: 1, depth: 1, baseFrequency: 200, octaves: 2.6, wet: 0.5 },
+  chebyshev: { order: 50, wet: 0.5 },
 };
 
 export const EFFECT_LABELS: Record<EffectType, string> = {
@@ -67,6 +82,11 @@ export const EFFECT_LABELS: Record<EffectType, string> = {
   eq: 'EQ',
   vibrato: 'Vibrato',
   autowah: 'Auto-Wah',
+  stereoWidener: 'Stereo Widener',
+  pingPongDelay: 'Ping Pong Delay',
+  limiter: 'Limiter',
+  autoFilter: 'Auto Filter',
+  chebyshev: 'Chebyshev',
 };
 
 export interface AudioEngineState {
@@ -88,6 +108,7 @@ export class AudioEngine {
   private customOscillator: Tone.ToneOscillatorNode | null = null;
   private periodicWave: PeriodicWave | null = null;
   private analyser: Tone.Analyser | null = null;
+  private fftAnalyser: Tone.Analyser | null = null;
   private recorder: Tone.Recorder | null = null;
   private outputGain: Tone.Gain | null = null;
   private isInitialized = false;
@@ -110,6 +131,9 @@ export class AudioEngine {
     
     // Create analyser for visualization (waveform)
     this.analyser = new Tone.Analyser('waveform', 256);
+    
+    // Create FFT analyser for spectrum visualization
+    this.fftAnalyser = new Tone.Analyser('fft', 256);
     
     // Create output gain for routing to looper
     this.outputGain = new Tone.Gain(1);
@@ -189,6 +213,28 @@ export class AudioEngine {
         const p = params as EffectParams['autowah'];
         return new Tone.AutoWah({ baseFrequency: p.baseFrequency, octaves: p.octaves, sensitivity: p.sensitivity, wet: p.wet });
       }
+      case 'stereoWidener': {
+        const p = params as EffectParams['stereoWidener'];
+        return new Tone.StereoWidener({ width: p.width });
+      }
+      case 'pingPongDelay': {
+        const p = params as EffectParams['pingPongDelay'];
+        return new Tone.PingPongDelay({ delayTime: p.delayTime, feedback: p.feedback, wet: p.wet });
+      }
+      case 'limiter': {
+        const p = params as EffectParams['limiter'];
+        return new Tone.Limiter(p.threshold);
+      }
+      case 'autoFilter': {
+        const p = params as EffectParams['autoFilter'];
+        return new Tone.AutoFilter({ frequency: p.frequency, depth: p.depth, baseFrequency: p.baseFrequency, octaves: p.octaves, wet: p.wet }).start();
+      }
+      case 'chebyshev': {
+        const p = params as EffectParams['chebyshev'];
+        const chebyshev = new Tone.Chebyshev(p.order);
+        chebyshev.wet.value = p.wet;
+        return chebyshev;
+      }
     }
   }
 
@@ -202,27 +248,30 @@ export class AudioEngine {
         effect.node.disconnect();
       }
     });
+    this.outputGain.disconnect();
 
     // Get enabled effects in order
     const enabledEffects = this.effects.filter(e => e.enabled && e.node);
 
     if (enabledEffects.length === 0) {
-      // Direct connection
-      this.synth.chain(this.outputGain, this.analyser, Tone.getDestination());
+      // Direct connection: synth -> outputGain -> analyser -> destination
+      this.synth.connect(this.outputGain);
     } else {
-      // Build chain: synth -> effect1 -> effect2 -> ... -> outputGain -> analyser -> destination
-      const nodes: Tone.ToneAudioNode[] = [
-        this.synth,
-        ...enabledEffects.map(e => e.node!),
-        this.outputGain,
-        this.analyser,
-        Tone.getDestination(),
-      ];
-      
-      for (let i = 0; i < nodes.length - 1; i++) {
-        nodes[i].connect(nodes[i + 1]);
+      // Build chain: synth -> effect1 -> effect2 -> ... -> outputGain
+      let lastNode: Tone.ToneAudioNode = this.synth;
+      for (const effect of enabledEffects) {
+        lastNode.connect(effect.node!);
+        lastNode = effect.node!;
       }
+      lastNode.connect(this.outputGain);
     }
+
+    // Connect outputGain to both analysers and destination
+    this.outputGain.connect(this.analyser);
+    if (this.fftAnalyser) {
+      this.outputGain.connect(this.fftAnalyser);
+    }
+    this.outputGain.connect(Tone.getDestination());
   }
 
   private notifyEffectsChange(): void {
@@ -236,14 +285,14 @@ export class AudioEngine {
     };
   }
 
-  addEffect(type: EffectType): Effect {
+  addEffect(type: EffectType, enabled: boolean = false): Effect {
     const params = { ...DEFAULT_EFFECT_PARAMS[type] };
     const node = this.createEffectNode(type, params);
     
     const effect: Effect = {
       id: `${type}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       type,
-      enabled: true,
+      enabled,
       params,
       node,
     };
@@ -372,6 +421,43 @@ export class AudioEngine {
         node.baseFrequency = p.baseFrequency;
         node.octaves = p.octaves;
         node.sensitivity = p.sensitivity;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'stereoWidener': {
+        const node = effect.node as Tone.StereoWidener;
+        const p = effect.params as EffectParams['stereoWidener'];
+        node.width.value = p.width;
+        break;
+      }
+      case 'pingPongDelay': {
+        const node = effect.node as Tone.PingPongDelay;
+        const p = effect.params as EffectParams['pingPongDelay'];
+        node.delayTime.value = p.delayTime;
+        node.feedback.value = p.feedback;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'limiter': {
+        const node = effect.node as Tone.Limiter;
+        const p = effect.params as EffectParams['limiter'];
+        node.threshold.value = p.threshold;
+        break;
+      }
+      case 'autoFilter': {
+        const node = effect.node as Tone.AutoFilter;
+        const p = effect.params as EffectParams['autoFilter'];
+        node.frequency.value = p.frequency;
+        node.depth.value = p.depth;
+        node.baseFrequency = p.baseFrequency;
+        node.octaves = p.octaves;
+        node.wet.value = p.wet;
+        break;
+      }
+      case 'chebyshev': {
+        const node = effect.node as Tone.Chebyshev;
+        const p = effect.params as EffectParams['chebyshev'];
+        node.order = p.order;
         node.wet.value = p.wet;
         break;
       }
@@ -609,6 +695,11 @@ export class AudioEngine {
     return this.analyser.getValue() as Float32Array;
   }
 
+  getFFTData(): Float32Array {
+    if (!this.fftAnalyser) return new Float32Array(256);
+    return this.fftAnalyser.getValue() as Float32Array;
+  }
+
   getAnalyser(): Tone.Analyser | null {
     return this.analyser;
   }
@@ -639,6 +730,7 @@ export class AudioEngine {
     this.effects.forEach(effect => effect.node?.dispose());
     this.effects = [];
     this.analyser?.dispose();
+    this.fftAnalyser?.dispose();
     this.recorder?.dispose();
     this.outputGain?.dispose();
     this.isInitialized = false;

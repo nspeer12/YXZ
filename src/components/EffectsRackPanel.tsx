@@ -25,11 +25,17 @@ const EFFECT_COLORS: Record<EffectType, string> = {
   eq: '#99ff66',
   vibrato: '#ff9900',
   autowah: '#cc66ff',
+  stereoWidener: '#44aaff',
+  pingPongDelay: '#22ddaa',
+  limiter: '#ff8800',
+  autoFilter: '#dd44ff',
+  chebyshev: '#ff5577',
 };
 
 const ALL_EFFECTS: EffectType[] = [
   'filter', 'distortion', 'delay', 'reverb', 'chorus', 
-  'phaser', 'tremolo', 'bitcrusher', 'compressor', 'eq', 'vibrato', 'autowah'
+  'phaser', 'tremolo', 'bitcrusher', 'compressor', 'eq', 'vibrato', 'autowah',
+  'stereoWidener', 'pingPongDelay', 'limiter', 'autoFilter', 'chebyshev'
 ];
 
 export function EffectsRackPanel({
@@ -660,6 +666,140 @@ function EffectControls({ effect, onUpdate, color }: EffectControlsProps) {
             max={0}
             onChange={(v) => onUpdate({ sensitivity: v })}
             format={(v) => `${Math.round(v)}dB`}
+          />
+          <SliderControl
+            label="Mix"
+            value={p.wet}
+            min={0}
+            max={1}
+            onChange={(v) => onUpdate({ wet: v })}
+            format={(v) => `${Math.round(v * 100)}%`}
+          />
+        </div>
+      );
+    }
+
+    case 'stereoWidener': {
+      const p = effect.params as EffectParams['stereoWidener'];
+      return (
+        <SliderControl
+          label="Width"
+          value={p.width}
+          min={0}
+          max={1}
+          onChange={(v) => onUpdate({ width: v })}
+          format={(v) => `${Math.round(v * 100)}%`}
+        />
+      );
+    }
+
+    case 'pingPongDelay': {
+      const p = effect.params as EffectParams['pingPongDelay'];
+      return (
+        <div className="flex gap-3">
+          <SliderControl
+            label="Time"
+            value={p.delayTime}
+            min={0.01}
+            max={1}
+            onChange={(v) => onUpdate({ delayTime: v })}
+            format={(v) => `${Math.round(v * 1000)}ms`}
+          />
+          <SliderControl
+            label="Feedback"
+            value={p.feedback}
+            min={0}
+            max={0.95}
+            onChange={(v) => onUpdate({ feedback: v })}
+            format={(v) => `${Math.round(v * 100)}%`}
+          />
+          <SliderControl
+            label="Mix"
+            value={p.wet}
+            min={0}
+            max={1}
+            onChange={(v) => onUpdate({ wet: v })}
+            format={(v) => `${Math.round(v * 100)}%`}
+          />
+        </div>
+      );
+    }
+
+    case 'limiter': {
+      const p = effect.params as EffectParams['limiter'];
+      return (
+        <SliderControl
+          label="Threshold"
+          value={p.threshold}
+          min={-30}
+          max={0}
+          onChange={(v) => onUpdate({ threshold: v })}
+          format={(v) => `${Math.round(v)}dB`}
+        />
+      );
+    }
+
+    case 'autoFilter': {
+      const p = effect.params as EffectParams['autoFilter'];
+      return (
+        <div className="flex gap-2 flex-wrap">
+          <SliderControl
+            label="Rate"
+            value={p.frequency}
+            min={0.1}
+            max={20}
+            onChange={(v) => onUpdate({ frequency: v })}
+            format={(v) => `${v.toFixed(1)}Hz`}
+          />
+          <SliderControl
+            label="Depth"
+            value={p.depth}
+            min={0}
+            max={1}
+            onChange={(v) => onUpdate({ depth: v })}
+            format={(v) => `${Math.round(v * 100)}%`}
+          />
+          <SliderControl
+            label="Base Freq"
+            value={p.baseFrequency}
+            min={20}
+            max={5000}
+            isLog
+            onChange={(v) => onUpdate({ baseFrequency: v })}
+            format={(v) => `${Math.round(v)}Hz`}
+          />
+          <SliderControl
+            label="Octaves"
+            value={p.octaves}
+            min={0.5}
+            max={8}
+            onChange={(v) => onUpdate({ octaves: v })}
+            format={(v) => `${v.toFixed(1)}`}
+          />
+          <SliderControl
+            label="Mix"
+            value={p.wet}
+            min={0}
+            max={1}
+            onChange={(v) => onUpdate({ wet: v })}
+            format={(v) => `${Math.round(v * 100)}%`}
+          />
+        </div>
+      );
+    }
+
+    case 'chebyshev': {
+      const p = effect.params as EffectParams['chebyshev'];
+      return (
+        <div className="flex gap-3">
+          <SliderControl
+            label="Order"
+            value={p.order}
+            min={1}
+            max={100}
+            step={1}
+            onChange={(v) => onUpdate({ order: Math.round(v) })}
+            format={(v) => `${Math.round(v)}`}
           />
           <SliderControl
             label="Mix"

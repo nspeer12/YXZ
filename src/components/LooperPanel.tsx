@@ -16,6 +16,7 @@ interface LooperPanelProps {
   tracks: LoopTrack[];
   onPlay: () => void;
   onStop: () => void;
+  onSeekTo: (position: number) => void;
   onStartRecording: (trackId?: string) => void;
   onStopRecording: () => void;
   onSetBpm: (bpm: number) => void;
@@ -29,6 +30,7 @@ interface LooperPanelProps {
   onClearAllTracks: () => void;
   onSetTrackMuted: (trackId: string, muted: boolean) => void;
   onSetTrackSolo: (trackId: string, solo: boolean) => void;
+  onSetTrackVolume: (trackId: string, volume: number) => void;
 }
 
 export function LooperPanel({
@@ -44,6 +46,7 @@ export function LooperPanel({
   tracks,
   onPlay,
   onStop,
+  onSeekTo,
   onStartRecording,
   onStopRecording,
   onSetBpm,
@@ -57,8 +60,10 @@ export function LooperPanel({
   onClearAllTracks,
   onSetTrackMuted,
   onSetTrackSolo,
+  onSetTrackVolume,
 }: LooperPanelProps) {
   const [bpmInput, setBpmInput] = useState(bpm.toString());
+  const [isDragging, setIsDragging] = useState(false);
   const beatsOptions = [4, 8, 12, 16];
 
   const handleBpmChange = (value: string) => {
@@ -71,6 +76,32 @@ export function LooperPanel({
 
   const totalBeats = bars * beatsPerBar;
   const currentBeatInLoop = currentBeat % totalBeats;
+
+  const handleTimelineClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const position = Math.max(0, Math.min(1, x / rect.width));
+    onSeekTo(position);
+  };
+
+  const handleTimelineMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    handleTimelineClick(e);
+  };
+
+  const handleTimelineMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isDragging) {
+      handleTimelineClick(e);
+    }
+  };
+
+  const handleTimelineMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleTimelineMouseLeave = () => {
+    setIsDragging(false);
+  };
 
   return (
     <div>
@@ -202,14 +233,16 @@ export function LooperPanel({
         </button>
       </div>
 
-      {/* Progress Bar */}
+      {/* Timeline / Progress Bar - Clickable */}
       <div className="mb-4">
-        <div className="relative h-2 bg-[#1a1a1a] rounded-full overflow-hidden">
-          <div
-            className="absolute h-full bg-[#00ffff] transition-all duration-75"
-            style={{ width: `${currentPosition * 100}%` }}
-          />
-          {/* Beat markers - highlight bar boundaries */}
+        <div 
+          className="relative h-6 bg-[#1a1a1a] rounded cursor-pointer select-none"
+          onMouseDown={handleTimelineMouseDown}
+          onMouseMove={handleTimelineMouseMove}
+          onMouseUp={handleTimelineMouseUp}
+          onMouseLeave={handleTimelineMouseLeave}
+        >
+          {/* Beat grid lines */}
           {Array.from({ length: totalBeats }).map((_, i) => (
             <div
               key={i}
@@ -219,13 +252,29 @@ export function LooperPanel({
               style={{ left: `${(i / totalBeats) * 100}%` }}
             />
           ))}
+          
+          {/* Playhead */}
+          <div
+            className="absolute top-0 bottom-0 w-0.5 bg-white z-20 shadow-[0_0_8px_rgba(255,255,255,0.5)]"
+            style={{ left: `${currentPosition * 100}%` }}
+          />
+          
+          {/* Playhead handle (larger click target) */}
+          <div
+            className="absolute top-0 w-3 h-3 -translate-x-1/2 bg-white rounded-full z-20"
+            style={{ left: `${currentPosition * 100}%` }}
+          />
         </div>
+        
         {/* Bar numbers */}
-        <div className="flex justify-between mt-1">
+        <div className="flex mt-1">
           {Array.from({ length: bars }).map((_, i) => (
-            <span key={i} className="text-[10px] text-[#555] font-mono">
+            <div 
+              key={i} 
+              className="flex-1 text-[10px] text-[#555] font-mono"
+            >
               {i + 1}
-            </span>
+            </div>
           ))}
         </div>
       </div>
@@ -276,7 +325,25 @@ export function LooperPanel({
               </div>
 
               {/* Track controls */}
-              <div className="flex items-center gap-1 ml-auto shrink-0">
+              <div className="flex items-center gap-2 ml-auto shrink-0">
+                {/* Volume slider */}
+                <div className="flex items-center gap-1 w-24">
+                  <span className="text-[9px] text-[#555]">🔊</span>
+                  <input
+                    type="range"
+                    min="-40"
+                    max="6"
+                    step="1"
+                    value={track.volume}
+                    onChange={(e) => onSetTrackVolume(track.id, parseFloat(e.target.value))}
+                    className="w-full h-1 accent-[#00ffff] cursor-pointer"
+                    title={`Volume: ${track.volume > 0 ? '+' : ''}${track.volume}dB`}
+                  />
+                  <span className="text-[9px] text-[#555] font-mono w-8 text-right">
+                    {track.volume > 0 ? '+' : ''}{track.volume}
+                  </span>
+                </div>
+
                 {/* Mute */}
                 <button
                   onClick={() => onSetTrackMuted(track.id, !track.isMuted)}
@@ -338,8 +405,14 @@ export function LooperPanel({
               </div>
             </div>
 
-            {/* Note events timeline */}
-            <div className="relative h-8 bg-[#0a0a0a] mx-2 mb-2 rounded overflow-hidden">
+            {/* Note events timeline - clickable */}
+            <div 
+              className="relative h-8 bg-[#0a0a0a] mx-2 mb-2 rounded overflow-hidden cursor-pointer"
+              onMouseDown={handleTimelineMouseDown}
+              onMouseMove={handleTimelineMouseMove}
+              onMouseUp={handleTimelineMouseUp}
+              onMouseLeave={handleTimelineMouseLeave}
+            >
               {/* Grid lines */}
               {Array.from({ length: totalBeats }).map((_, i) => (
                 <div
@@ -355,7 +428,7 @@ export function LooperPanel({
               {track.noteEvents.map((event, i) => (
                 <div
                   key={i}
-                  className="absolute top-1 bottom-1 rounded-sm"
+                  className="absolute top-1 bottom-1 rounded-sm pointer-events-none"
                   style={{
                     left: `${event.startTime * 100}%`,
                     width: `${Math.max(event.duration * 100, 1)}%`,
@@ -367,16 +440,17 @@ export function LooperPanel({
               ))}
 
               {/* Playhead */}
-              {isPlaying && (
-                <div
-                  className="absolute top-0 bottom-0 w-0.5 bg-white z-10"
-                  style={{ left: `${currentPosition * 100}%` }}
-                />
-              )}
+              <div
+                className="absolute top-0 bottom-0 w-0.5 bg-white z-10 pointer-events-none"
+                style={{ 
+                  left: `${currentPosition * 100}%`,
+                  boxShadow: '0 0 6px rgba(255,255,255,0.5)'
+                }}
+              />
 
               {/* Recording indicator */}
               {track.isRecording && (
-                <div className="absolute inset-0 bg-[#ff4444]/20 animate-pulse" />
+                <div className="absolute inset-0 bg-[#ff4444]/20 animate-pulse pointer-events-none" />
               )}
             </div>
           </div>

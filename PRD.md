@@ -1,4 +1,4 @@
-# YXZ — Product Requirements Document
+# WaveLab — Product Requirements Document
 
 > *"Create. Publish. Remix. Evolve."*
 
@@ -6,7 +6,7 @@
 
 ## Vision
 
-YXZ is a **browser-based music creation studio** where anyone can make songs using powerful **math-based synthesis tools** and **music theory guidance**—no musical background required. Create your own tracks privately, then publish them for the world to hear and remix. Every published song becomes a seed for new creations.
+WaveLab is a **browser-based music creation studio** where anyone can make songs using powerful **math-based synthesis tools** and **music theory guidance**—no musical background required. Create your own tracks privately, then publish them for the world to hear and remix. Every published song becomes a seed for new creations.
 
 Think of it as:
 - **GarageBand** meets **SoundCloud** meets **GitHub** (for music)
@@ -14,7 +14,7 @@ Think of it as:
 - Theory training wheels that help you make choices that sound good while teaching you *why*
 - A remix culture where songs evolve through community iteration
 
-**YXZ exists to answer:** *What if anyone could make music, share it, and watch it evolve through remixes?*
+**WaveLab exists to answer:** *What if anyone could make music, share it, and watch it evolve through remi
 
 ---
 
@@ -24,10 +24,10 @@ Think of it as:
 Your workspace is private. Experiment freely. When you're proud of something, publish it. No pressure.
 
 ### 2. Math, Not Magic
-Every sound in YXZ comes from transparent, deterministic math—sine waves, frequency modulation, filters, envelopes. You can see exactly how every sound is built. No AI generation, no mystery boxes.
+Every sound in WaveLab comes from transparent, deterministic math—sine waves, frequency modulation, filters, envelopes. You can see exactly how every sound is built. No AI generation, no mystery boxes.
 
 ### 3. Theory as Training Wheels
-You don't need to know what a "minor seventh" is to use one. YXZ suggests notes that work, highlights when you're about to do something dissonant (and lets you do it anyway), and explains the theory *after* you've felt it work.
+You don't need to know what a "minor seventh" is to use one. WaveLab suggests notes that work, highlights when you're about to do something dissonant (and lets you do it anyway), and explains the theory *after* you've felt it work.
 
 ### 4. Remix Culture
 Every published song can be remixed. When you remix, you get the original's layers, synth patches, and structure to build on. Credit flows back to the original. Great ideas spread.
@@ -138,7 +138,7 @@ A virtual instrument that works with mouse, keyboard, touch, or MIDI hardware.
 
 ### 2. The Wave Lab — Sound Creation
 
-This is the heart of YXZ. Every sound starts as a wave. You can **see it, draw it, sculpt it, evolve it**.
+This is the heart of WaveLab. Every sound starts as a wave. You can **see it, draw it, sculpt it, evolve it**.
 
 #### The Core Concept: What Is Sound?
 
@@ -158,7 +158,7 @@ SAWTOOTH (bright, rich)           TRIANGLE (soft, mellow)
 ────────────────────              ──      \/      ──
 ```
 
-YXZ lets you **draw any shape** and hear it instantly.
+WaveLab lets you **draw any shape** and hear it instantly.
 
 ---
 
@@ -277,7 +277,7 @@ This helps you understand:
 
 #### Filter Sculptor — Shape the Frequencies
 
-Filters remove frequencies from your sound. Instead of cryptic knobs, YXZ lets you **draw the filter shape directly**.
+Filters remove frequencies from your sound. Instead of cryptic knobs, WaveLab lets you **draw the filter shape directly**.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -472,7 +472,7 @@ Try these scales:
 ```
 
 **Chord Helper:**
-When you play a note, YXZ shows you:
+When you play a note, WaveLab shows you:
 - Which chords contain that note
 - Common chord progressions from here
 - What emotion each chord tends to evoke
@@ -587,9 +587,9 @@ Control how layers sit together in your song.
 
 ---
 
-## Music Theory Crash Course (Built Into YXZ)
+## Music Theory Crash Course (Built Into WaveLab)
 
-Since you're new to theory, YXZ will teach you these concepts through interaction:
+Since you're new to theory, WaveLab will teach you these concepts through interaction:
 
 ### The Basics
 
@@ -612,9 +612,9 @@ C  C#  D  D#  E  F  F#  G  G#  A  A#  B  (then C again, higher)
 - **Measure/Bar**: Usually 4 beats grouped together
 - **Tempo**: How fast (BPM = beats per minute)
 
-### YXZ Makes This Easy
+### WaveLab Makes This Easy
 
-You don't need to memorize any of this. YXZ will:
+You don't need to memorize any of this. WaveLab will:
 1. **Lock you to a scale** so you can't play "wrong" notes
 2. **Suggest chords** that work with what you're playing
 3. **Quantize timing** so you're always on beat (unless you want off-beat)
@@ -626,7 +626,7 @@ You don't need to memorize any of this. YXZ will:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                         YXZ CLIENT                               │
+│                         WaveLab CLIENT                               │
 │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐               │
 │  │   Piano/    │ │   Visual    │ │  Sequencer  │               │
 │  │ Controller  │ │   Synth     │ │  & Arrange  │               │
@@ -649,7 +649,7 @@ You don't need to memorize any of this. YXZ will:
                           │ REST API / WebSocket
                           ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                         YXZ SERVER                               │
+│                         WaveLab SERVER                               │
 │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐               │
 │  │   Songs &   │ │   Users &   │ │   Social    │               │
 │  │   Projects  │ │   Auth      │ │  (likes,    │               │
@@ -694,7 +694,7 @@ This means:
 ### Studio View (Creating)
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  YXZ Studio                    "untitled"    [Save] [Publish ▾] │
+│  WaveLab Studio                    "untitled"    [Save] [Publish ▾] │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │  ┌─ ARRANGEMENT ───────────────────────────────────────────────┐│
@@ -730,7 +730,7 @@ This means:
 ### Explore View (Discovering)
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  YXZ                              [🔍 Search]    [@username ▾]  │
+│  WaveLab                              [🔍 Search]    [@username ▾]  │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │  [Trending] [New] [Most Remixed] [Following] [Your Songs]       │
@@ -810,9 +810,9 @@ This means:
 
 ---
 
-## The Sound of YXZ
+## The Sound of WaveLab
 
-Since you mentioned Yeezus and Radiohead as touchstones, here's how YXZ enables that aesthetic:
+Since you mentioned Yeezus and Radiohead as touchstones, here's how WaveLab enables that aesthetic:
 
 ### Yeezus Sounds (Industrial, Aggressive, Minimal)
 - **Distortion/Overdrive**: Push oscillators into clipping
@@ -865,7 +865,7 @@ Since you mentioned Yeezus and Radiohead as touchstones, here's how YXZ enables 
 
 4. **Collaboration**: Should two people be able to edit the same song in real-time? (Complex but powerful)
 
-5. **Samples**: Should YXZ allow uploading audio samples, or stay pure synthesis?
+5. **Samples**: Should WaveLab allow uploading audio samples, or stay pure synthesis?
 
 ---
 
@@ -885,4 +885,4 @@ Since you mentioned Yeezus and Radiohead as touchstones, here's how YXZ enables 
 
 ---
 
-*YXZ: Create. Publish. Remix. Evolve.*
+*WaveLab: Create. Publish. Remix. Evolve.*

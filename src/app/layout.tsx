@@ -13,7 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "YXZ — Create. Publish. Remix.",
+  title: "WaveLab — Create. Publish. Remix.",
   description: "A browser-based music creation studio with visual synthesis and music theory guidance",
 };
 

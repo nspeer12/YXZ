@@ -62,7 +62,7 @@ function PianoKey({ note, octave, isBlack, isInScale, isActive, isLocked, keyboa
 
   return (
     <button
-      className={`${baseClasses} ${colorClasses} border border-[#333] relative transition-colors select-none touch-none`}
+      className={`${baseClasses} ${colorClasses} border border-[#333] relative transition-colors select-none touch-none overflow-visible`}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
@@ -79,11 +79,11 @@ function PianoKey({ note, octave, isBlack, isInScale, isActive, isLocked, keyboa
       
       {/* Keyboard shortcut overlay */}
       {showKeyboardOverlay && keyboardKey && (
-        <div className={`absolute inset-0 flex items-center justify-center pointer-events-none ${
-          isBlack ? 'pt-0' : 'pt-4'
+        <div className={`absolute left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none ${
+          isBlack ? 'top-2' : 'top-6'
         }`}>
           <span className={`
-            w-7 h-7 rounded flex items-center justify-center text-xs font-mono uppercase font-bold
+            ${isBlack ? 'w-6 h-6 text-[10px]' : 'w-7 h-7 text-xs'} rounded flex items-center justify-center font-mono uppercase font-bold
             ${isBlack 
               ? isActive 
                 ? 'bg-black/30 text-black' 
@@ -168,11 +168,26 @@ export function Piano({ onNoteOn, onNoteOff, scaleLock, rootNote, scaleName, oct
     };
   }, [keyboardMapping, octave, scaleLock, rootNote, scaleName, handleNoteOn, handleNoteOff]);
 
-  // Build keys for 2 octaves
+  // Determine the range of keys to display based on keyboard mapping
+  // The mapping covers C4-E5 (17 notes), so we show that range adjusted by octave
+  const mappedNotes = Object.values(keyboardMapping);
+  const minMappedOctave = Math.min(...mappedNotes.map(m => m.octave));
+  const maxMappedOctave = Math.max(...mappedNotes.map(m => m.octave));
+  const maxNoteInHighOctave = mappedNotes
+    .filter(m => m.octave === maxMappedOctave)
+    .map(m => NOTE_NAMES.indexOf(m.note))
+    .reduce((max, idx) => Math.max(max, idx), 0);
+
+  // Build keys only for the mapped range
   const keys: Array<{ note: NoteName; octave: number; keyboardKey?: string }> = [];
   
-  for (let o = octave; o < octave + 2; o++) {
-    for (const note of NOTE_NAMES) {
+  for (let o = octave; o <= octave + (maxMappedOctave - minMappedOctave); o++) {
+    const isLastOctave = o === octave + (maxMappedOctave - minMappedOctave);
+    for (let i = 0; i < NOTE_NAMES.length; i++) {
+      // Stop after the last mapped note in the highest octave
+      if (isLastOctave && i > maxNoteInHighOctave) break;
+      
+      const note = NOTE_NAMES[i];
       const keyboardKey = Object.entries(keyboardMapping).find(
         ([, v]) => v.note === note && v.octave + (octave - 4) === o
       )?.[0];

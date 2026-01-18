@@ -62,6 +62,7 @@ export class Looper {
   private recordingTrackId: string | null = null;
   private recordingStartPosition: number = 0;
   private inputNode: Tone.Gain | null = null;
+  private outputNode: Tone.ToneAudioNode | null = null;
   private currentNoteStart: number | null = null;
   private currentNote: string | null = null;
   private pendingRecordStop: boolean = false;
@@ -72,8 +73,10 @@ export class Looper {
 
   private metronomeEventId: number | null = null;
 
-  async init(inputNode: Tone.Gain): Promise<void> {
+  async init(inputNode: Tone.Gain, outputNode?: Tone.ToneAudioNode): Promise<void> {
     this.inputNode = inputNode;
+    // Use the same node for output so playback goes through the analyser
+    this.outputNode = outputNode || inputNode;
     
     // Reduce latency for tighter sync
     const context = Tone.getContext();
@@ -353,15 +356,25 @@ export class Looper {
     // Sync all track players before starting transport
     this.tracks.forEach(track => {
       if (track.player && track.buffer) {
-        // Unsync first to ensure clean state
-        track.player.unsync();
-        track.player.sync().start(0);
+        try {
+          track.player.unsync();
+          track.player.sync().start(0);
+        } catch (e) {
+          console.warn('Error syncing track player:', e);
+        }
       }
     });
     
-    // Start transport after syncing players
+    // Start transport
     this.transport.start();
     
+    this.notifyStateChange();
+  }
+
+  pause(): void {
+    if (!this.isPlaying) return;
+    this.isPlaying = false;
+    this.transport.pause();
     this.notifyStateChange();
   }
 
@@ -378,12 +391,62 @@ export class Looper {
     // Stop all players
     this.tracks.forEach(track => {
       if (track.player) {
-        track.player.unsync().stop();
+        try {
+          track.player.unsync();
+          track.player.stop();
+        } catch (e) {
+          // Player may not be started
+        }
       }
     });
     
     // Reschedule metronome to reset beat counter
     this.scheduleMetronome();
+    
+    this.notifyStateChange();
+  }
+
+  seekTo(position: number): void {
+    // Position is 0-1 representing loop position
+    const wasPlaying = this.isPlaying;
+    
+    // Calculate the time position based on loop length
+    const loopDuration = this.getLoopDuration();
+    const timePosition = position * loopDuration;
+    
+    // Convert to bars:beats:sixteenths format
+    const totalBeats = this.bars * 4; // Tone.js uses 4/4 time internally
+    const beatPosition = position * totalBeats;
+    const barNum = Math.floor(beatPosition / 4);
+    const beatNum = beatPosition % 4;
+    
+    // Stop transport temporarily for clean seek
+    if (wasPlaying) {
+      this.transport.pause();
+    }
+    
+    // Set position
+    this.transport.position = `${barNum}:${beatNum}:0`;
+    
+    // Update current beat for UI
+    this.currentBeat = Math.floor(position * this.bars * this.beatsPerBar);
+    
+    // Restart players at new position if was playing
+    if (wasPlaying) {
+      this.tracks.forEach(track => {
+        if (track.player && track.buffer) {
+          try {
+            track.player.unsync();
+            // Start player at the correct offset within the loop
+            const offset = position * loopDuration;
+            track.player.sync().start(0, offset);
+          } catch (e) {
+            console.warn('Error seeking track player:', e);
+          }
+        }
+      });
+      this.transport.start();
+    }
     
     this.notifyStateChange();
   }
@@ -438,12 +501,16 @@ export class Looper {
     track.isRecording = false;
     this.isRecording = false;
 
-    // Create buffer from recording
-    const arrayBuffer = await blob.arrayBuffer();
-    const audioBuffer = await Tone.getContext().decodeAudioData(arrayBuffer);
-    track.buffer = new Tone.ToneAudioBuffer(audioBuffer);
+    // Check if we got any audio data
+    if (blob.size === 0) {
+      console.warn('Recording produced empty blob');
+      this.recordingTrackId = null;
+      this.recordingStartPosition = 0;
+      this.notifyStateChange();
+      return;
+    }
 
-    // Create player for this track
+    // Create player for this track using blob URL
     if (track.player) {
       track.player.dispose();
     }
@@ -451,17 +518,75 @@ export class Looper {
     // Calculate loop length based on bars (using 4/4 time)
     const loopDuration = this.getLoopDuration();
     
-    track.player = new Tone.Player({
-      url: track.buffer,
-      loop: true,
-      loopStart: 0,
-      loopEnd: loopDuration,
-    }).toDestination();
-    track.player.volume.value = track.volume;
+    // Create a blob URL for the recorded audio
+    const blobUrl = URL.createObjectURL(blob);
+    
+    try {
+      // Create player directly from blob URL
+      track.player = new Tone.Player({
+        url: blobUrl,
+        loop: true,
+        loopStart: 0,
+        loopEnd: loopDuration,
+        onload: () => {
+          // Store the buffer reference after loading
+          if (track.player) {
+            track.buffer = track.player.buffer;
+          }
+          this.notifyStateChange();
+        },
+        onerror: (err) => {
+          console.error('Error loading recorded audio:', err);
+        }
+      });
+      
+      // Connect to output node (goes through analyser) or fallback to destination
+      if (this.outputNode) {
+        track.player.connect(this.outputNode);
+      } else {
+        track.player.toDestination();
+      }
+      
+      track.player.volume.value = track.volume;
 
-    // If still playing, sync and start the new track
-    if (this.isPlaying) {
-      track.player.sync().start(0);
+      // Wait for the player to load
+      await new Promise<void>((resolve, reject) => {
+        if (!track.player) {
+          reject(new Error('Player not created'));
+          return;
+        }
+        
+        // Check if already loaded
+        if (track.player.loaded) {
+          resolve();
+          return;
+        }
+        
+        // Set up load handlers
+        const checkLoaded = setInterval(() => {
+          if (track.player?.loaded) {
+            clearInterval(checkLoaded);
+            resolve();
+          }
+        }, 50);
+        
+        // Timeout after 5 seconds
+        setTimeout(() => {
+          clearInterval(checkLoaded);
+          if (track.player?.loaded) {
+            resolve();
+          } else {
+            reject(new Error('Timeout loading audio'));
+          }
+        }, 5000);
+      });
+
+      // If still playing, sync and start the new track
+      if (this.isPlaying && track.player.loaded) {
+        track.player.sync().start(0);
+      }
+    } catch (err) {
+      console.error('Failed to create player from recording:', err);
     }
 
     this.recordingTrackId = null;
@@ -512,10 +637,8 @@ export class Looper {
   }
 
   getCurrentPosition(): number {
-    if (!this.isPlaying) return 0;
-    
     // Use transport.progress for accurate loop position (0-1)
-    // This is synced with the audio engine
+    // This works even when paused (maintains position)
     const progress = this.transport.progress;
     return typeof progress === 'number' ? progress : 0;
   }

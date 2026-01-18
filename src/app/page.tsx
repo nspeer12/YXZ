@@ -29,6 +29,7 @@ export default function Home() {
     setPresetWaveform,
     setEnvelope,
     getAnalyserData,
+    getFFTData,
     getOutputGain,
     effects,
     addEffect,
@@ -183,9 +184,8 @@ export default function Home() {
       <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-6xl font-bold mb-4 tracking-tighter">
-            <span className="text-[#00ffff]">Y</span>
-            <span className="text-[#ff6b35]">X</span>
-            <span className="text-[#00ff88]">Z</span>
+            <span className="text-[#00ffff]">Wave</span>
+            <span className="text-[#ff6b35]">Lab</span>
           </h1>
           <p className="text-[#666] mb-8 text-lg">Create. Publish. Remix.</p>
           <button
@@ -206,11 +206,9 @@ export default function Home() {
       <header className="border-b border-[#2a2a2a] px-6 py-2 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-4">
           <h1 className="text-xl font-bold tracking-tighter">
-            <span className="text-[#00ffff]">Y</span>
-            <span className="text-[#ff6b35]">X</span>
-            <span className="text-[#00ff88]">Z</span>
+            <span className="text-[#00ffff]">Wave</span>
+            <span className="text-[#ff6b35]">Lab</span>
           </h1>
-          <span className="text-xs text-[#666] font-mono">Wave Lab</span>
         </div>
         <div className="flex items-center gap-4">
           {/* MIDI Status */}
@@ -241,121 +239,130 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Live Visualizer - Compact */}
-      <div className="shrink-0 px-4 py-2 border-b border-[#2a2a2a]">
-        <LiveVisualizer
-          getAnalyserData={getAnalyserData}
-          isPlaying={isPlaying || looper.isPlaying}
-          isRecording={looper.isRecording}
-          height={40}
-        />
-      </div>
-
-      {/* Main content - scrollable */}
-      <main className="flex-1 overflow-y-auto p-4">
-        {/* Looper Panel - Collapsible */}
-        {looper.isInitialized && (
-          <div className="mb-4">
-            <CollapsibleSection title="Looper" defaultExpanded={true} badge={`${looper.bpm} BPM`}>
-              <div className="p-3">
-                <LooperPanel
-                  isPlaying={looper.isPlaying}
-                  isRecording={looper.isRecording}
-                  bpm={looper.bpm}
-                  bars={looper.bars}
-                  beatsPerBar={looper.beatsPerBar}
-                  currentBeat={looper.currentBeat}
-                  currentPosition={looper.currentPosition}
-                  loopEnabled={looper.loopEnabled}
-                  metronomeEnabled={looper.metronomeEnabled}
-                  tracks={looper.tracks}
-                  onPlay={looper.play}
-                  onStop={looper.stop}
-                  onStartRecording={looper.startRecording}
-                  onStopRecording={looper.stopRecording}
-                  onSetBpm={looper.setBpm}
-                  onSetBars={looper.setBars}
-                  onSetBeatsPerBar={looper.setBeatsPerBar}
-                  onSetMetronomeEnabled={looper.setMetronomeEnabled}
-                  onSetLoopEnabled={looper.setLoopEnabled}
-                  onAddTrack={looper.addTrack}
-                  onRemoveTrack={looper.removeTrack}
-                  onClearTrack={looper.clearTrack}
-                  onClearAllTracks={looper.clearAllTracks}
-                  onSetTrackMuted={looper.setTrackMuted}
-                  onSetTrackSolo={looper.setTrackSolo}
-                />
-              </div>
-            </CollapsibleSection>
+      {/* Main layout with left sidebar */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* Left Sidebar - Effects Chain */}
+        <aside className="w-72 shrink-0 border-r border-[#2a2a2a] bg-[#050505] overflow-y-auto">
+          <div className="p-3">
+            <EffectsRackPanel
+              effects={effects}
+              onAddEffect={handleAddEffect}
+              onRemoveEffect={handleRemoveEffect}
+              onUpdateEffect={handleUpdateEffect}
+              onToggleEffect={handleToggleEffect}
+              onMoveEffect={handleMoveEffect}
+            />
           </div>
-        )}
+        </aside>
 
-        {/* Sound Design Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {/* Left column */}
-          <div className="space-y-4">
-            {/* Wave Canvas - Expanded by default */}
-            <CollapsibleSection title="Wave Shape" defaultExpanded={true}>
-              <WaveCanvas
-                waveform={waveform}
-                onWaveformChange={handleWaveformChange}
-                onPresetSelect={handlePresetSelect}
-                isPlaying={isPlaying}
-              />
-            </CollapsibleSection>
-
-            {/* Harmonic Editor - Collapsed by default */}
-            <CollapsibleSection title="Harmonics" defaultExpanded={false} badge="16 partials">
-              <HarmonicEditor
-                harmonics={harmonics}
-                onHarmonicsChange={handleHarmonicsChange}
-              />
-            </CollapsibleSection>
+        {/* Main content area */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          {/* Live Visualizer */}
+          <div className="shrink-0 px-4 py-2 border-b border-[#2a2a2a]">
+            <LiveVisualizer
+              getAnalyserData={getAnalyserData}
+              getFFTData={getFFTData}
+              isPlaying={isPlaying || looper.isPlaying}
+              isRecording={looper.isRecording}
+              height={100}
+            />
           </div>
 
-          {/* Right column */}
-          <div className="space-y-4">
-            {/* Scale Selector - Expanded by default */}
-            <CollapsibleSection title="Scale & Key" defaultExpanded={true} badge={scaleLock ? 'locked' : 'free'}>
-              <div className="p-3">
-                <ScaleSelector
-                  rootNote={rootNote}
-                  scaleName={scaleName}
-                  scaleLock={scaleLock}
-                  onRootChange={setRootNote}
-                  onScaleChange={setScaleName}
-                  onScaleLockChange={setScaleLock}
-                />
+          {/* Scrollable content */}
+          <main className="flex-1 overflow-y-auto p-4">
+            {/* Looper Panel - Collapsible */}
+            {looper.isInitialized && (
+              <div className="mb-4">
+                <CollapsibleSection title="Looper" defaultExpanded={true} badge={`${looper.bpm} BPM`}>
+                  <div className="p-3">
+                    <LooperPanel
+                      isPlaying={looper.isPlaying}
+                      isRecording={looper.isRecording}
+                      bpm={looper.bpm}
+                      bars={looper.bars}
+                      beatsPerBar={looper.beatsPerBar}
+                      currentBeat={looper.currentBeat}
+                      currentPosition={looper.currentPosition}
+                      loopEnabled={looper.loopEnabled}
+                      metronomeEnabled={looper.metronomeEnabled}
+                      tracks={looper.tracks}
+                      onPlay={looper.play}
+                      onStop={looper.stop}
+                      onSeekTo={looper.seekTo}
+                      onStartRecording={looper.startRecording}
+                      onStopRecording={looper.stopRecording}
+                      onSetBpm={looper.setBpm}
+                      onSetBars={looper.setBars}
+                      onSetBeatsPerBar={looper.setBeatsPerBar}
+                      onSetMetronomeEnabled={looper.setMetronomeEnabled}
+                      onSetLoopEnabled={looper.setLoopEnabled}
+                      onAddTrack={looper.addTrack}
+                      onRemoveTrack={looper.removeTrack}
+                      onClearTrack={looper.clearTrack}
+                      onClearAllTracks={looper.clearAllTracks}
+                      onSetTrackMuted={looper.setTrackMuted}
+                      onSetTrackSolo={looper.setTrackSolo}
+                      onSetTrackVolume={looper.setTrackVolume}
+                    />
+                  </div>
+                </CollapsibleSection>
               </div>
-            </CollapsibleSection>
+            )}
 
-            {/* Envelope - Expanded by default */}
-            <CollapsibleSection title="Envelope (ADSR)" defaultExpanded={true}>
-              <EnvelopeEditor
-                attack={attack}
-                decay={decay}
-                sustain={sustain}
-                release={release}
-                onChange={handleEnvelopeChange}
-              />
-            </CollapsibleSection>
+            {/* Sound Design Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {/* Left column */}
+              <div className="space-y-4">
+                {/* Wave Canvas - Expanded by default */}
+                <CollapsibleSection title="Wave Shape" defaultExpanded={true}>
+                  <WaveCanvas
+                    waveform={waveform}
+                    onWaveformChange={handleWaveformChange}
+                    onPresetSelect={handlePresetSelect}
+                    isPlaying={isPlaying}
+                  />
+                </CollapsibleSection>
 
-            {/* Effects Rack - Expanded by default */}
-            <CollapsibleSection title="Effects" defaultExpanded={true} badge={`${effects.length} active`}>
-              <div className="p-2">
-                <EffectsRackPanel
-                  effects={effects}
-                  onAddEffect={handleAddEffect}
-                  onRemoveEffect={handleRemoveEffect}
-                  onUpdateEffect={handleUpdateEffect}
-                  onToggleEffect={handleToggleEffect}
-                  onMoveEffect={handleMoveEffect}
-                />
+                {/* Harmonic Editor - Collapsed by default */}
+                <CollapsibleSection title="Harmonics" defaultExpanded={false} badge="16 partials">
+                  <HarmonicEditor
+                    harmonics={harmonics}
+                    onHarmonicsChange={handleHarmonicsChange}
+                  />
+                </CollapsibleSection>
               </div>
-            </CollapsibleSection>
-          </div>
+
+              {/* Right column */}
+              <div className="space-y-4">
+                {/* Scale Selector - Expanded by default */}
+                <CollapsibleSection title="Scale & Key" defaultExpanded={true} badge={scaleLock ? 'locked' : 'free'}>
+                  <div className="p-3">
+                    <ScaleSelector
+                      rootNote={rootNote}
+                      scaleName={scaleName}
+                      scaleLock={scaleLock}
+                      onRootChange={setRootNote}
+                      onScaleChange={setScaleName}
+                      onScaleLockChange={setScaleLock}
+                    />
+                  </div>
+                </CollapsibleSection>
+
+                {/* Envelope - Expanded by default */}
+                <CollapsibleSection title="Envelope (ADSR)" defaultExpanded={true}>
+                  <EnvelopeEditor
+                    attack={attack}
+                    decay={decay}
+                    sustain={sustain}
+                    release={release}
+                    onChange={handleEnvelopeChange}
+                  />
+                </CollapsibleSection>
+              </div>
+            </div>
+          </main>
         </div>
-      </main>
+      </div>
 
       {/* Piano - Fixed at bottom, full width */}
       <div className="shrink-0 border-t border-[#2a2a2a] bg-[#0a0a0a] px-4 py-2">
