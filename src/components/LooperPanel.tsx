@@ -105,132 +105,183 @@ export function LooperPanel({
 
   return (
     <div>
-      {/* Transport & Settings Row */}
-      <div className="flex items-center justify-between gap-4 mb-4">
-        {/* Transport Controls */}
-        <div className="flex items-center gap-2">
-          {/* Play/Stop */}
-          <button
-            onClick={isPlaying ? onStop : onPlay}
-            className={`w-10 h-10 rounded-lg flex items-center justify-center text-lg transition-colors ${
-              isPlaying
-                ? 'bg-[#00ffff] text-black'
-                : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] border border-[#2a2a2a]'
-            }`}
-            title={isPlaying ? 'Stop' : 'Play'}
-          >
-            {isPlaying ? '⏹' : '▶'}
-          </button>
-
-          {/* Record */}
-          <button
-            onClick={isRecording ? onStopRecording : () => onStartRecording()}
-            className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
-              isRecording
-                ? 'bg-[#ff4444] text-white animate-pulse'
-                : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#ff4444] border border-[#2a2a2a]'
-            }`}
-            title={isRecording ? 'Stop Recording' : 'Record'}
-          >
-            <span className={`w-3 h-3 rounded-full ${isRecording ? 'bg-white' : 'bg-[#ff4444]'}`} />
-          </button>
-
-          {/* Loop Toggle */}
-          <button
-            onClick={() => onSetLoopEnabled(!loopEnabled)}
-            className={`w-10 h-10 rounded-lg flex items-center justify-center text-sm transition-colors ${
-              loopEnabled
-                ? 'bg-[#00ff88] text-black'
-                : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] border border-[#2a2a2a]'
-            }`}
-            title={loopEnabled ? 'Loop On' : 'Loop Off'}
-          >
-            🔁
-          </button>
-
-          {/* Metronome Toggle */}
-          <button
-            onClick={() => onSetMetronomeEnabled(!metronomeEnabled)}
-            className={`w-10 h-10 rounded-lg flex items-center justify-center text-sm transition-colors ${
-              metronomeEnabled
-                ? 'bg-[#ff6b35] text-black'
-                : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] border border-[#2a2a2a]'
-            }`}
-            title={metronomeEnabled ? 'Metronome On' : 'Metronome Off'}
-          >
-            🥁
-          </button>
-        </div>
-
-        {/* BPM Control */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => onSetBpm(Math.max(40, bpm - 5))}
-            className="w-7 h-7 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] text-xs border border-[#2a2a2a]"
-          >
-            -
-          </button>
-          <div className="flex items-center gap-1">
-            <input
-              type="text"
-              value={bpmInput}
-              onChange={(e) => handleBpmChange(e.target.value)}
-              onBlur={() => setBpmInput(bpm.toString())}
-              className="w-12 bg-[#1a1a1a] text-center text-sm font-mono text-[#ededed] border border-[#2a2a2a] rounded px-1 py-1"
-            />
-            <span className="text-xs text-[#666]">BPM</span>
-          </div>
-          <button
-            onClick={() => onSetBpm(Math.min(240, bpm + 5))}
-            className="w-7 h-7 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] text-xs border border-[#2a2a2a]"
-          >
-            +
-          </button>
-        </div>
-
-        {/* Bars Control */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => onSetBars(Math.max(1, bars - 1))}
-            className="w-7 h-7 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] text-xs border border-[#2a2a2a]"
-          >
-            -
-          </button>
-          <span className="text-sm font-mono text-[#ededed] w-16 text-center">{bars} bars</span>
-          <button
-            onClick={() => onSetBars(Math.min(16, bars + 1))}
-            className="w-7 h-7 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] text-xs border border-[#2a2a2a]"
-          >
-            +
-          </button>
-        </div>
-
-        {/* Beats per bar */}
-        <div className="flex items-center gap-1">
-          {beatsOptions.map((b) => (
+      {/* Transport & Settings - Responsive grid */}
+      <div className="space-y-3 sm:space-y-0 mb-4">
+        {/* Row 1: Transport Controls */}
+        <div className="flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Play/Stop */}
             <button
-              key={b}
-              onClick={() => onSetBeatsPerBar(b)}
-              className={`px-2 py-1 text-xs rounded transition-colors ${
-                beatsPerBar === b
+              onClick={isPlaying ? onStop : onPlay}
+              className={`w-11 h-11 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center text-lg transition-colors ${
+                isPlaying
                   ? 'bg-[#00ffff] text-black'
-                  : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] border border-[#2a2a2a]'
+                  : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] active:bg-[#2a2a2a] border border-[#2a2a2a]'
               }`}
+              title={isPlaying ? 'Stop' : 'Play'}
             >
-              {b}
+              {isPlaying ? '⏹' : '▶'}
             </button>
-          ))}
-          <span className="text-[10px] text-[#666] ml-1">beats</span>
+
+            {/* Record */}
+            <button
+              onClick={isRecording ? onStopRecording : () => onStartRecording()}
+              className={`w-11 h-11 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all ${
+                isRecording
+                  ? 'bg-[#ff4444] text-white animate-pulse'
+                  : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#ff4444] active:bg-[#2a2a2a] border border-[#2a2a2a]'
+              }`}
+              title={isRecording ? 'Stop Recording' : 'Record'}
+            >
+              <span className={`w-3 h-3 rounded-full ${isRecording ? 'bg-white' : 'bg-[#ff4444]'}`} />
+            </button>
+
+            {/* Loop Toggle */}
+            <button
+              onClick={() => onSetLoopEnabled(!loopEnabled)}
+              className={`w-11 h-11 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center text-sm transition-colors ${
+                loopEnabled
+                  ? 'bg-[#00ff88] text-black'
+                  : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] active:bg-[#2a2a2a] border border-[#2a2a2a]'
+              }`}
+              title={loopEnabled ? 'Loop On' : 'Loop Off'}
+            >
+              🔁
+            </button>
+
+            {/* Metronome Toggle */}
+            <button
+              onClick={() => onSetMetronomeEnabled(!metronomeEnabled)}
+              className={`w-11 h-11 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center text-sm transition-colors ${
+                metronomeEnabled
+                  ? 'bg-[#ff6b35] text-black'
+                  : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] active:bg-[#2a2a2a] border border-[#2a2a2a]'
+              }`}
+              title={metronomeEnabled ? 'Metronome On' : 'Metronome Off'}
+            >
+              🥁
+            </button>
+          </div>
+
+          {/* BPM Control */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            <button
+              onClick={() => onSetBpm(Math.max(40, bpm - 5))}
+              className="w-8 h-8 sm:w-7 sm:h-7 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] active:bg-[#2a2a2a] text-xs border border-[#2a2a2a] compact"
+            >
+              -
+            </button>
+            <div className="flex items-center gap-1">
+              <input
+                type="text"
+                value={bpmInput}
+                onChange={(e) => handleBpmChange(e.target.value)}
+                onBlur={() => setBpmInput(bpm.toString())}
+                className="w-12 bg-[#1a1a1a] text-center text-sm font-mono text-[#ededed] border border-[#2a2a2a] rounded px-1 py-1"
+              />
+              <span className="text-xs text-[#666] hidden sm:inline">BPM</span>
+            </div>
+            <button
+              onClick={() => onSetBpm(Math.min(240, bpm + 5))}
+              className="w-8 h-8 sm:w-7 sm:h-7 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] active:bg-[#2a2a2a] text-xs border border-[#2a2a2a] compact"
+            >
+              +
+            </button>
+          </div>
+
+          {/* Clear All - visible on mobile in first row */}
+          <button
+            onClick={onClearAllTracks}
+            className="px-3 py-2 sm:py-1.5 text-xs rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#ff6b35] active:bg-[#2a2a2a] transition-colors border border-[#2a2a2a] sm:hidden compact"
+            title="Clear all tracks"
+          >
+            Clear
+          </button>
         </div>
 
-        {/* Clear All */}
-        <button
-          onClick={onClearAllTracks}
-          className="px-3 py-1.5 text-xs rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#ff6b35] transition-colors border border-[#2a2a2a]"
-          title="Clear all tracks"
-        >
-          Clear All
-        </button>
+        {/* Row 2: Bars & Beats (hidden on mobile, shown inline on desktop) */}
+        <div className="flex items-center justify-between gap-2 sm:gap-4 flex-wrap sm:hidden">
+          {/* Bars Control */}
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => onSetBars(Math.max(1, bars - 1))}
+              className="w-8 h-8 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] active:bg-[#2a2a2a] text-xs border border-[#2a2a2a] compact"
+            >
+              -
+            </button>
+            <span className="text-sm font-mono text-[#ededed] w-14 text-center">{bars} bars</span>
+            <button
+              onClick={() => onSetBars(Math.min(16, bars + 1))}
+              className="w-8 h-8 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] active:bg-[#2a2a2a] text-xs border border-[#2a2a2a] compact"
+            >
+              +
+            </button>
+          </div>
+
+          {/* Beats per bar */}
+          <div className="flex items-center gap-1">
+            {beatsOptions.map((b) => (
+              <button
+                key={b}
+                onClick={() => onSetBeatsPerBar(b)}
+                className={`w-8 h-8 text-xs rounded transition-colors compact ${
+                  beatsPerBar === b
+                    ? 'bg-[#00ffff] text-black'
+                    : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] active:bg-[#2a2a2a] border border-[#2a2a2a]'
+                }`}
+              >
+                {b}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Bars, Beats, Clear inline */}
+        <div className="hidden sm:flex items-center justify-between gap-4 mt-3">
+          {/* Bars Control */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => onSetBars(Math.max(1, bars - 1))}
+              className="w-7 h-7 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] text-xs border border-[#2a2a2a]"
+            >
+              -
+            </button>
+            <span className="text-sm font-mono text-[#ededed] w-16 text-center">{bars} bars</span>
+            <button
+              onClick={() => onSetBars(Math.min(16, bars + 1))}
+              className="w-7 h-7 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] text-xs border border-[#2a2a2a]"
+            >
+              +
+            </button>
+          </div>
+
+          {/* Beats per bar */}
+          <div className="flex items-center gap-1">
+            {beatsOptions.map((b) => (
+              <button
+                key={b}
+                onClick={() => onSetBeatsPerBar(b)}
+                className={`px-2 py-1 text-xs rounded transition-colors ${
+                  beatsPerBar === b
+                    ? 'bg-[#00ffff] text-black'
+                    : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] border border-[#2a2a2a]'
+                }`}
+              >
+                {b}
+              </button>
+            ))}
+            <span className="text-[10px] text-[#666] ml-1">beats</span>
+          </div>
+
+          {/* Clear All */}
+          <button
+            onClick={onClearAllTracks}
+            className="px-3 py-1.5 text-xs rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#ff6b35] transition-colors border border-[#2a2a2a]"
+            title="Clear all tracks"
+          >
+            Clear All
+          </button>
+        </div>
       </div>
 
       {/* Timeline / Progress Bar - Clickable */}
@@ -303,29 +354,72 @@ export function LooperPanel({
             }`}
           >
             {/* Track header */}
-            <div className="flex items-center gap-3 p-2">
-              {/* Track color indicator */}
-              <div
-                className="w-2 h-8 rounded-full shrink-0"
-                style={{ backgroundColor: track.color }}
-              />
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 p-2">
+              {/* Top row on mobile: color, name, M/S buttons */}
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                {/* Track color indicator */}
+                <div
+                  className="w-2 h-6 sm:h-8 rounded-full shrink-0"
+                  style={{ backgroundColor: track.color }}
+                />
 
-              {/* Track name & status */}
-              <div className="flex items-center gap-2 min-w-0">
-                <span className="text-sm text-[#ededed] truncate">{track.name}</span>
-                {track.isRecording && (
-                  <span className="text-[10px] text-[#ff4444] animate-pulse">● REC</span>
-                )}
-                {!track.buffer && !track.isRecording && track.noteEvents.length === 0 && (
-                  <span className="text-[10px] text-[#555]">Empty</span>
-                )}
-                {track.noteEvents.length > 0 && (
-                  <span className="text-[10px] text-[#666]">{track.noteEvents.length} notes</span>
-                )}
+                {/* Track name & status */}
+                <div className="flex items-center gap-2 min-w-0 flex-1">
+                  <span className="text-sm text-[#ededed] truncate">{track.name}</span>
+                  {track.isRecording && (
+                    <span className="text-[10px] text-[#ff4444] animate-pulse">● REC</span>
+                  )}
+                  {!track.buffer && !track.isRecording && track.noteEvents.length === 0 && (
+                    <span className="text-[10px] text-[#555]">Empty</span>
+                  )}
+                  {track.noteEvents.length > 0 && (
+                    <span className="text-[10px] text-[#666] hidden sm:inline">{track.noteEvents.length} notes</span>
+                  )}
+                </div>
+
+                {/* Mobile: Mute/Solo inline */}
+                <div className="flex items-center gap-1 sm:hidden">
+                  <button
+                    onClick={() => onSetTrackMuted(track.id, !track.isMuted)}
+                    className={`w-8 h-8 rounded text-xs transition-colors compact ${
+                      track.isMuted
+                        ? 'bg-[#ff6b35] text-black'
+                        : 'bg-[#1a1a1a] text-[#888] active:bg-[#2a2a2a]'
+                    }`}
+                  >
+                    M
+                  </button>
+                  <button
+                    onClick={() => onSetTrackSolo(track.id, !track.isSolo)}
+                    className={`w-8 h-8 rounded text-xs transition-colors compact ${
+                      track.isSolo
+                        ? 'bg-[#ffff00] text-black'
+                        : 'bg-[#1a1a1a] text-[#888] active:bg-[#2a2a2a]'
+                    }`}
+                  >
+                    S
+                  </button>
+                  {!track.buffer && !isRecording && (
+                    <button
+                      onClick={() => onStartRecording(track.id)}
+                      className="w-8 h-8 rounded bg-[#1a1a1a] text-[#888] active:bg-[#2a2a2a] text-xs transition-colors compact"
+                    >
+                      ●
+                    </button>
+                  )}
+                  {(track.buffer || track.noteEvents.length > 0) && (
+                    <button
+                      onClick={() => onClearTrack(track.id)}
+                      className="w-8 h-8 rounded bg-[#1a1a1a] text-[#888] active:bg-[#2a2a2a] text-xs transition-colors compact"
+                    >
+                      ✕
+                    </button>
+                  )}
+                </div>
               </div>
 
-              {/* Track controls */}
-              <div className="flex items-center gap-2 ml-auto shrink-0">
+              {/* Desktop: Track controls */}
+              <div className="hidden sm:flex items-center gap-2 ml-auto shrink-0">
                 {/* Volume slider */}
                 <div className="flex items-center gap-1 w-24">
                   <span className="text-[9px] text-[#555]">🔊</span>

@@ -80,24 +80,24 @@ export function HarmonicEditor({ harmonics, onHarmonicsChange }: HarmonicEditorP
   };
 
   return (
-    <div className="bg-[#0a0a0a] rounded-lg border border-[#2a2a2a] p-4">
-      <div className="flex items-center justify-between mb-3">
+    <div className="bg-[#0a0a0a] rounded-lg border border-[#2a2a2a] p-3 sm:p-4">
+      <div className="flex items-center justify-between mb-2 sm:mb-3">
         <h3 className="text-sm font-medium text-[#ededed]">Harmonic Editor</h3>
-        <span className="text-xs text-[#666] font-mono">Build from sine waves</span>
+        <span className="text-xs text-[#666] font-mono hidden sm:inline">Build from sine waves</span>
       </div>
 
-      <div className="text-xs text-[#666] mb-3">
+      <div className="text-xs text-[#666] mb-2 sm:mb-3 hidden sm:block">
         Drag bars to adjust. Each bar = a sine wave at a multiple of the base frequency.
       </div>
 
       <div 
         ref={containerRef}
-        className="flex gap-1 h-32 items-end"
+        className="flex gap-0.5 sm:gap-1 h-24 sm:h-32 items-end"
       >
         {harmonics.slice(0, 16).map((value, index) => (
           <div key={index} className="flex-1 flex flex-col items-center">
             <div 
-              className="w-full h-28 bg-[#141414] rounded-t relative cursor-ns-resize group"
+              className="w-full h-20 sm:h-28 bg-[#141414] rounded-t relative cursor-ns-resize group touch-none"
               onPointerDown={(e) => handleBarDrag(e, index)}
             >
               {/* Background bar */}
@@ -114,24 +114,24 @@ export function HarmonicEditor({ harmonics, onHarmonicsChange }: HarmonicEditorP
                 }}
               />
 
-              {/* Hover value display */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              {/* Hover value display - hidden on mobile */}
+              <div className="absolute inset-0 hidden sm:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <span className="text-[10px] font-mono text-white bg-black/70 px-1 rounded">
                   {Math.round(value * 100)}%
                 </span>
               </div>
             </div>
             
-            {/* Label */}
-            <div className="text-[9px] text-[#666] mt-1 text-center truncate w-full">
+            {/* Label - smaller on mobile */}
+            <div className="text-[8px] sm:text-[9px] text-[#666] mt-0.5 sm:mt-1 text-center truncate w-full">
               {index + 1}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Legend */}
-      <div className="mt-3 grid grid-cols-4 gap-2 text-[10px] text-[#666]">
+      {/* Legend - hidden on mobile */}
+      <div className="mt-2 sm:mt-3 grid-cols-4 gap-2 text-[10px] text-[#666] hidden sm:grid">
         <div>1: fundamental</div>
         <div>2: octave</div>
         <div>3: +fifth</div>
@@ -139,15 +139,15 @@ export function HarmonicEditor({ harmonics, onHarmonicsChange }: HarmonicEditorP
       </div>
 
       {/* Presets */}
-      <div className="flex gap-1 mt-3">
-        <span className="text-xs text-[#666] mr-2">Quick:</span>
+      <div className="flex flex-wrap gap-1 mt-2 sm:mt-3">
+        <span className="text-xs text-[#666] mr-1 sm:mr-2 self-center">Quick:</span>
         <button
           onClick={() => {
             const h = new Array(16).fill(0);
             h[0] = 1;
             onHarmonicsChange(h);
           }}
-          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
         >
           Pure
         </button>
@@ -159,7 +159,7 @@ export function HarmonicEditor({ harmonics, onHarmonicsChange }: HarmonicEditorP
             }
             onHarmonicsChange(h);
           }}
-          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
         >
           Odd
         </button>
@@ -171,7 +171,7 @@ export function HarmonicEditor({ harmonics, onHarmonicsChange }: HarmonicEditorP
             }
             onHarmonicsChange(h);
           }}
-          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
         >
           Saw
         </button>
@@ -184,7 +184,7 @@ export function HarmonicEditor({ harmonics, onHarmonicsChange }: HarmonicEditorP
             h[6] = 0.15;
             onHarmonicsChange(h);
           }}
-          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
         >
           Hollow
         </button>
@@ -193,7 +193,7 @@ export function HarmonicEditor({ harmonics, onHarmonicsChange }: HarmonicEditorP
             const h = new Array(16).fill(0).map(() => Math.random());
             onHarmonicsChange(h);
           }}
-          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
         >
           Random
         </button>

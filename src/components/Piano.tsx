@@ -40,9 +40,10 @@ function PianoKey({ note, octave, isBlack, isInScale, isActive, isLocked, keyboa
     onNoteOff();
   };
 
+  // Responsive sizing: smaller on mobile
   const baseClasses = isBlack
-    ? 'w-8 h-24 -mx-4 z-10 rounded-b-md'
-    : 'w-12 h-36 rounded-b-lg';
+    ? 'w-5 h-16 -mx-2.5 sm:w-8 sm:h-24 sm:-mx-4 z-10 rounded-b-md'
+    : 'w-8 h-24 sm:w-12 sm:h-36 rounded-b-lg';
 
   const colorClasses = isBlack
     ? isActive
@@ -50,15 +51,15 @@ function PianoKey({ note, octave, isBlack, isInScale, isActive, isLocked, keyboa
       : isLocked
         ? 'bg-[#1a1a1a] cursor-not-allowed'
         : isInScale
-          ? 'bg-[#1a1a1a] hover:bg-[#2a2a2a]'
-          : 'bg-[#0a0a0a] hover:bg-[#1a1a1a]'
+          ? 'bg-[#1a1a1a] hover:bg-[#2a2a2a] active:bg-[#2a2a2a]'
+          : 'bg-[#0a0a0a] hover:bg-[#1a1a1a] active:bg-[#1a1a1a]'
     : isActive
       ? 'bg-[#00ffff]'
       : isLocked
         ? 'bg-[#2a2a2a] cursor-not-allowed'
         : isInScale
-          ? 'bg-[#ededed] hover:bg-[#d0d0d0]'
-          : 'bg-[#888] hover:bg-[#999]';
+          ? 'bg-[#ededed] hover:bg-[#d0d0d0] active:bg-[#d0d0d0]'
+          : 'bg-[#888] hover:bg-[#999] active:bg-[#999]';
 
   return (
     <button
@@ -67,19 +68,20 @@ function PianoKey({ note, octave, isBlack, isInScale, isActive, isLocked, keyboa
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
       disabled={isLocked}
+      style={{ minHeight: 'auto', minWidth: 'auto' }}
     >
-      {/* Note name */}
-      <span className={`absolute bottom-2 left-1/2 -translate-x-1/2 text-[10px] font-mono ${
+      {/* Note name - hidden on mobile for black keys, smaller text */}
+      <span className={`absolute bottom-1 sm:bottom-2 left-1/2 -translate-x-1/2 text-[8px] sm:text-[10px] font-mono ${
         isBlack 
-          ? isActive ? 'text-black' : 'text-[#666]'
+          ? `${isActive ? 'text-black' : 'text-[#666]'} hidden sm:block`
           : isActive ? 'text-black' : isInScale ? 'text-[#333]' : 'text-[#555]'
       }`}>
         {note}
       </span>
       
-      {/* Keyboard shortcut overlay */}
+      {/* Keyboard shortcut overlay - hidden on mobile */}
       {showKeyboardOverlay && keyboardKey && (
-        <div className={`absolute left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none ${
+        <div className={`absolute left-1/2 -translate-x-1/2 items-center justify-center pointer-events-none hidden sm:flex ${
           isBlack ? 'top-2' : 'top-6'
         }`}>
           <span className={`
@@ -100,7 +102,7 @@ function PianoKey({ note, octave, isBlack, isInScale, isActive, isLocked, keyboa
 
       {/* Scale indicator dot */}
       {isInScale && !isActive && !showKeyboardOverlay && (
-        <span className={`absolute ${isBlack ? 'bottom-8' : 'bottom-10'} left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full ${
+        <span className={`absolute ${isBlack ? 'bottom-5 sm:bottom-8' : 'bottom-7 sm:bottom-10'} left-1/2 -translate-x-1/2 w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full ${
           isBlack ? 'bg-[#00ffff]' : 'bg-[#00cccc]'
         }`} />
       )}
@@ -244,12 +246,12 @@ export function Piano({ onNoteOn, onNoteOff, scaleLock, rootNote, scaleName, oct
               // Check if there should be a black key after this white key
               const nextNote = NOTE_NAMES[(NOTE_NAMES.indexOf(whiteKey.note) + 1) % 12];
               if (!isBlackKey(nextNote)) {
-                return <div key={`spacer-${i}`} className="w-12" />;
+                return <div key={`spacer-${i}`} className="w-8 sm:w-12" />;
               }
 
               const blackKey = keys.find(k => k.note === nextNote && k.octave === whiteKey.octave);
               if (!blackKey) {
-                return <div key={`spacer-${i}`} className="w-12" />;
+                return <div key={`spacer-${i}`} className="w-8 sm:w-12" />;
               }
 
               const noteString = `${blackKey.note}${blackKey.octave}`;
@@ -257,7 +259,7 @@ export function Piano({ onNoteOn, onNoteOff, scaleLock, rootNote, scaleName, oct
               const isLocked = scaleLock && !inScale;
 
               return (
-                <div key={noteString} className="w-12 flex justify-center pointer-events-auto">
+                <div key={noteString} className="w-8 sm:w-12 flex justify-center pointer-events-auto">
                   <PianoKey
                     note={blackKey.note}
                     octave={blackKey.octave}

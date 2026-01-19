@@ -537,17 +537,18 @@ export function LiveVisualizer({
         style={{ height: `${height}px` }}
       />
       
-      {/* Mode selector */}
-      <div className="absolute bottom-2 left-2 flex gap-1">
+      {/* Mode selector - scrollable on mobile */}
+      <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 flex gap-0.5 sm:gap-1 overflow-x-auto max-w-[calc(100%-60px)]">
         {modes.map(m => (
           <button
             key={m}
             onClick={() => setMode(m)}
-            className={`px-2 py-0.5 text-[9px] font-mono rounded transition-all ${
+            className={`px-1.5 sm:px-2 py-0.5 text-[8px] sm:text-[9px] font-mono rounded transition-all whitespace-nowrap ${
               mode === m 
                 ? 'bg-[#00ffff] text-black' 
-                : 'bg-[#1a1a1a] text-[#555] hover:text-[#888] hover:bg-[#222]'
+                : 'bg-[#1a1a1a] text-[#555] hover:text-[#888] hover:bg-[#222] active:bg-[#222]'
             }`}
+            style={{ minHeight: 'auto', minWidth: 'auto' }}
           >
             {MODE_LABELS[m]}
           </button>
@@ -555,12 +556,12 @@ export function LiveVisualizer({
       </div>
 
       {/* Status indicator */}
-      <div className="absolute top-2 right-2 flex items-center gap-2">
+      <div className="absolute top-1 sm:top-2 right-1 sm:right-2 flex items-center gap-2">
         {isRecording && (
-          <span className="text-[10px] text-[#ff4444] font-mono animate-pulse">● REC</span>
+          <span className="text-[9px] sm:text-[10px] text-[#ff4444] font-mono animate-pulse">● REC</span>
         )}
         {isPlaying && !isRecording && (
-          <span className="text-[10px] text-[#00ffff] font-mono">♪ LIVE</span>
+          <span className="text-[9px] sm:text-[10px] text-[#00ffff] font-mono">♪ LIVE</span>
         )}
       </div>
     </div>

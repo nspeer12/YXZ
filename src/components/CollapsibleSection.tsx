@@ -16,20 +16,20 @@ export function CollapsibleSection({ title, defaultExpanded = true, children, ba
     <div className="bg-[#0a0a0a] rounded-lg border border-[#2a2a2a] overflow-hidden">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between px-4 py-3 hover:bg-[#141414] transition-colors"
+        className="w-full flex items-center justify-between px-3 sm:px-4 py-3 sm:py-3 hover:bg-[#141414] active:bg-[#141414] transition-colors min-h-[48px] sm:min-h-0"
       >
         <div className="flex items-center gap-2">
-          <span className={`text-[#666] transition-transform ${isExpanded ? 'rotate-90' : ''}`}>
+          <span className={`text-[#666] transition-transform text-xs sm:text-sm ${isExpanded ? 'rotate-90' : ''}`}>
             ▶
           </span>
           <span className="text-sm font-medium text-[#ededed]">{title}</span>
           {badge && (
-            <span className="text-[10px] text-[#666] bg-[#1a1a1a] px-1.5 py-0.5 rounded">
+            <span className="text-[9px] sm:text-[10px] text-[#666] bg-[#1a1a1a] px-1.5 py-0.5 rounded">
               {badge}
             </span>
           )}
         </div>
-        <span className="text-[10px] text-[#555]">
+        <span className="text-[9px] sm:text-[10px] text-[#555]">
           {isExpanded ? 'collapse' : 'expand'}
         </span>
       </button>

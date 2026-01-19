@@ -30,6 +30,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent iOS zoom on input focus */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
 }
 
 /* Custom scrollbar */
@@ -51,8 +60,78 @@ body {
   background: #3a3a3a;
 }
 
+/* Hide scrollbar on mobile for cleaner look */
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
 /* Selection */
 ::selection {
   background: var(--accent-cyan);
   color: var(--background);
+}
+
+/* Mobile slide-out drawer */
+.mobile-drawer {
+  transition: transform 0.3s ease-out;
+}
+
+@media screen and (max-width: 767px) {
+  .mobile-drawer:not(.open) {
+    transform: translateX(-100%);
+  }
+  
+  /* Hide desktop-only elements on mobile */
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mobile-drawer {
+    transform: none !important;
+    position: relative !important;
+    z-index: auto !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Hide mobile-only elements on desktop */
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Mobile overlay */
+.mobile-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.mobile-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Touch-friendly buttons */
+@media screen and (max-width: 768px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  button.compact {
+    min-height: 36px;
+    min-width: 36px;
+  }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }

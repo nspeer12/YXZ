@@ -24,20 +24,20 @@ export function ScaleSelector({
 
   return (
     <div>
-      <div className="flex items-center justify-end mb-3">
+      <div className="flex items-center justify-end mb-2 sm:mb-3">
         <button
           onClick={() => onScaleLockChange(!scaleLock)}
-          className={`flex items-center gap-1.5 px-3 py-1 text-xs rounded-full transition-colors ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 sm:py-1 text-xs rounded-full transition-colors compact ${
             scaleLock 
               ? 'bg-[#00ffff] text-black' 
-              : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a]'
+              : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] active:bg-[#2a2a2a]'
           }`}
         >
           {scaleLock ? '🔒' : '🔓'} Scale Lock {scaleLock ? 'ON' : 'OFF'}
         </button>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {/* Root Note */}
         <div>
           <label className="text-xs text-[#666] block mb-2">Root Note</label>
@@ -46,10 +46,10 @@ export function ScaleSelector({
               <button
                 key={note}
                 onClick={() => onRootChange(note)}
-                className={`px-2 py-1.5 text-xs rounded transition-colors ${
+                className={`px-1.5 sm:px-2 py-2 sm:py-1.5 text-xs rounded transition-colors compact ${
                   rootNote === note
                     ? 'bg-[#00ffff] text-black font-medium'
-                    : 'bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-white'
+                    : 'bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-white active:bg-[#1a1a1a]'
                 } ${note.includes('#') ? 'text-[10px]' : ''}`}
               >
                 {note}
@@ -64,7 +64,7 @@ export function ScaleSelector({
           <select
             value={scaleName}
             onChange={(e) => onScaleChange(e.target.value)}
-            className="w-full bg-[#141414] border border-[#2a2a2a] rounded px-3 py-1.5 text-sm text-[#ededed] focus:outline-none focus:border-[#00ffff]"
+            className="w-full bg-[#141414] border border-[#2a2a2a] rounded px-3 py-2 sm:py-1.5 text-sm text-[#ededed] focus:outline-none focus:border-[#00ffff]"
           >
             {Object.entries(SCALES).map(([key, s]) => (
               <option key={key} value={key}>
@@ -77,16 +77,16 @@ export function ScaleSelector({
 
       {/* Scale info */}
       {scale && (
-        <div className="mt-4 p-3 bg-[#141414] rounded-lg">
+        <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-[#141414] rounded-lg">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-[#ededed]">
               {rootNote} {scale.name}
             </span>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-[#1a1a1a] text-[#00ffff]">
+            <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-[#1a1a1a] text-[#00ffff]">
               {scale.mood}
             </span>
           </div>
-          <p className="text-xs text-[#666] mb-3">{scale.description}</p>
+          <p className="text-xs text-[#666] mb-2 sm:mb-3 hidden sm:block">{scale.description}</p>
           
           {/* Notes in scale */}
           <div className="flex gap-1 flex-wrap">
@@ -108,9 +108,10 @@ export function ScaleSelector({
 
       {/* Scale lock hint */}
       {scaleLock && (
-        <div className="mt-3 text-xs text-[#00ffff] flex items-center gap-2">
+        <div className="mt-2 sm:mt-3 text-xs text-[#00ffff] flex items-center gap-2">
           <span>🔒</span>
-          <span>Only notes in {rootNote} {scale?.name} are playable</span>
+          <span className="hidden sm:inline">Only notes in {rootNote} {scale?.name} are playable</span>
+          <span className="sm:hidden">Locked to {rootNote} {scale?.name}</span>
         </div>
       )}
     </div>

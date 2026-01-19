@@ -197,15 +197,15 @@ export function EnvelopeEditor({ attack, decay, sustain, release, onChange }: En
   };
 
   return (
-    <div className="bg-[#0a0a0a] rounded-lg border border-[#2a2a2a] p-4">
-      <div className="flex items-center justify-between mb-3">
+    <div className="bg-[#0a0a0a] rounded-lg border border-[#2a2a2a] p-3 sm:p-4">
+      <div className="flex items-center justify-between mb-2 sm:mb-3">
         <h3 className="text-sm font-medium text-[#ededed]">Envelope (ADSR)</h3>
-        <span className="text-xs text-[#666] font-mono">Shape over time</span>
+        <span className="text-xs text-[#666] font-mono hidden sm:inline">Shape over time</span>
       </div>
 
       <canvas
         ref={canvasRef}
-        className="w-full h-32 rounded cursor-pointer touch-none"
+        className="w-full h-24 sm:h-32 rounded cursor-pointer touch-none"
         style={{ background: '#0a0a0a' }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -213,9 +213,9 @@ export function EnvelopeEditor({ attack, decay, sustain, release, onChange }: En
         onPointerLeave={handlePointerUp}
       />
 
-      <div className="grid grid-cols-4 gap-2 mt-3">
+      <div className="grid grid-cols-4 gap-1 sm:gap-2 mt-2 sm:mt-3">
         <div className="text-center">
-          <div className="text-[10px] text-[#666] mb-1">Attack</div>
+          <div className="text-[9px] sm:text-[10px] text-[#666] mb-1">Attack</div>
           <input
             type="range"
             min="0.001"
@@ -223,12 +223,12 @@ export function EnvelopeEditor({ attack, decay, sustain, release, onChange }: En
             step="0.01"
             value={attack}
             onChange={(e) => onChange(parseFloat(e.target.value), decay, sustain, release)}
-            className="w-full h-1 accent-[#00ffff]"
+            className="w-full h-2 sm:h-1 accent-[#00ffff]"
           />
-          <div className="text-[10px] text-[#888] font-mono">{(attack * 1000).toFixed(0)}ms</div>
+          <div className="text-[9px] sm:text-[10px] text-[#888] font-mono">{(attack * 1000).toFixed(0)}ms</div>
         </div>
         <div className="text-center">
-          <div className="text-[10px] text-[#666] mb-1">Decay</div>
+          <div className="text-[9px] sm:text-[10px] text-[#666] mb-1">Decay</div>
           <input
             type="range"
             min="0.001"
@@ -236,12 +236,12 @@ export function EnvelopeEditor({ attack, decay, sustain, release, onChange }: En
             step="0.01"
             value={decay}
             onChange={(e) => onChange(attack, parseFloat(e.target.value), sustain, release)}
-            className="w-full h-1 accent-[#00ffff]"
+            className="w-full h-2 sm:h-1 accent-[#00ffff]"
           />
-          <div className="text-[10px] text-[#888] font-mono">{(decay * 1000).toFixed(0)}ms</div>
+          <div className="text-[9px] sm:text-[10px] text-[#888] font-mono">{(decay * 1000).toFixed(0)}ms</div>
         </div>
         <div className="text-center">
-          <div className="text-[10px] text-[#666] mb-1">Sustain</div>
+          <div className="text-[9px] sm:text-[10px] text-[#666] mb-1">Sustain</div>
           <input
             type="range"
             min="0"
@@ -249,12 +249,12 @@ export function EnvelopeEditor({ attack, decay, sustain, release, onChange }: En
             step="0.01"
             value={sustain}
             onChange={(e) => onChange(attack, decay, parseFloat(e.target.value), release)}
-            className="w-full h-1 accent-[#00ffff]"
+            className="w-full h-2 sm:h-1 accent-[#00ffff]"
           />
-          <div className="text-[10px] text-[#888] font-mono">{Math.round(sustain * 100)}%</div>
+          <div className="text-[9px] sm:text-[10px] text-[#888] font-mono">{Math.round(sustain * 100)}%</div>
         </div>
         <div className="text-center">
-          <div className="text-[10px] text-[#666] mb-1">Release</div>
+          <div className="text-[9px] sm:text-[10px] text-[#666] mb-1">Release</div>
           <input
             type="range"
             min="0.001"
@@ -262,36 +262,36 @@ export function EnvelopeEditor({ attack, decay, sustain, release, onChange }: En
             step="0.01"
             value={release}
             onChange={(e) => onChange(attack, decay, sustain, parseFloat(e.target.value))}
-            className="w-full h-1 accent-[#00ffff]"
+            className="w-full h-2 sm:h-1 accent-[#00ffff]"
           />
-          <div className="text-[10px] text-[#888] font-mono">{(release * 1000).toFixed(0)}ms</div>
+          <div className="text-[9px] sm:text-[10px] text-[#888] font-mono">{(release * 1000).toFixed(0)}ms</div>
         </div>
       </div>
 
       {/* Quick presets */}
-      <div className="flex gap-1 mt-3">
-        <span className="text-xs text-[#666] mr-2">Presets:</span>
+      <div className="flex flex-wrap gap-1 mt-2 sm:mt-3">
+        <span className="text-xs text-[#666] mr-1 sm:mr-2 self-center">Presets:</span>
         <button
           onClick={() => onChange(0.01, 0.3, 0.4, 0.5)}
-          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
         >
           Piano
         </button>
         <button
           onClick={() => onChange(0.5, 0.1, 0.8, 1.0)}
-          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
         >
           Pad
         </button>
         <button
           onClick={() => onChange(0.001, 0.1, 0, 0.1)}
-          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
         >
           Pluck
         </button>
         <button
           onClick={() => onChange(0.001, 0.05, 1.0, 0.2)}
-          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+          className="px-2 py-1 text-[10px] rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
         >
           Organ
         </button>

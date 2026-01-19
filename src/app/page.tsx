@@ -54,6 +54,7 @@ export default function Home() {
   const [release, setRelease] = useState(0.5);
   const [showKeyboardOverlay, setShowKeyboardOverlay] = useState(true);
   const [midiActiveNotes, setMidiActiveNotes] = useState<Set<string>>(new Set());
+  const [showMobileEffects, setShowMobileEffects] = useState(false);
   
   const midiNotesRef = useRef<Set<string>>(new Set());
 
@@ -181,20 +182,20 @@ export default function Home() {
 
   if (!isReady) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
         <div className="text-center">
-          <h1 className="text-6xl font-bold mb-4 tracking-tighter">
+          <h1 className="text-4xl sm:text-6xl font-bold mb-4 tracking-tighter">
             <span className="text-[#00ffff]">Wave</span>
             <span className="text-[#ff6b35]">Lab</span>
           </h1>
-          <p className="text-[#666] mb-8 text-lg">Create. Publish. Remix.</p>
+          <p className="text-[#666] mb-8 text-base sm:text-lg">Create. Publish. Remix.</p>
           <button
             onClick={handleInit}
-            className="px-8 py-4 bg-[#00ffff] text-black font-medium rounded-lg hover:bg-[#00cccc] transition-colors text-lg"
+            className="px-6 sm:px-8 py-4 bg-[#00ffff] text-black font-medium rounded-lg hover:bg-[#00cccc] active:bg-[#00aaaa] transition-colors text-base sm:text-lg min-h-[56px]"
           >
             Start Making Music
           </button>
-          <p className="text-[#444] text-sm mt-4">Click to enable audio</p>
+          <p className="text-[#444] text-sm mt-4">Tap to enable audio</p>
         </div>
       </div>
     );
@@ -202,15 +203,28 @@ export default function Home() {
 
   return (
     <div className="h-screen bg-[#0a0a0a] text-[#ededed] flex flex-col overflow-hidden">
+      {/* Mobile Effects Overlay */}
+      <div 
+        className={`fixed inset-0 bg-black/60 z-40 mobile-only mobile-overlay ${showMobileEffects ? 'open' : ''}`}
+        onClick={() => setShowMobileEffects(false)}
+      />
+
       {/* Header */}
-      <header className="border-b border-[#2a2a2a] px-6 py-2 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-4">
-          <h1 className="text-xl font-bold tracking-tighter">
+      <header className="border-b border-[#2a2a2a] px-3 sm:px-6 py-2 flex items-center justify-between shrink-0">
+        <div className="flex items-center gap-2 sm:gap-4">
+          {/* Mobile Effects Toggle */}
+          <button
+            onClick={() => setShowMobileEffects(!showMobileEffects)}
+            className="mobile-only w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[#888] hover:text-[#00ffff] active:bg-[#2a2a2a]"
+          >
+            <span className="text-lg">🎚️</span>
+          </button>
+          <h1 className="text-lg sm:text-xl font-bold tracking-tighter">
             <span className="text-[#00ffff]">Wave</span>
             <span className="text-[#ff6b35]">Lab</span>
           </h1>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           {/* MIDI Status */}
           {midiSupported && (
             <div className="flex items-center gap-2">
@@ -218,9 +232,9 @@ export default function Home() {
               <select
                 value={activeDevice || ''}
                 onChange={(e) => e.target.value && connectToDevice(e.target.value)}
-                className="bg-[#1a1a1a] text-xs text-[#888] border border-[#2a2a2a] rounded px-2 py-1"
+                className="bg-[#1a1a1a] text-xs text-[#888] border border-[#2a2a2a] rounded px-2 py-1 max-w-[120px] sm:max-w-none"
               >
-                <option value="">MIDI: {midiDevices.length === 0 ? 'No devices' : 'Select device'}</option>
+                <option value="">MIDI: {midiDevices.length === 0 ? 'None' : 'Select'}</option>
                 {midiDevices.map((device) => (
                   <option key={device.id} value={device.id}>
                     {device.name}
@@ -230,8 +244,8 @@ export default function Home() {
             </div>
           )}
           
-          {/* Keyboard shortcuts hint */}
-          <div className="text-[10px] text-[#555] font-mono">
+          {/* Keyboard shortcuts hint - hidden on mobile */}
+          <div className="text-[10px] text-[#555] font-mono hidden md:block">
             <span className="text-[#666]">Space</span> play/stop
             <span className="mx-2">|</span>
             <span className="text-[#666]">R</span> record
@@ -240,10 +254,22 @@ export default function Home() {
       </header>
 
       {/* Main layout with left sidebar */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar - Effects Chain */}
-        <aside className="w-72 shrink-0 border-r border-[#2a2a2a] bg-[#050505] overflow-y-auto">
+      <div className="flex-1 flex overflow-hidden relative">
+        {/* Left Sidebar - Effects Chain (Desktop) / Slide-out (Mobile) */}
+        <aside className={`
+          fixed md:relative inset-y-0 left-0 z-50 md:z-auto
+          w-72 shrink-0 border-r border-[#2a2a2a] bg-[#050505] overflow-y-auto
+          mobile-drawer ${showMobileEffects ? 'open' : ''}
+          pt-14 md:pt-0
+        `}>
           <div className="p-3">
+            {/* Mobile close button */}
+            <button
+              onClick={() => setShowMobileEffects(false)}
+              className="mobile-only absolute top-2 right-2 w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[#888]"
+            >
+              ✕
+            </button>
             <EffectsRackPanel
               effects={effects}
               onAddEffect={handleAddEffect}
@@ -258,23 +284,23 @@ export default function Home() {
         {/* Main content area */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Live Visualizer */}
-          <div className="shrink-0 px-4 py-2 border-b border-[#2a2a2a]">
+          <div className="shrink-0 px-2 sm:px-4 py-2 border-b border-[#2a2a2a]">
             <LiveVisualizer
               getAnalyserData={getAnalyserData}
               getFFTData={getFFTData}
               isPlaying={isPlaying || looper.isPlaying}
               isRecording={looper.isRecording}
-              height={100}
+              height={80}
             />
           </div>
 
           {/* Scrollable content */}
-          <main className="flex-1 overflow-y-auto p-4">
+          <main className="flex-1 overflow-y-auto p-2 sm:p-4">
             {/* Looper Panel - Collapsible */}
             {looper.isInitialized && (
-              <div className="mb-4">
-                <CollapsibleSection title="Looper" defaultExpanded={true} badge={`${looper.bpm} BPM`}>
-                  <div className="p-3">
+              <div className="mb-3 sm:mb-4">
+                <CollapsibleSection title="Looper" defaultExpanded={false} badge={`${looper.bpm} BPM`}>
+                  <div className="p-2 sm:p-3">
                     <LooperPanel
                       isPlaying={looper.isPlaying}
                       isRecording={looper.isRecording}
@@ -310,9 +336,9 @@ export default function Home() {
             )}
 
             {/* Sound Design Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
               {/* Left column */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {/* Wave Canvas - Expanded by default */}
                 <CollapsibleSection title="Wave Shape" defaultExpanded={true}>
                   <WaveCanvas
@@ -333,10 +359,10 @@ export default function Home() {
               </div>
 
               {/* Right column */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {/* Scale Selector - Expanded by default */}
                 <CollapsibleSection title="Scale & Key" defaultExpanded={true} badge={scaleLock ? 'locked' : 'free'}>
-                  <div className="p-3">
+                  <div className="p-2 sm:p-3">
                     <ScaleSelector
                       rootNote={rootNote}
                       scaleName={scaleName}
@@ -365,38 +391,38 @@ export default function Home() {
       </div>
 
       {/* Piano - Fixed at bottom, full width */}
-      <div className="shrink-0 border-t border-[#2a2a2a] bg-[#0a0a0a] px-4 py-2">
+      <div className="shrink-0 border-t border-[#2a2a2a] bg-[#0a0a0a] px-2 md:px-4 py-2 safe-bottom">
         <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-4">
-            <h3 className="text-sm font-medium text-[#ededed]">Piano</h3>
+          <div className="flex items-center gap-2 md:gap-4">
+            <h3 className="text-xs md:text-sm font-medium text-[#ededed] hidden md:block">Piano</h3>
             <div className="flex items-center gap-1">
               <button 
                 onClick={() => setOctave(Math.max(1, octave - 1))}
-                className="w-6 h-6 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] transition-colors text-xs border border-[#2a2a2a]"
-                title="Octave down (↓)"
+                className="w-8 h-8 md:w-6 md:h-6 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] active:bg-[#2a2a2a] transition-colors text-xs border border-[#2a2a2a] compact"
+                title="Octave down"
               >
                 ▼
               </button>
-              <span className="text-xs text-[#ededed] font-mono w-14 text-center">Oct {octave}</span>
+              <span className="text-xs text-[#ededed] font-mono w-12 md:w-14 text-center">Oct {octave}</span>
               <button 
                 onClick={() => setOctave(Math.min(7, octave + 1))}
-                className="w-6 h-6 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] transition-colors text-xs border border-[#2a2a2a]"
-                title="Octave up (↑)"
+                className="w-8 h-8 md:w-6 md:h-6 rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] hover:text-[#00ffff] active:bg-[#2a2a2a] transition-colors text-xs border border-[#2a2a2a] compact"
+                title="Octave up"
               >
                 ▲
               </button>
-              <span className="text-[10px] text-[#555] ml-1 font-mono">(↑/↓)</span>
+              <span className="text-[10px] text-[#555] ml-1 font-mono hidden md:inline">(↑/↓)</span>
             </div>
             {midiConnected && (
               <span className="text-xs text-[#00ff88] flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88]" />
-                MIDI
+                <span className="hidden md:inline">MIDI</span>
               </span>
             )}
           </div>
           <button
             onClick={() => setShowKeyboardOverlay(!showKeyboardOverlay)}
-            className={`px-2 py-1 text-xs rounded transition-colors ${
+            className={`px-2 py-1 text-xs rounded transition-colors hidden md:block ${
               showKeyboardOverlay
                 ? 'bg-[#00ffff] text-black'
                 : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] border border-[#2a2a2a]'
@@ -407,7 +433,7 @@ export default function Home() {
         </div>
         
         {/* Full-width piano container */}
-        <div className="w-full overflow-x-auto">
+        <div className="w-full overflow-x-auto -mx-2 px-2 md:mx-0 md:px-0">
           <div className="min-w-fit flex justify-center">
             <Piano
               onNoteOn={handleNoteOn}

@@ -255,15 +255,15 @@ export function WaveCanvas({ waveform, onWaveformChange, onPresetSelect, isPlayi
   ];
 
   return (
-    <div className="bg-[#0a0a0a] rounded-lg border border-[#2a2a2a] p-4">
-      <div className="flex items-center justify-between mb-3">
+    <div className="bg-[#0a0a0a] rounded-lg border border-[#2a2a2a] p-3 sm:p-4">
+      <div className="flex items-center justify-between mb-2 sm:mb-3">
         <h3 className="text-sm font-medium text-[#ededed]">Wave Canvas</h3>
-        <span className="text-xs text-[#666] font-mono">Draw your sound</span>
+        <span className="text-xs text-[#666] font-mono hidden sm:inline">Draw your sound</span>
       </div>
 
       <canvas
         ref={canvasRef}
-        className="w-full h-48 rounded cursor-crosshair touch-none"
+        className="w-full h-36 sm:h-48 rounded cursor-crosshair touch-none"
         style={{ background: '#0a0a0a' }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -271,46 +271,44 @@ export function WaveCanvas({ waveform, onWaveformChange, onPresetSelect, isPlayi
         onPointerLeave={handlePointerUp}
       />
 
-      <div className="flex gap-2 mt-3">
-        <div className="flex gap-1">
-          <button
-            onClick={() => setTool('pencil')}
-            className={`px-3 py-1.5 text-xs rounded transition-colors ${
-              tool === 'pencil' 
-                ? 'bg-[#00ffff] text-black' 
-                : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a]'
-            }`}
-          >
-            ✏️ Pencil
-          </button>
-          <button
-            onClick={smoothWaveform}
-            className="px-3 py-1.5 text-xs rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] transition-colors"
-          >
-            ∿ Smooth
-          </button>
-          <button
-            onClick={mirrorWaveform}
-            className="px-3 py-1.5 text-xs rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] transition-colors"
-          >
-            ↔ Mirror
-          </button>
-          <button
-            onClick={clearWaveform}
-            className="px-3 py-1.5 text-xs rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] transition-colors"
-          >
-            🗑 Clear
-          </button>
-        </div>
+      <div className="flex flex-wrap gap-1 sm:gap-2 mt-2 sm:mt-3">
+        <button
+          onClick={() => setTool('pencil')}
+          className={`px-2 sm:px-3 py-1.5 text-xs rounded transition-colors compact ${
+            tool === 'pencil' 
+              ? 'bg-[#00ffff] text-black' 
+              : 'bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] active:bg-[#2a2a2a]'
+          }`}
+        >
+          ✏️ <span className="hidden sm:inline">Pencil</span>
+        </button>
+        <button
+          onClick={smoothWaveform}
+          className="px-2 sm:px-3 py-1.5 text-xs rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] active:bg-[#2a2a2a] transition-colors compact"
+        >
+          ∿ <span className="hidden sm:inline">Smooth</span>
+        </button>
+        <button
+          onClick={mirrorWaveform}
+          className="px-2 sm:px-3 py-1.5 text-xs rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] active:bg-[#2a2a2a] transition-colors compact"
+        >
+          ↔ <span className="hidden sm:inline">Mirror</span>
+        </button>
+        <button
+          onClick={clearWaveform}
+          className="px-2 sm:px-3 py-1.5 text-xs rounded bg-[#1a1a1a] text-[#888] hover:bg-[#2a2a2a] active:bg-[#2a2a2a] transition-colors compact"
+        >
+          🗑 <span className="hidden sm:inline">Clear</span>
+        </button>
       </div>
 
-      <div className="flex gap-1 mt-3">
-        <span className="text-xs text-[#666] mr-2">Presets:</span>
+      <div className="flex flex-wrap gap-1 mt-2 sm:mt-3">
+        <span className="text-xs text-[#666] mr-1 sm:mr-2 self-center">Presets:</span>
         {presets.map(preset => (
           <button
             key={preset.type}
             onClick={() => onPresetSelect(preset.type)}
-            className="px-3 py-1 text-xs rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] transition-colors border border-[#2a2a2a]"
+            className="px-2 sm:px-3 py-1 text-xs rounded bg-[#141414] text-[#888] hover:bg-[#1a1a1a] hover:text-[#00ffff] active:bg-[#1a1a1a] transition-colors border border-[#2a2a2a] compact"
           >
             {preset.name}
           </button>
