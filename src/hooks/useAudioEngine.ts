@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from 'react';
 import { AudioEngine, WaveformType, Effect, EffectType, EffectParams } from '@/lib/audio-engine';
+import type * as Tone from 'tone';
 
 export function useAudioEngine() {
   const [isReady, setIsReady] = useState(false);
