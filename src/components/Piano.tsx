@@ -40,10 +40,10 @@ function PianoKey({ note, octave, isBlack, isInScale, isActive, isLocked, keyboa
     onNoteOff();
   };
 
-  // Responsive sizing: smaller on mobile
+  // Responsive sizing: flex-grow on mobile for full width, fixed on desktop
   const baseClasses = isBlack
-    ? 'w-5 h-16 -mx-2.5 sm:w-8 sm:h-24 sm:-mx-4 z-10 rounded-b-md'
-    : 'w-8 h-24 sm:w-12 sm:h-36 rounded-b-lg';
+    ? 'h-14 sm:h-24 z-10 rounded-b-md flex-1 sm:flex-none sm:w-8 -mx-[calc(50%-2px)] sm:-mx-4'
+    : 'h-20 sm:h-36 rounded-b-lg flex-1 sm:flex-none sm:w-12';
 
   const colorClasses = isBlack
     ? isActive
@@ -213,9 +213,9 @@ export function Piano({ onNoteOn, onNoteOff, scaleLock, rootNote, scaleName, oct
       )}
 
       {/* Piano keyboard */}
-      <div className="relative flex justify-center">
+      <div className="relative w-full">
         {/* White keys */}
-        <div className="flex">
+        <div className="flex w-full">
           {whiteKeys.map((key, i) => {
             const noteString = `${key.note}${key.octave}`;
             const inScale = isNoteInScale(key.note, rootNote, scaleName);
@@ -240,18 +240,18 @@ export function Piano({ onNoteOn, onNoteOff, scaleLock, rootNote, scaleName, oct
         </div>
 
         {/* Black keys - positioned absolutely */}
-        <div className="absolute top-0 left-0 right-0 flex justify-center pointer-events-none">
-          <div className="flex">
+        <div className="absolute top-0 left-0 right-0 pointer-events-none">
+          <div className="flex w-full">
             {whiteKeys.map((whiteKey, i) => {
               // Check if there should be a black key after this white key
               const nextNote = NOTE_NAMES[(NOTE_NAMES.indexOf(whiteKey.note) + 1) % 12];
               if (!isBlackKey(nextNote)) {
-                return <div key={`spacer-${i}`} className="w-8 sm:w-12" />;
+                return <div key={`spacer-${i}`} className="flex-1 sm:flex-none sm:w-12" />;
               }
 
               const blackKey = keys.find(k => k.note === nextNote && k.octave === whiteKey.octave);
               if (!blackKey) {
-                return <div key={`spacer-${i}`} className="w-8 sm:w-12" />;
+                return <div key={`spacer-${i}`} className="flex-1 sm:flex-none sm:w-12" />;
               }
 
               const noteString = `${blackKey.note}${blackKey.octave}`;
@@ -259,7 +259,7 @@ export function Piano({ onNoteOn, onNoteOff, scaleLock, rootNote, scaleName, oct
               const isLocked = scaleLock && !inScale;
 
               return (
-                <div key={noteString} className="w-8 sm:w-12 flex justify-center pointer-events-auto">
+                <div key={noteString} className="flex-1 sm:flex-none sm:w-12 flex justify-center pointer-events-auto">
                   <PianoKey
                     note={blackKey.note}
                     octave={blackKey.octave}

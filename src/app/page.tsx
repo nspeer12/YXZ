@@ -117,7 +117,16 @@ export default function Home() {
   }, [looper]);
 
   const handleInit = async () => {
-    await init();
+    // Ensure audio context starts on user gesture (required for mobile)
+    try {
+      const Tone = await import('tone');
+      // Start the audio context first
+      await Tone.start();
+      // Then initialize our engine
+      await init();
+    } catch (e) {
+      console.error('Failed to initialize audio:', e);
+    }
   };
 
   const handleNoteOn = useCallback((note: string) => {
@@ -433,9 +442,8 @@ export default function Home() {
         </div>
         
         {/* Full-width piano container */}
-        <div className="w-full overflow-x-auto -mx-2 px-2 md:mx-0 md:px-0">
-          <div className="min-w-fit flex justify-center">
-            <Piano
+        <div className="w-full">
+          <Piano
               onNoteOn={handleNoteOn}
               onNoteOff={handleNoteOff}
               scaleLock={scaleLock}
@@ -446,7 +454,6 @@ export default function Home() {
               compact={true}
               externalActiveNotes={midiActiveNotes}
             />
-          </div>
         </div>
       </div>
     </div>
