@@ -124,18 +124,52 @@ export class AudioEngine {
     this.harmonics[0] = 1; // Fundamental
   }
 
+  // Unlock audio on iOS by playing a silent buffer
+  private async unlockAudio(): Promise<void> {
+    console.log('[AudioEngine] Unlocking audio for iOS...');
+    
+    // Create a temporary audio context
+    const AudioContextClass = window.AudioContext || (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    const tempCtx = new AudioContextClass();
+    
+    // Create a silent buffer
+    const buffer = tempCtx.createBuffer(1, 1, 22050);
+    const source = tempCtx.createBufferSource();
+    source.buffer = buffer;
+    source.connect(tempCtx.destination);
+    
+    // Play the silent buffer
+    source.start(0);
+    
+    // Resume the context
+    if (tempCtx.state === 'suspended') {
+      await tempCtx.resume();
+    }
+    
+    // Wait a bit for iOS to process
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    // Close the temporary context
+    await tempCtx.close();
+    
+    console.log('[AudioEngine] Audio unlocked');
+  }
+
   async init(): Promise<void> {
     if (this.isInitialized) return;
     
     console.log('[AudioEngine] Starting initialization...');
     
-    // Ensure audio context is started (required for mobile)
+    // First, unlock audio with native Web Audio API (required for iOS)
+    await this.unlockAudio();
+    
+    // Then start Tone.js
     await Tone.start();
     console.log('[AudioEngine] Tone.start() completed');
     
-    // Also ensure the raw audio context is running
+    // Ensure the context is running
     const ctx = Tone.getContext().rawContext as AudioContext;
-    console.log('[AudioEngine] Context state before resume:', ctx.state);
+    console.log('[AudioEngine] Context state:', ctx.state);
     
     if (ctx.state === 'suspended') {
       await ctx.resume();
@@ -175,6 +209,23 @@ export class AudioEngine {
     
     const finalCtx = Tone.getContext().rawContext as AudioContext;
     console.log('[AudioEngine] Initialization complete, context state:', finalCtx.state);
+    
+    // Play a brief test tone to verify audio is working
+    try {
+      // First, try a direct oscillator test (bypasses our synth)
+      const testOsc = new Tone.Oscillator(440, 'sine').toDestination();
+      testOsc.start();
+      setTimeout(() => testOsc.stop(), 100);
+      console.log('[AudioEngine] Direct oscillator test started');
+      
+      // Also test our synth
+      setTimeout(() => {
+        this.synth?.triggerAttackRelease('C4', '16n');
+        console.log('[AudioEngine] Synth test tone played');
+      }, 150);
+    } catch (e) {
+      console.error('[AudioEngine] Failed to play test tone:', e);
+    }
   }
 
   private createEffectNode(type: EffectType, params: EffectParams[EffectType]): Tone.ToneAudioNode {
