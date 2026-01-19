@@ -120,10 +120,16 @@ export default function Home() {
     // Ensure audio context starts on user gesture (required for mobile)
     try {
       const Tone = await import('tone');
-      // Start the audio context first
+      // Start the audio context
       await Tone.start();
-      // Then initialize our engine
+      // Also resume the raw context (iOS sometimes needs this)
+      const ctx = Tone.getContext().rawContext as AudioContext;
+      if (ctx.state === 'suspended') {
+        await ctx.resume();
+      }
+      // Initialize our engine
       await init();
+      console.log('Audio initialized, context state:', ctx.state);
     } catch (e) {
       console.error('Failed to initialize audio:', e);
     }

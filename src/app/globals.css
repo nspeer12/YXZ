@@ -135,3 +135,37 @@ body {
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
+
+/* Piano keys - responsive sizing */
+.piano-key-white {
+  width: calc((100vw - 16px) / 10);
+  max-width: 48px;
+  min-width: 28px;
+}
+
+.piano-key-black {
+  width: calc((100vw - 16px) / 20);
+  max-width: 32px;
+  min-width: 18px;
+  margin-left: calc((100vw - 16px) / -40);
+  margin-right: calc((100vw - 16px) / -40);
+}
+
+@media screen and (min-width: 640px) {
+  .piano-key-white {
+    width: 48px;
+  }
+  
+  .piano-key-black {
+    width: 32px;
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+}
+
+/* Piano keys don't need min button sizes */
+.piano-key-white,
+.piano-key-black {
+  min-height: auto !important;
+  min-width: auto !important;
+}

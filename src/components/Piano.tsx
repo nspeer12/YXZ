@@ -32,18 +32,24 @@ function PianoKey({ note, octave, isBlack, isInScale, isActive, isLocked, keyboa
   const handlePointerDown = (e: React.PointerEvent) => {
     if (isLocked) return;
     e.preventDefault();
+    e.stopPropagation();
     onNoteOn(`${note}${octave}`);
     (e.target as HTMLElement).setPointerCapture(e.pointerId);
   };
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e: React.PointerEvent) => {
+    e.preventDefault();
+    onNoteOff();
+  };
+  
+  const handlePointerCancel = () => {
     onNoteOff();
   };
 
-  // Responsive sizing: flex-grow on mobile for full width, fixed on desktop
+  // Responsive sizing - use CSS variables for width calculation
   const baseClasses = isBlack
-    ? 'h-14 sm:h-24 z-10 rounded-b-md flex-1 sm:flex-none sm:w-8 -mx-[calc(50%-2px)] sm:-mx-4'
-    : 'h-20 sm:h-36 rounded-b-lg flex-1 sm:flex-none sm:w-12';
+    ? 'h-16 sm:h-24 z-10 rounded-b-md piano-key-black'
+    : 'h-24 sm:h-36 rounded-b-lg piano-key-white';
 
   const colorClasses = isBlack
     ? isActive
@@ -63,12 +69,12 @@ function PianoKey({ note, octave, isBlack, isInScale, isActive, isLocked, keyboa
 
   return (
     <button
-      className={`${baseClasses} ${colorClasses} border border-[#333] relative transition-colors select-none touch-none overflow-visible`}
+      className={`${baseClasses} ${colorClasses} border border-[#333] relative transition-colors select-none touch-none`}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
-      onPointerLeave={handlePointerUp}
+      onPointerLeave={handlePointerCancel}
+      onPointerCancel={handlePointerCancel}
       disabled={isLocked}
-      style={{ minHeight: 'auto', minWidth: 'auto' }}
     >
       {/* Note name - hidden on mobile for black keys, smaller text */}
       <span className={`absolute bottom-1 sm:bottom-2 left-1/2 -translate-x-1/2 text-[8px] sm:text-[10px] font-mono ${
@@ -246,12 +252,12 @@ export function Piano({ onNoteOn, onNoteOff, scaleLock, rootNote, scaleName, oct
               // Check if there should be a black key after this white key
               const nextNote = NOTE_NAMES[(NOTE_NAMES.indexOf(whiteKey.note) + 1) % 12];
               if (!isBlackKey(nextNote)) {
-                return <div key={`spacer-${i}`} className="flex-1 sm:flex-none sm:w-12" />;
+                return <div key={`spacer-${i}`} className="piano-key-white" />;
               }
 
               const blackKey = keys.find(k => k.note === nextNote && k.octave === whiteKey.octave);
               if (!blackKey) {
-                return <div key={`spacer-${i}`} className="flex-1 sm:flex-none sm:w-12" />;
+                return <div key={`spacer-${i}`} className="piano-key-white" />;
               }
 
               const noteString = `${blackKey.note}${blackKey.octave}`;
@@ -259,7 +265,7 @@ export function Piano({ onNoteOn, onNoteOff, scaleLock, rootNote, scaleName, oct
               const isLocked = scaleLock && !inScale;
 
               return (
-                <div key={noteString} className="flex-1 sm:flex-none sm:w-12 flex justify-center pointer-events-auto">
+                <div key={noteString} className="piano-key-white flex justify-center pointer-events-auto">
                   <PianoKey
                     note={blackKey.note}
                     octave={blackKey.octave}

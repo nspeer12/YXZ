@@ -127,7 +127,14 @@ export class AudioEngine {
   async init(): Promise<void> {
     if (this.isInitialized) return;
     
+    // Ensure audio context is started (required for mobile)
     await Tone.start();
+    
+    // Also ensure the raw audio context is running
+    const ctx = Tone.getContext().rawContext as AudioContext;
+    if (ctx.state === 'suspended') {
+      await ctx.resume();
+    }
     
     // Create analyser for visualization (waveform)
     this.analyser = new Tone.Analyser('waveform', 256);
@@ -673,6 +680,12 @@ export class AudioEngine {
 
   playNote(note: string, duration?: string): void {
     if (!this.synth || !this.isInitialized) return;
+    
+    // Resume audio context if suspended (iOS requirement)
+    const ctx = Tone.getContext().rawContext as AudioContext;
+    if (ctx.state === 'suspended') {
+      ctx.resume();
+    }
     
     if (duration) {
       this.synth.triggerAttackRelease(note, duration);
