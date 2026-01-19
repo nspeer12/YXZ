@@ -127,13 +127,19 @@ export class AudioEngine {
   async init(): Promise<void> {
     if (this.isInitialized) return;
     
+    console.log('[AudioEngine] Starting initialization...');
+    
     // Ensure audio context is started (required for mobile)
     await Tone.start();
+    console.log('[AudioEngine] Tone.start() completed');
     
     // Also ensure the raw audio context is running
     const ctx = Tone.getContext().rawContext as AudioContext;
+    console.log('[AudioEngine] Context state before resume:', ctx.state);
+    
     if (ctx.state === 'suspended') {
       await ctx.resume();
+      console.log('[AudioEngine] Context resumed, new state:', ctx.state);
     }
     
     // Create analyser for visualization (waveform)
@@ -166,6 +172,9 @@ export class AudioEngine {
     this.outputGain.connect(this.recorder);
     
     this.isInitialized = true;
+    
+    const finalCtx = Tone.getContext().rawContext as AudioContext;
+    console.log('[AudioEngine] Initialization complete, context state:', finalCtx.state);
   }
 
   private createEffectNode(type: EffectType, params: EffectParams[EffectType]): Tone.ToneAudioNode {
@@ -679,13 +688,19 @@ export class AudioEngine {
   }
 
   playNote(note: string, duration?: string): void {
-    if (!this.synth || !this.isInitialized) return;
+    if (!this.synth || !this.isInitialized) {
+      console.log('[AudioEngine] playNote called but not ready:', { synth: !!this.synth, init: this.isInitialized });
+      return;
+    }
     
     // Resume audio context if suspended (iOS requirement)
     const ctx = Tone.getContext().rawContext as AudioContext;
     if (ctx.state === 'suspended') {
+      console.log('[AudioEngine] Resuming suspended context on note play');
       ctx.resume();
     }
+    
+    console.log('[AudioEngine] Playing note:', note, 'context state:', ctx.state);
     
     if (duration) {
       this.synth.triggerAttackRelease(note, duration);

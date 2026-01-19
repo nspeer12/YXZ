@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { getAudioEngine, AudioEngine, WaveformType, Effect, EffectType, EffectParams } from '@/lib/audio-engine';
-import * as Tone from 'tone';
+import { useState, useCallback, useRef } from 'react';
+import { AudioEngine, WaveformType, Effect, EffectType, EffectParams } from '@/lib/audio-engine';
 
 export function useAudioEngine() {
   const [isReady, setIsReady] = useState(false);
@@ -13,29 +12,32 @@ export function useAudioEngine() {
   const [recordingUrl, setRecordingUrl] = useState<string | null>(null);
   const [effects, setEffects] = useState<Effect[]>([]);
   const engineRef = useRef<AudioEngine | null>(null);
+  const unsubscribeRef = useRef<(() => void) | null>(null);
 
-  useEffect(() => {
-    engineRef.current = getAudioEngine();
+  // Initialize audio engine - MUST be called from user gesture on iOS
+  const init = useCallback(async () => {
+    // Create engine only when user interacts (required for iOS)
+    if (!engineRef.current) {
+      engineRef.current = new AudioEngine();
+    }
+    
+    await engineRef.current.init();
+    
+    // Now that engine is ready, get initial state
     setWaveform(engineRef.current.getWaveform());
     setHarmonics(engineRef.current.getHarmonics());
     setEffects(engineRef.current.getEffects());
-
+    setIsReady(engineRef.current.isReady());
+    
     // Subscribe to effects changes
-    const unsubscribe = engineRef.current.onEffectsChange(() => {
+    if (unsubscribeRef.current) {
+      unsubscribeRef.current();
+    }
+    unsubscribeRef.current = engineRef.current.onEffectsChange(() => {
       if (engineRef.current) {
         setEffects(engineRef.current.getEffects());
       }
     });
-
-    return () => unsubscribe();
-  }, []);
-
-  const init = useCallback(async () => {
-    if (!engineRef.current) return;
-    await engineRef.current.init();
-    setIsReady(engineRef.current.isReady());
-    setWaveform(engineRef.current.getWaveform());
-    setHarmonics(engineRef.current.getHarmonics());
   }, []);
 
   const playNote = useCallback((note: string, duration?: string) => {
