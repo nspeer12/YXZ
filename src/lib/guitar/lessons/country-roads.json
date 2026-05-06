@@ -1,0 +1,46 @@
+{
+  "id": "country-roads",
+  "title": "Take Me Home, Country Roads — chord progression",
+  "description": "G-Em-D-C with a brief A in the bridge. Universal singalong — chord changes happen on predictable beats and the strum is straightforward.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "John Denver",
+  "year": 1971,
+  "tags": ["70s", "country", "folk", "singalong", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=1vrEljMfXYo",
+    "spotify": "https://open.spotify.com/track/1YYhDizHx7PnDhAhko6cDS",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/john-denver/take-me-home-country-roads-chords-1033523"
+  },
+  "credits": "John Denver — Take Me Home, Country Roads (1971)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Verse/chorus progression (slow practice)",
+      "instruction": "Each chord gets 4 beats. The progression: G → Em → D → C → G. Strum on every beat to keep time. Focus on clean chord transitions.",
+      "bpm": 50,
+      "targets": [
+        { "id": "g1", "string": 0, "fret": 3, "beat": 0, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "em1", "string": 0, "fret": 0, "beat": 4, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 8, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 12, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 16, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Verse/chorus progression (target tempo)",
+      "instruction": "Full speed. Keep the strum steady and let your voice (or the recording) carry the melody. G → Em → D → C → G.",
+      "bpm": 82,
+      "targets": [
+        { "id": "g1", "string": 0, "fret": 3, "beat": 0, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "em1", "string": 0, "fret": 0, "beat": 4, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 8, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 12, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 16, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] }
+      ]
+    }
+  ]
+}

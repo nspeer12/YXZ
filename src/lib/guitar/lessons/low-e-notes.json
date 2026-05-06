@@ -1,0 +1,43 @@
+{
+  "id": "low-e-notes",
+  "title": "Notes on the low E string",
+  "description": "Learn the natural notes along the 6th string: E, F, G, A, B, C, D, E.",
+  "category": "notes",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.7,
+  "prerequisites": ["open-strings-warmup"],
+  "exercises": [
+    {
+      "id": "ascend",
+      "title": "Ascend the low E",
+      "instruction": "Use one finger per fret. Open E, F (1), G (3), A (5), B (7), C (8), D (10), E (12).",
+      "bpm": 60,
+      "targets": [
+        { "id": "n0", "string": 0, "fret": 0, "beat": 0, "duration": 1, "label": "E (open)" },
+        { "id": "n1", "string": 0, "fret": 1, "beat": 1, "duration": 1, "label": "F" },
+        { "id": "n2", "string": 0, "fret": 3, "beat": 2, "duration": 1, "label": "G" },
+        { "id": "n3", "string": 0, "fret": 5, "beat": 3, "duration": 1, "label": "A" },
+        { "id": "n4", "string": 0, "fret": 7, "beat": 4, "duration": 1, "label": "B" },
+        { "id": "n5", "string": 0, "fret": 8, "beat": 5, "duration": 1, "label": "C" },
+        { "id": "n6", "string": 0, "fret": 10, "beat": 6, "duration": 1, "label": "D" },
+        { "id": "n7", "string": 0, "fret": 12, "beat": 7, "duration": 1, "label": "E (octave)" }
+      ]
+    },
+    {
+      "id": "descend",
+      "title": "Back down the low E",
+      "bpm": 60,
+      "targets": [
+        { "id": "n7", "string": 0, "fret": 12, "beat": 0, "duration": 1, "label": "E (octave)" },
+        { "id": "n6", "string": 0, "fret": 10, "beat": 1, "duration": 1, "label": "D" },
+        { "id": "n5", "string": 0, "fret": 8, "beat": 2, "duration": 1, "label": "C" },
+        { "id": "n4", "string": 0, "fret": 7, "beat": 3, "duration": 1, "label": "B" },
+        { "id": "n3", "string": 0, "fret": 5, "beat": 4, "duration": 1, "label": "A" },
+        { "id": "n2", "string": 0, "fret": 3, "beat": 5, "duration": 1, "label": "G" },
+        { "id": "n1", "string": 0, "fret": 1, "beat": 6, "duration": 1, "label": "F" },
+        { "id": "n0", "string": 0, "fret": 0, "beat": 7, "duration": 1, "label": "E (open)" }
+      ]
+    }
+  ]
+}

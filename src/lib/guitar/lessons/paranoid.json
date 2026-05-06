@@ -1,0 +1,68 @@
+{
+  "id": "paranoid",
+  "title": "Paranoid — main intro riff",
+  "description": "Iommi's faster-paced classic — single-note metal pioneer. Builds picking endurance and locks in straight-eighth feel.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Black Sabbath",
+  "year": 1970,
+  "tags": ["70s", "rock-classic", "metal", "iconic-riff", "single-note-riff"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=0qanF-91aJo",
+    "spotify": "https://open.spotify.com/track/3L8WgDYS5TtwbyxOPSAiFf",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/black-sabbath/paranoid-tabs-12595"
+  },
+  "credits": "Black Sabbath — Paranoid (1970)",
+  "exercises": [
+    {
+      "id": "intro-riff-slow",
+      "title": "Intro riff (slow practice)",
+      "instruction": "Half-speed practice. Played up at the 12th fret on low E and A. Pattern: E (low E 12) — F# (low E 14) — E — E — A (A 12) — B (A 14) — A — A. Eight steady eighth notes.",
+      "bpm": 80,
+      "targets": [
+        { "id": "n1", "string": 0, "fret": 12, "beat": 0, "duration": 0.5, "label": "E" },
+        { "id": "n2", "string": 0, "fret": 14, "beat": 0.5, "duration": 0.5, "label": "F#" },
+        { "id": "n3", "string": 0, "fret": 12, "beat": 1, "duration": 0.5, "label": "E" },
+        { "id": "n4", "string": 0, "fret": 12, "beat": 1.5, "duration": 0.5, "label": "E" },
+        { "id": "n5", "string": 1, "fret": 12, "beat": 2, "duration": 0.5, "label": "A" },
+        { "id": "n6", "string": 1, "fret": 14, "beat": 2.5, "duration": 0.5, "label": "B" },
+        { "id": "n7", "string": 1, "fret": 12, "beat": 3, "duration": 0.5, "label": "A" },
+        { "id": "n8", "string": 1, "fret": 12, "beat": 3.5, "duration": 0.5, "label": "A" },
+        { "id": "n9", "string": 0, "fret": 12, "beat": 4, "duration": 0.5, "label": "E" },
+        { "id": "n10", "string": 0, "fret": 14, "beat": 4.5, "duration": 0.5, "label": "F#" },
+        { "id": "n11", "string": 0, "fret": 12, "beat": 5, "duration": 0.5, "label": "E" },
+        { "id": "n12", "string": 0, "fret": 12, "beat": 5.5, "duration": 0.5, "label": "E" },
+        { "id": "n13", "string": 1, "fret": 12, "beat": 6, "duration": 0.5, "label": "A" },
+        { "id": "n14", "string": 1, "fret": 14, "beat": 6.5, "duration": 0.5, "label": "B" },
+        { "id": "n15", "string": 1, "fret": 12, "beat": 7, "duration": 0.5, "label": "A" },
+        { "id": "n16", "string": 1, "fret": 12, "beat": 7.5, "duration": 0.5, "label": "A" }
+      ]
+    },
+    {
+      "id": "intro-riff-tempo",
+      "title": "Intro riff (target tempo)",
+      "instruction": "Full speed. Iommi's tempo. Use down-strokes for maximum aggression. Pinky on fret 14, index on fret 12.",
+      "bpm": 164,
+      "targets": [
+        { "id": "n1", "string": 0, "fret": 12, "beat": 0, "duration": 0.5, "label": "E" },
+        { "id": "n2", "string": 0, "fret": 14, "beat": 0.5, "duration": 0.5, "label": "F#" },
+        { "id": "n3", "string": 0, "fret": 12, "beat": 1, "duration": 0.5, "label": "E" },
+        { "id": "n4", "string": 0, "fret": 12, "beat": 1.5, "duration": 0.5, "label": "E" },
+        { "id": "n5", "string": 1, "fret": 12, "beat": 2, "duration": 0.5, "label": "A" },
+        { "id": "n6", "string": 1, "fret": 14, "beat": 2.5, "duration": 0.5, "label": "B" },
+        { "id": "n7", "string": 1, "fret": 12, "beat": 3, "duration": 0.5, "label": "A" },
+        { "id": "n8", "string": 1, "fret": 12, "beat": 3.5, "duration": 0.5, "label": "A" },
+        { "id": "n9", "string": 0, "fret": 12, "beat": 4, "duration": 0.5, "label": "E" },
+        { "id": "n10", "string": 0, "fret": 14, "beat": 4.5, "duration": 0.5, "label": "F#" },
+        { "id": "n11", "string": 0, "fret": 12, "beat": 5, "duration": 0.5, "label": "E" },
+        { "id": "n12", "string": 0, "fret": 12, "beat": 5.5, "duration": 0.5, "label": "E" },
+        { "id": "n13", "string": 1, "fret": 12, "beat": 6, "duration": 0.5, "label": "A" },
+        { "id": "n14", "string": 1, "fret": 14, "beat": 6.5, "duration": 0.5, "label": "B" },
+        { "id": "n15", "string": 1, "fret": 12, "beat": 7, "duration": 0.5, "label": "A" },
+        { "id": "n16", "string": 1, "fret": 12, "beat": 7.5, "duration": 0.5, "label": "A" }
+      ]
+    }
+  ]
+}

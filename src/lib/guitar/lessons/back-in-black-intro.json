@@ -1,0 +1,52 @@
+{
+  "id": "back-in-black-intro",
+  "title": "Back in Black — main intro riff",
+  "description": "Angus Young's swaggering open-position riff in E. Mixes open strings with fretted notes for a perfect intro to chord-tone riffing.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "AC/DC",
+  "year": 1980,
+  "tags": ["80s", "rock-classic", "iconic-riff", "single-note-riff"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=pAgnJDJN4VA",
+    "spotify": "https://open.spotify.com/track/08mG3Y1vljYA6bvDt4Wqkj",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/ac-dc/back-in-black-tabs-12423"
+  },
+  "credits": "AC/DC — Back in Black (1980)",
+  "exercises": [
+    {
+      "id": "main-riff-slow",
+      "title": "Main riff (slow practice)",
+      "instruction": "Half-speed. The riff sits on the low E and A strings. Use one finger per fret around the 5th-7th fret area. Pattern: E (open), B (fret 7), E (open), D (A fret 5), E (A fret 7), D (A fret 5), A (E fret 5), E (open).",
+      "bpm": 46,
+      "targets": [
+        { "id": "n1", "string": 0, "fret": 0, "beat": 0, "duration": 0.5, "label": "E (open)" },
+        { "id": "n2", "string": 0, "fret": 7, "beat": 0.5, "duration": 0.5, "label": "B" },
+        { "id": "n3", "string": 0, "fret": 0, "beat": 1, "duration": 0.5, "label": "E (open)" },
+        { "id": "n4", "string": 1, "fret": 5, "beat": 1.5, "duration": 0.5, "label": "D" },
+        { "id": "n5", "string": 1, "fret": 7, "beat": 2, "duration": 0.5, "label": "E" },
+        { "id": "n6", "string": 1, "fret": 5, "beat": 2.5, "duration": 0.5, "label": "D" },
+        { "id": "n7", "string": 0, "fret": 5, "beat": 3, "duration": 0.5, "label": "A" },
+        { "id": "n8", "string": 0, "fret": 0, "beat": 3.5, "duration": 0.5, "label": "E (open)" }
+      ]
+    },
+    {
+      "id": "main-riff-tempo",
+      "title": "Main riff (target tempo)",
+      "instruction": "Full speed. Keep the alternate picking tight and let the open E ring between fretted notes for that signature swagger.",
+      "bpm": 92,
+      "targets": [
+        { "id": "n1", "string": 0, "fret": 0, "beat": 0, "duration": 0.5, "label": "E (open)" },
+        { "id": "n2", "string": 0, "fret": 7, "beat": 0.5, "duration": 0.5, "label": "B" },
+        { "id": "n3", "string": 0, "fret": 0, "beat": 1, "duration": 0.5, "label": "E (open)" },
+        { "id": "n4", "string": 1, "fret": 5, "beat": 1.5, "duration": 0.5, "label": "D" },
+        { "id": "n5", "string": 1, "fret": 7, "beat": 2, "duration": 0.5, "label": "E" },
+        { "id": "n6", "string": 1, "fret": 5, "beat": 2.5, "duration": 0.5, "label": "D" },
+        { "id": "n7", "string": 0, "fret": 5, "beat": 3, "duration": 0.5, "label": "A" },
+        { "id": "n8", "string": 0, "fret": 0, "beat": 3.5, "duration": 0.5, "label": "E (open)" }
+      ]
+    }
+  ]
+}

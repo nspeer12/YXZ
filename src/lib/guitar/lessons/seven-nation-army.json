@@ -1,0 +1,46 @@
+{
+  "id": "seven-nation-army",
+  "title": "Seven Nation Army — main riff",
+  "description": "White Stripes' iconic riff. Single-note, played on the A string. Easy to play, perfect for beginners.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=0J2QdDbelmY",
+    "tabSource": "https://www.ultimate-guitar.com/"
+  },
+  "credits": "The White Stripes — Seven Nation Army (2003)",
+  "exercises": [
+    {
+      "id": "main-riff-slow",
+      "title": "Main riff (slow practice)",
+      "instruction": "All on the A string. Use one finger per fret around the 7th fret position. Frets: 7, 7, 10, 7, 5, 3, 2.",
+      "bpm": 60,
+      "targets": [
+        { "id": "n1", "string": 1, "fret": 7, "beat": 0, "duration": 1, "label": "E" },
+        { "id": "n2", "string": 1, "fret": 7, "beat": 1, "duration": 1, "label": "E" },
+        { "id": "n3", "string": 1, "fret": 10, "beat": 2, "duration": 1, "label": "G" },
+        { "id": "n4", "string": 1, "fret": 7, "beat": 3, "duration": 1, "label": "E" },
+        { "id": "n5", "string": 1, "fret": 5, "beat": 4, "duration": 1, "label": "D" },
+        { "id": "n6", "string": 1, "fret": 3, "beat": 5, "duration": 1, "label": "C" },
+        { "id": "n7", "string": 1, "fret": 2, "beat": 6, "duration": 1, "label": "B" }
+      ]
+    },
+    {
+      "id": "main-riff-tempo",
+      "title": "Main riff (target tempo)",
+      "instruction": "Full speed. Stay relaxed and let each note ring clearly.",
+      "bpm": 124,
+      "targets": [
+        { "id": "n1", "string": 1, "fret": 7, "beat": 0, "duration": 1, "label": "E" },
+        { "id": "n2", "string": 1, "fret": 7, "beat": 1, "duration": 1, "label": "E" },
+        { "id": "n3", "string": 1, "fret": 10, "beat": 2, "duration": 1, "label": "G" },
+        { "id": "n4", "string": 1, "fret": 7, "beat": 3, "duration": 1, "label": "E" },
+        { "id": "n5", "string": 1, "fret": 5, "beat": 4, "duration": 1, "label": "D" },
+        { "id": "n6", "string": 1, "fret": 3, "beat": 5, "duration": 1, "label": "C" },
+        { "id": "n7", "string": 1, "fret": 2, "beat": 6, "duration": 1, "label": "B" }
+      ]
+    }
+  ]
+}

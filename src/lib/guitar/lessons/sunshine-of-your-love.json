@@ -1,0 +1,60 @@
+{
+  "id": "sunshine-of-your-love",
+  "title": "Sunshine of Your Love — main riff",
+  "description": "Clapton's signature blues-rock riff. Repetitive and bluesy — great for locking into a groove.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Cream",
+  "year": 1967,
+  "tags": ["60s", "rock-classic", "blues", "iconic-riff", "single-note-riff"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=zlXiZGXgZ5o",
+    "spotify": "https://open.spotify.com/track/2K2M0TcglCRLLpFOzKeFZA",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/cream/sunshine-of-your-love-tabs-12490"
+  },
+  "credits": "Cream — Sunshine of Your Love (1967)",
+  "exercises": [
+    {
+      "id": "main-riff-slow",
+      "title": "Main riff (slow practice)",
+      "instruction": "Half-speed practice. Eighth notes descending from D (12th fret D string) down to D (5th fret A string) — one octave drop. Stay in 10th-fret position with one finger per fret.",
+      "bpm": 58,
+      "targets": [
+        { "id": "n1", "string": 2, "fret": 12, "beat": 0, "duration": 0.5, "label": "D" },
+        { "id": "n2", "string": 2, "fret": 10, "beat": 0.5, "duration": 0.5, "label": "C" },
+        { "id": "n3", "string": 2, "fret": 12, "beat": 1, "duration": 0.5, "label": "D" },
+        { "id": "n4", "string": 2, "fret": 7, "beat": 1.5, "duration": 0.5, "label": "A" },
+        { "id": "n5", "string": 1, "fret": 10, "beat": 2, "duration": 0.5, "label": "G" },
+        { "id": "n6", "string": 1, "fret": 8, "beat": 2.5, "duration": 0.5, "label": "F" },
+        { "id": "n7", "string": 1, "fret": 7, "beat": 3, "duration": 0.5, "label": "E" },
+        { "id": "n8", "string": 1, "fret": 5, "beat": 3.5, "duration": 0.5, "label": "D" }
+      ]
+    },
+    {
+      "id": "main-riff-tempo",
+      "title": "Main riff (target tempo)",
+      "instruction": "Target tempo. Two passes. Lock in with that lazy bluesy swagger.",
+      "bpm": 116,
+      "targets": [
+        { "id": "n1", "string": 2, "fret": 12, "beat": 0, "duration": 0.5, "label": "D" },
+        { "id": "n2", "string": 2, "fret": 10, "beat": 0.5, "duration": 0.5, "label": "C" },
+        { "id": "n3", "string": 2, "fret": 12, "beat": 1, "duration": 0.5, "label": "D" },
+        { "id": "n4", "string": 2, "fret": 7, "beat": 1.5, "duration": 0.5, "label": "A" },
+        { "id": "n5", "string": 1, "fret": 10, "beat": 2, "duration": 0.5, "label": "G" },
+        { "id": "n6", "string": 1, "fret": 8, "beat": 2.5, "duration": 0.5, "label": "F" },
+        { "id": "n7", "string": 1, "fret": 7, "beat": 3, "duration": 0.5, "label": "E" },
+        { "id": "n8", "string": 1, "fret": 5, "beat": 3.5, "duration": 0.5, "label": "D" },
+        { "id": "n9", "string": 2, "fret": 12, "beat": 4, "duration": 0.5, "label": "D" },
+        { "id": "n10", "string": 2, "fret": 10, "beat": 4.5, "duration": 0.5, "label": "C" },
+        { "id": "n11", "string": 2, "fret": 12, "beat": 5, "duration": 0.5, "label": "D" },
+        { "id": "n12", "string": 2, "fret": 7, "beat": 5.5, "duration": 0.5, "label": "A" },
+        { "id": "n13", "string": 1, "fret": 10, "beat": 6, "duration": 0.5, "label": "G" },
+        { "id": "n14", "string": 1, "fret": 8, "beat": 6.5, "duration": 0.5, "label": "F" },
+        { "id": "n15", "string": 1, "fret": 7, "beat": 7, "duration": 0.5, "label": "E" },
+        { "id": "n16", "string": 1, "fret": 5, "beat": 7.5, "duration": 0.5, "label": "D" }
+      ]
+    }
+  ]
+}

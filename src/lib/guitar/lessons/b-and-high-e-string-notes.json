@@ -1,0 +1,36 @@
+{
+  "id": "b-and-high-e-string-notes",
+  "title": "B and high E string notes",
+  "description": "Memorize the natural notes on the two thinnest strings. Up the B string, then up the high E.",
+  "category": "notes",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.7,
+  "prerequisites": [],
+  "exercises": [
+    {
+      "id": "b-then-high-e",
+      "title": "Climb B then high E",
+      "instruction": "B string first (B-C-D-E-F-G-A-B), then high E (E-F-G-A-B-C-D-E). Say each note name out loud as you play it.",
+      "bpm": 60,
+      "targets": [
+        { "id": "b0", "string": 4, "fret": 0, "beat": 0, "duration": 1, "label": "B" },
+        { "id": "b1", "string": 4, "fret": 1, "beat": 1, "duration": 1, "label": "C" },
+        { "id": "b3", "string": 4, "fret": 3, "beat": 2, "duration": 1, "label": "D" },
+        { "id": "b5", "string": 4, "fret": 5, "beat": 3, "duration": 1, "label": "E" },
+        { "id": "b6", "string": 4, "fret": 6, "beat": 4, "duration": 1, "label": "F" },
+        { "id": "b8", "string": 4, "fret": 8, "beat": 5, "duration": 1, "label": "G" },
+        { "id": "b10", "string": 4, "fret": 10, "beat": 6, "duration": 1, "label": "A" },
+        { "id": "b12", "string": 4, "fret": 12, "beat": 7, "duration": 1, "label": "B" },
+        { "id": "e0", "string": 5, "fret": 0, "beat": 8, "duration": 1, "label": "E" },
+        { "id": "e1", "string": 5, "fret": 1, "beat": 9, "duration": 1, "label": "F" },
+        { "id": "e3", "string": 5, "fret": 3, "beat": 10, "duration": 1, "label": "G" },
+        { "id": "e5", "string": 5, "fret": 5, "beat": 11, "duration": 1, "label": "A" },
+        { "id": "e7", "string": 5, "fret": 7, "beat": 12, "duration": 1, "label": "B" },
+        { "id": "e8", "string": 5, "fret": 8, "beat": 13, "duration": 1, "label": "C" },
+        { "id": "e10", "string": 5, "fret": 10, "beat": 14, "duration": 1, "label": "D" },
+        { "id": "e12", "string": 5, "fret": 12, "beat": 15, "duration": 1, "label": "E" }
+      ]
+    }
+  ]
+}

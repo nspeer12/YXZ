@@ -1,0 +1,46 @@
+{
+  "id": "highway-to-hell-intro",
+  "title": "Highway to Hell — intro chord stabs",
+  "description": "The intro is essentially A, D, G stabs in a syncopated rhythm. Easy open chords; the timing is the lesson.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "AC/DC",
+  "year": 1979,
+  "tags": ["70s", "rock-classic", "iconic-riff", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=l482T0yNkeo",
+    "spotify": "https://open.spotify.com/track/2zYzyRzz6pRmhPzyfMEC8s",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/ac-dc/highway-to-hell-chords-2247"
+  },
+  "credits": "AC/DC — Highway to Hell (1979)",
+  "exercises": [
+    {
+      "id": "intro-stabs-slow",
+      "title": "Intro stabs (slow practice)",
+      "instruction": "Half-speed. The intro cycles A → D → G → D → A. Strum once on each beat. Don't worry about syncopation yet — get the chord shapes locked in.",
+      "bpm": 58,
+      "targets": [
+        { "id": "a1", "string": 1, "fret": 0, "beat": 0, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 4, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 8, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 12, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a2", "string": 1, "fret": 0, "beat": 16, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "intro-stabs-tempo",
+      "title": "Intro stabs (target tempo)",
+      "instruction": "Full speed. Hit each chord with the swaggering AC/DC attitude — short, punchy stabs. A → D → G → D → A.",
+      "bpm": 116,
+      "targets": [
+        { "id": "a1", "string": 1, "fret": 0, "beat": 0, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 4, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 8, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 12, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a2", "string": 1, "fret": 0, "beat": 16, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

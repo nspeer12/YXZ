@@ -1,0 +1,68 @@
+{
+  "id": "sweet-child-o-mine-verse",
+  "title": "Sweet Child O' Mine — verse",
+  "description": "The verse single-note riff is more approachable than Slash's intro arpeggio — focuses on string 2 (D) with octave jumps.",
+  "category": "song",
+  "difficulty": "intermediate",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Guns N' Roses",
+  "year": 1987,
+  "tags": ["80s", "rock-classic", "iconic-riff", "single-note-riff"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=1w7OgIMMRc4",
+    "spotify": "https://open.spotify.com/track/7snQQk1zcKl8gZ92AnueZW",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/guns-n-roses/sweet-child-o-mine-tabs-12533"
+  },
+  "credits": "Guns N' Roses — Sweet Child O' Mine (1987)",
+  "exercises": [
+    {
+      "id": "verse-riff-slow",
+      "title": "Verse riff (slow practice)",
+      "instruction": "Half-speed practice in D major. Eighth-note pattern on the D and A strings around the 12th fret. Use one finger per fret in that position.",
+      "bpm": 62,
+      "targets": [
+        { "id": "n1", "string": 2, "fret": 12, "beat": 0, "duration": 0.5, "label": "D" },
+        { "id": "n2", "string": 2, "fret": 14, "beat": 0.5, "duration": 0.5, "label": "E" },
+        { "id": "n3", "string": 2, "fret": 12, "beat": 1, "duration": 0.5, "label": "D" },
+        { "id": "n4", "string": 1, "fret": 12, "beat": 1.5, "duration": 0.5, "label": "A" },
+        { "id": "n5", "string": 2, "fret": 14, "beat": 2, "duration": 0.5, "label": "E" },
+        { "id": "n6", "string": 2, "fret": 12, "beat": 2.5, "duration": 0.5, "label": "D" },
+        { "id": "n7", "string": 1, "fret": 14, "beat": 3, "duration": 0.5, "label": "B" },
+        { "id": "n8", "string": 2, "fret": 12, "beat": 3.5, "duration": 0.5, "label": "D" },
+        { "id": "n9", "string": 2, "fret": 12, "beat": 4, "duration": 0.5, "label": "D" },
+        { "id": "n10", "string": 2, "fret": 14, "beat": 4.5, "duration": 0.5, "label": "E" },
+        { "id": "n11", "string": 2, "fret": 12, "beat": 5, "duration": 0.5, "label": "D" },
+        { "id": "n12", "string": 1, "fret": 12, "beat": 5.5, "duration": 0.5, "label": "A" },
+        { "id": "n13", "string": 2, "fret": 14, "beat": 6, "duration": 0.5, "label": "E" },
+        { "id": "n14", "string": 2, "fret": 12, "beat": 6.5, "duration": 0.5, "label": "D" },
+        { "id": "n15", "string": 1, "fret": 14, "beat": 7, "duration": 0.5, "label": "B" },
+        { "id": "n16", "string": 2, "fret": 12, "beat": 7.5, "duration": 0.5, "label": "D" }
+      ]
+    },
+    {
+      "id": "verse-riff-tempo",
+      "title": "Verse riff (target tempo)",
+      "instruction": "Full speed (125 BPM). Use strict alternate picking. Slash plays this clean — let each note breathe.",
+      "bpm": 125,
+      "targets": [
+        { "id": "n1", "string": 2, "fret": 12, "beat": 0, "duration": 0.5, "label": "D" },
+        { "id": "n2", "string": 2, "fret": 14, "beat": 0.5, "duration": 0.5, "label": "E" },
+        { "id": "n3", "string": 2, "fret": 12, "beat": 1, "duration": 0.5, "label": "D" },
+        { "id": "n4", "string": 1, "fret": 12, "beat": 1.5, "duration": 0.5, "label": "A" },
+        { "id": "n5", "string": 2, "fret": 14, "beat": 2, "duration": 0.5, "label": "E" },
+        { "id": "n6", "string": 2, "fret": 12, "beat": 2.5, "duration": 0.5, "label": "D" },
+        { "id": "n7", "string": 1, "fret": 14, "beat": 3, "duration": 0.5, "label": "B" },
+        { "id": "n8", "string": 2, "fret": 12, "beat": 3.5, "duration": 0.5, "label": "D" },
+        { "id": "n9", "string": 2, "fret": 12, "beat": 4, "duration": 0.5, "label": "D" },
+        { "id": "n10", "string": 2, "fret": 14, "beat": 4.5, "duration": 0.5, "label": "E" },
+        { "id": "n11", "string": 2, "fret": 12, "beat": 5, "duration": 0.5, "label": "D" },
+        { "id": "n12", "string": 1, "fret": 12, "beat": 5.5, "duration": 0.5, "label": "A" },
+        { "id": "n13", "string": 2, "fret": 14, "beat": 6, "duration": 0.5, "label": "E" },
+        { "id": "n14", "string": 2, "fret": 12, "beat": 6.5, "duration": 0.5, "label": "D" },
+        { "id": "n15", "string": 1, "fret": 14, "beat": 7, "duration": 0.5, "label": "B" },
+        { "id": "n16", "string": 2, "fret": 12, "beat": 7.5, "duration": 0.5, "label": "D" }
+      ]
+    }
+  ]
+}

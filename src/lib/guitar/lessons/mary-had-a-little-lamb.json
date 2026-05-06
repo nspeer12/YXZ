@@ -1,0 +1,43 @@
+{
+  "id": "mary-had-a-little-lamb",
+  "title": "Mary Had a Little Lamb",
+  "description": "A classic first melody. All notes on the B string — get comfortable picking single notes in time.",
+  "category": "song",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "exercises": [
+    {
+      "id": "melody",
+      "title": "Melody",
+      "instruction": "All on the B string. Use one finger per fret. Frets: 0, 3, 1, 0, 0, 0, 0, 3, 3, 3, 0, 3, 1, 0, 0, 0, 0, 0, 3, 3, 0, 3, 1, 0.",
+      "bpm": 80,
+      "targets": [
+        { "id": "n1", "string": 4, "fret": 0, "beat": 0, "duration": 1, "label": "B (open)" },
+        { "id": "n2", "string": 4, "fret": 3, "beat": 1, "duration": 1, "label": "D" },
+        { "id": "n3", "string": 4, "fret": 1, "beat": 2, "duration": 1, "label": "C" },
+        { "id": "n4", "string": 4, "fret": 0, "beat": 3, "duration": 1, "label": "B (open)" },
+        { "id": "n5", "string": 4, "fret": 0, "beat": 4, "duration": 1, "label": "B (open)" },
+        { "id": "n6", "string": 4, "fret": 0, "beat": 5, "duration": 1, "label": "B (open)" },
+        { "id": "n7", "string": 4, "fret": 0, "beat": 6, "duration": 1, "label": "B (open)" },
+        { "id": "n8", "string": 4, "fret": 3, "beat": 7, "duration": 1, "label": "D" },
+        { "id": "n9", "string": 4, "fret": 3, "beat": 8, "duration": 1, "label": "D" },
+        { "id": "n10", "string": 4, "fret": 3, "beat": 9, "duration": 1, "label": "D" },
+        { "id": "n11", "string": 4, "fret": 0, "beat": 10, "duration": 1, "label": "B (open)" },
+        { "id": "n12", "string": 4, "fret": 3, "beat": 11, "duration": 1, "label": "D" },
+        { "id": "n13", "string": 4, "fret": 1, "beat": 12, "duration": 1, "label": "C" },
+        { "id": "n14", "string": 4, "fret": 0, "beat": 13, "duration": 1, "label": "B (open)" },
+        { "id": "n15", "string": 4, "fret": 0, "beat": 14, "duration": 1, "label": "B (open)" },
+        { "id": "n16", "string": 4, "fret": 0, "beat": 15, "duration": 1, "label": "B (open)" },
+        { "id": "n17", "string": 4, "fret": 0, "beat": 16, "duration": 1, "label": "B (open)" },
+        { "id": "n18", "string": 4, "fret": 0, "beat": 17, "duration": 1, "label": "B (open)" },
+        { "id": "n19", "string": 4, "fret": 3, "beat": 18, "duration": 1, "label": "D" },
+        { "id": "n20", "string": 4, "fret": 3, "beat": 19, "duration": 1, "label": "D" },
+        { "id": "n21", "string": 4, "fret": 0, "beat": 20, "duration": 1, "label": "B (open)" },
+        { "id": "n22", "string": 4, "fret": 3, "beat": 21, "duration": 1, "label": "D" },
+        { "id": "n23", "string": 4, "fret": 1, "beat": 22, "duration": 1, "label": "C" },
+        { "id": "n24", "string": 4, "fret": 0, "beat": 23, "duration": 1, "label": "B (open)" }
+      ]
+    }
+  ]
+}

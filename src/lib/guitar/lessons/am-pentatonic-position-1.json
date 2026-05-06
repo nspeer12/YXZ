@@ -1,0 +1,52 @@
+{
+  "id": "am-pentatonic-position-1",
+  "title": "A minor pentatonic — position 1",
+  "description": "The most-used scale in rock and blues. Five frets, two notes per string. Memorize this shape.",
+  "category": "scales",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "prerequisites": [],
+  "passAccuracy": 0.65,
+  "exercises": [
+    {
+      "id": "ascending",
+      "title": "Ascending",
+      "instruction": "Two notes per string, low to high. Use index for fret 5, ring for fret 7, pinky for fret 8.",
+      "bpm": 70,
+      "targets": [
+        { "id": "a0",  "string": 0, "fret": 5, "beat": 0,  "duration": 1, "label": "A" },
+        { "id": "a1",  "string": 0, "fret": 8, "beat": 1,  "duration": 1, "label": "C" },
+        { "id": "a2",  "string": 1, "fret": 5, "beat": 2,  "duration": 1, "label": "D" },
+        { "id": "a3",  "string": 1, "fret": 7, "beat": 3,  "duration": 1, "label": "E" },
+        { "id": "a4",  "string": 2, "fret": 5, "beat": 4,  "duration": 1, "label": "G" },
+        { "id": "a5",  "string": 2, "fret": 7, "beat": 5,  "duration": 1, "label": "A" },
+        { "id": "a6",  "string": 3, "fret": 5, "beat": 6,  "duration": 1, "label": "C" },
+        { "id": "a7",  "string": 3, "fret": 7, "beat": 7,  "duration": 1, "label": "D" },
+        { "id": "a8",  "string": 4, "fret": 5, "beat": 8,  "duration": 1, "label": "E" },
+        { "id": "a9",  "string": 4, "fret": 8, "beat": 9,  "duration": 1, "label": "G" },
+        { "id": "a10", "string": 5, "fret": 5, "beat": 10, "duration": 1, "label": "A" },
+        { "id": "a11", "string": 5, "fret": 8, "beat": 11, "duration": 1, "label": "C" }
+      ]
+    },
+    {
+      "id": "descending",
+      "title": "Descending",
+      "instruction": "Now reverse it — high to low. Same shape, opposite direction.",
+      "bpm": 70,
+      "targets": [
+        { "id": "d0",  "string": 5, "fret": 8, "beat": 0,  "duration": 1, "label": "C" },
+        { "id": "d1",  "string": 5, "fret": 5, "beat": 1,  "duration": 1, "label": "A" },
+        { "id": "d2",  "string": 4, "fret": 8, "beat": 2,  "duration": 1, "label": "G" },
+        { "id": "d3",  "string": 4, "fret": 5, "beat": 3,  "duration": 1, "label": "E" },
+        { "id": "d4",  "string": 3, "fret": 7, "beat": 4,  "duration": 1, "label": "D" },
+        { "id": "d5",  "string": 3, "fret": 5, "beat": 5,  "duration": 1, "label": "C" },
+        { "id": "d6",  "string": 2, "fret": 7, "beat": 6,  "duration": 1, "label": "A" },
+        { "id": "d7",  "string": 2, "fret": 5, "beat": 7,  "duration": 1, "label": "G" },
+        { "id": "d8",  "string": 1, "fret": 7, "beat": 8,  "duration": 1, "label": "E" },
+        { "id": "d9",  "string": 1, "fret": 5, "beat": 9,  "duration": 1, "label": "D" },
+        { "id": "d10", "string": 0, "fret": 8, "beat": 10, "duration": 1, "label": "C" },
+        { "id": "d11", "string": 0, "fret": 5, "beat": 11, "duration": 1, "label": "A" }
+      ]
+    }
+  ]
+}

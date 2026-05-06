@@ -1,0 +1,48 @@
+{
+  "id": "three-little-birds",
+  "title": "Three Little Birds — verse",
+  "description": "Three-chord reggae feelgood classic. A, D, E throughout — the upstroke skank rhythm is the only challenge.",
+  "category": "song",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Bob Marley & The Wailers",
+  "year": 1977,
+  "tags": ["70s", "reggae", "campfire", "singalong", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=zaGUr6wzyT8",
+    "spotify": "https://open.spotify.com/track/6A9mKXlFRPMPem6ygQSt7z",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/bob-marley/three-little-birds-chords-46663"
+  },
+  "credits": "Bob Marley & The Wailers — Three Little Birds (1977)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Verse progression (slow practice)",
+      "instruction": "Half-speed practice. A (8), D (4), A (4), E (4), D (4), A (8). For now strum on every beat — once it's clean, try the reggae upstroke on the off-beats.",
+      "bpm": 38,
+      "targets": [
+        { "id": "a1", "string": 1, "fret": 0, "beat": 0, "duration": 8, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 8, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a2", "string": 1, "fret": 0, "beat": 12, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "e1", "string": 0, "fret": 0, "beat": 16, "duration": 4, "label": "E", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 1 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 20, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a3", "string": 1, "fret": 0, "beat": 24, "duration": 8, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Verse progression (target tempo)",
+      "instruction": "Target tempo. Don't worry, every little thing is gonna be alright — just keep the chords moving.",
+      "bpm": 76,
+      "targets": [
+        { "id": "a1", "string": 1, "fret": 0, "beat": 0, "duration": 8, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 8, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a2", "string": 1, "fret": 0, "beat": 12, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "e1", "string": 0, "fret": 0, "beat": 16, "duration": 4, "label": "E", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 1 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 20, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a3", "string": 1, "fret": 0, "beat": 24, "duration": 8, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

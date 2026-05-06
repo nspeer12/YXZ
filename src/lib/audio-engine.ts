@@ -111,6 +111,13 @@ export class AudioEngine {
   private fftAnalyser: Tone.Analyser | null = null;
   private recorder: Tone.Recorder | null = null;
   private outputGain: Tone.Gain | null = null;
+  // External audio input (mic / interface). Routed THROUGH the same effects
+  // chain as the synth so the user only configures one chain. The
+  // `inputGain` doubles as the on/off switch — gain 0 = no monitoring AND
+  // not recorded, gain 1 = both. Default 0 to avoid feedback.
+  private inputSource: MediaStreamAudioSourceNode | null = null;
+  private inputGain: Tone.Gain | null = null;
+  private inputMeter: Tone.Meter | null = null;
   private isInitialized = false;
   private isRecording = false;
   private currentWaveform: Float32Array;
@@ -184,10 +191,17 @@ export class AudioEngine {
     
     // Create output gain for routing to looper
     this.outputGain = new Tone.Gain(1);
-    
+
     // Create recorder for recording
     this.recorder = new Tone.Recorder();
-    
+
+    // External-input nodes. inputGain = 0 means input is silent AND not
+    // recorded; setting it to 1 ("monitoring on") routes the live input
+    // through the shared effects chain alongside the synth.
+    this.inputGain = new Tone.Gain(0);
+    this.inputMeter = new Tone.Meter({ smoothing: 0.85 });
+    this.inputGain.connect(this.inputMeter);
+
     // Create synth with custom oscillator support
     this.synth = new Tone.Synth({
       oscillator: {
@@ -200,7 +214,7 @@ export class AudioEngine {
         release: 0.5,
       },
     });
-    
+
     // Initial connection (no effects)
     this.rebuildEffectsChain();
     this.outputGain.connect(this.recorder);
@@ -310,6 +324,14 @@ export class AudioEngine {
 
     // Disconnect everything
     this.synth.disconnect();
+    if (this.inputGain) {
+      this.inputGain.disconnect();
+      // inputGain feeds both the input meter (always) and the chain head.
+      // Reconnect the meter immediately so it never misses a frame.
+      if (this.inputMeter) {
+        this.inputGain.connect(this.inputMeter);
+      }
+    }
     this.effects.forEach(effect => {
       if (effect.node) {
         effect.node.disconnect();
@@ -321,8 +343,12 @@ export class AudioEngine {
     const enabledEffects = this.effects.filter(e => e.enabled && e.node);
 
     if (enabledEffects.length === 0) {
-      // Direct connection: synth -> outputGain -> analyser -> destination
+      // Direct connection: synth -> outputGain
       this.synth.connect(this.outputGain);
+      // Mirror for live input
+      if (this.inputGain) {
+        this.inputGain.connect(this.outputGain);
+      }
     } else {
       // Build chain: synth -> effect1 -> effect2 -> ... -> outputGain
       let lastNode: Tone.ToneAudioNode = this.synth;
@@ -331,6 +357,10 @@ export class AudioEngine {
         lastNode = effect.node!;
       }
       lastNode.connect(this.outputGain);
+      // Live input also feeds the head of the chain so it shares effects
+      if (this.inputGain) {
+        this.inputGain.connect(enabledEffects[0].node!);
+      }
     }
 
     // Connect outputGain to both analysers and destination
@@ -765,6 +795,19 @@ export class AudioEngine {
     this.synth.triggerRelease();
   }
 
+  /**
+   * Trigger a note at an explicit transport time. Used by the looper to
+   * play back recorded MIDI events sample-accurately.
+   */
+  scheduleNote(note: string, durationSec: number, time: number, velocity: number = 0.8): void {
+    if (!this.synth || !this.isInitialized) return;
+    try {
+      this.synth.triggerAttackRelease(note, durationSec, time, velocity);
+    } catch (e) {
+      console.warn('[AudioEngine] scheduleNote failed:', e);
+    }
+  }
+
   isReady(): boolean {
     return this.isInitialized;
   }
@@ -785,6 +828,53 @@ export class AudioEngine {
 
   getOutputGain(): Tone.Gain | null {
     return this.outputGain;
+  }
+
+  /**
+   * Attach (or detach) a live MediaStream as a parallel input source feeding
+   * the same effects chain as the synth. Pass null to detach.
+   *
+   * Routing: stream -> MediaStreamAudioSource -> inputGain -> [effects chain]
+   *                                                       -> outputGain -> destination
+   *
+   * Use setInputMonitorEnabled() to make the input audible/recorded.
+   */
+  setExternalInputStream(stream: MediaStream | null): void {
+    if (!this.inputGain) return;
+    const ctx = Tone.getContext().rawContext as AudioContext;
+
+    // Detach existing source first
+    if (this.inputSource) {
+      try { this.inputSource.disconnect(); } catch { /* */ }
+      this.inputSource = null;
+    }
+
+    if (stream) {
+      const source = ctx.createMediaStreamSource(stream);
+      // Connect to inputGain's underlying native GainNode (Tone v15).
+      source.connect(this.inputGain.input);
+      this.inputSource = source;
+    }
+  }
+
+  /** Toggle whether the live input feeds the chain (and is heard/recorded). */
+  setInputMonitorEnabled(enabled: boolean): void {
+    if (!this.inputGain) return;
+    this.inputGain.gain.rampTo(enabled ? 1 : 0, 0.02);
+  }
+
+  isInputMonitorEnabled(): boolean {
+    return !!this.inputGain && this.inputGain.gain.value > 0.5;
+  }
+
+  /** RMS level of the live input, 0..1, regardless of monitor state. */
+  getInputLevel(): number {
+    if (!this.inputMeter) return 0;
+    const v = this.inputMeter.getValue();
+    const db = typeof v === 'number' ? v : Array.isArray(v) ? v[0] : -Infinity;
+    if (!isFinite(db)) return 0;
+    // Map -60..0 dB to 0..1
+    return Math.max(0, Math.min(1, (db + 60) / 60));
   }
 
   async startRecording(): Promise<void> {
@@ -812,6 +902,12 @@ export class AudioEngine {
     this.fftAnalyser?.dispose();
     this.recorder?.dispose();
     this.outputGain?.dispose();
+    if (this.inputSource) {
+      try { this.inputSource.disconnect(); } catch { /* */ }
+      this.inputSource = null;
+    }
+    this.inputGain?.dispose();
+    this.inputMeter?.dispose();
     this.isInitialized = false;
   }
 }

@@ -1,0 +1,64 @@
+{
+  "id": "come-as-you-are",
+  "title": "Come As You Are — main intro riff",
+  "description": "A chorus-drenched two-string riff in E — repetitive, mellow, and great for picking control. Original is in drop-D tuned a half-step flat; this lesson plays it in standard.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Nirvana",
+  "year": 1991,
+  "tags": ["90s", "grunge", "alternative", "iconic-riff", "single-note-riff"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=vabnZ9-ex7o",
+    "spotify": "https://open.spotify.com/track/4P5KoWXOxwuobLmHXLMobV",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/nirvana/come-as-you-are-tabs-12534"
+  },
+  "credits": "Nirvana — Come As You Are (1991)",
+  "exercises": [
+    {
+      "id": "intro-riff-slow",
+      "title": "Intro riff (slow practice)",
+      "instruction": "Half-speed practice. Two strings: low E and A. Pattern is E (open) — F# (low E fret 2) — A (open) — B (A fret 2) — A (open) — F# — E — rest. Use one finger per fret, keep your wrist relaxed.",
+      "bpm": 60,
+      "targets": [
+        { "id": "n1", "string": 0, "fret": 0, "beat": 0, "duration": 0.5, "label": "E (open)" },
+        { "id": "n2", "string": 0, "fret": 2, "beat": 0.5, "duration": 0.5, "label": "F#" },
+        { "id": "n3", "string": 1, "fret": 0, "beat": 1, "duration": 0.5, "label": "A (open)" },
+        { "id": "n4", "string": 1, "fret": 2, "beat": 1.5, "duration": 0.5, "label": "B" },
+        { "id": "n5", "string": 1, "fret": 0, "beat": 2, "duration": 0.5, "label": "A (open)" },
+        { "id": "n6", "string": 0, "fret": 2, "beat": 2.5, "duration": 0.5, "label": "F#" },
+        { "id": "n7", "string": 0, "fret": 0, "beat": 3, "duration": 0.5, "label": "E (open)" },
+        { "id": "n8", "string": 0, "fret": 0, "beat": 4, "duration": 0.5, "label": "E (open)" },
+        { "id": "n9", "string": 0, "fret": 2, "beat": 4.5, "duration": 0.5, "label": "F#" },
+        { "id": "n10", "string": 1, "fret": 0, "beat": 5, "duration": 0.5, "label": "A (open)" },
+        { "id": "n11", "string": 1, "fret": 2, "beat": 5.5, "duration": 0.5, "label": "B" },
+        { "id": "n12", "string": 1, "fret": 0, "beat": 6, "duration": 0.5, "label": "A (open)" },
+        { "id": "n13", "string": 0, "fret": 2, "beat": 6.5, "duration": 0.5, "label": "F#" },
+        { "id": "n14", "string": 0, "fret": 0, "beat": 7, "duration": 0.5, "label": "E (open)" }
+      ]
+    },
+    {
+      "id": "intro-riff-tempo",
+      "title": "Intro riff (target tempo)",
+      "instruction": "Full speed. Smooth alternate picking. Add a chorus pedal if you have one for that authentic mellow tone.",
+      "bpm": 120,
+      "targets": [
+        { "id": "n1", "string": 0, "fret": 0, "beat": 0, "duration": 0.5, "label": "E (open)" },
+        { "id": "n2", "string": 0, "fret": 2, "beat": 0.5, "duration": 0.5, "label": "F#" },
+        { "id": "n3", "string": 1, "fret": 0, "beat": 1, "duration": 0.5, "label": "A (open)" },
+        { "id": "n4", "string": 1, "fret": 2, "beat": 1.5, "duration": 0.5, "label": "B" },
+        { "id": "n5", "string": 1, "fret": 0, "beat": 2, "duration": 0.5, "label": "A (open)" },
+        { "id": "n6", "string": 0, "fret": 2, "beat": 2.5, "duration": 0.5, "label": "F#" },
+        { "id": "n7", "string": 0, "fret": 0, "beat": 3, "duration": 0.5, "label": "E (open)" },
+        { "id": "n8", "string": 0, "fret": 0, "beat": 4, "duration": 0.5, "label": "E (open)" },
+        { "id": "n9", "string": 0, "fret": 2, "beat": 4.5, "duration": 0.5, "label": "F#" },
+        { "id": "n10", "string": 1, "fret": 0, "beat": 5, "duration": 0.5, "label": "A (open)" },
+        { "id": "n11", "string": 1, "fret": 2, "beat": 5.5, "duration": 0.5, "label": "B" },
+        { "id": "n12", "string": 1, "fret": 0, "beat": 6, "duration": 0.5, "label": "A (open)" },
+        { "id": "n13", "string": 0, "fret": 2, "beat": 6.5, "duration": 0.5, "label": "F#" },
+        { "id": "n14", "string": 0, "fret": 0, "beat": 7, "duration": 0.5, "label": "E (open)" }
+      ]
+    }
+  ]
+}

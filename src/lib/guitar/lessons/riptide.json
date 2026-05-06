@@ -1,0 +1,50 @@
+{
+  "id": "riptide",
+  "title": "Riptide — chord progression",
+  "description": "Am-G-C the whole verse, then F added in the chorus. Bouncy ukulele-style strum. One of the most-played beginner songs of the 2010s.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Vance Joy",
+  "year": 2013,
+  "tags": ["10s", "pop", "singer-songwriter", "campfire", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=uJ_1HMAGb4k",
+    "spotify": "https://open.spotify.com/track/0Ia2aRaeHRmrlaXtiq6Zx2",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/vance-joy/riptide-chords-1335389"
+  },
+  "credits": "Vance Joy — Riptide (2013)",
+  "exercises": [
+    {
+      "id": "verse-chorus-slow",
+      "title": "Am-G-C-Am-G-C-F (slow practice)",
+      "instruction": "Half-speed practice. Each chord lasts 4 beats. F is shown as a mini F (top four strings) — use your first finger to barre strings 4 and 5 at fret 1.",
+      "bpm": 51,
+      "targets": [
+        { "id": "am1", "string": 1, "fret": 0, "beat": 0, "duration": 4, "label": "Am chord", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 8, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "am2", "string": 1, "fret": 0, "beat": 12, "duration": 4, "label": "Am chord", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 16, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 20, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "f1", "string": 0, "fret": 1, "beat": 24, "duration": 4, "label": "F chord", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] }
+      ]
+    },
+    {
+      "id": "verse-chorus-tempo",
+      "title": "Am-G-C-Am-G-C-F (target tempo)",
+      "instruction": "Full speed (102 BPM). Use a bouncy ukulele-style strum: down, down-up, up-down-up. Verse cycles Am-G-C; the chorus brings in F.",
+      "bpm": 102,
+      "targets": [
+        { "id": "am1", "string": 1, "fret": 0, "beat": 0, "duration": 4, "label": "Am chord", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 8, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "am2", "string": 1, "fret": 0, "beat": 12, "duration": 4, "label": "Am chord", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 16, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 20, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "f1", "string": 0, "fret": 1, "beat": 24, "duration": 4, "label": "F chord", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "picking-warmup-1234",
+  "title": "Alternate picking warmup — 5-6-7-8",
+  "description": "Build right-hand speed and accuracy. Eighth notes ascending frets 5-6-7-8 across all six strings, strict down-up picking.",
+  "category": "rhythm",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.7,
+  "prerequisites": [],
+  "exercises": [
+    {
+      "id": "ascending-1234",
+      "title": "Ascending 1-2-3-4 across strings",
+      "instruction": "Frets 5-6-7-8 on each string, low to high. One finger per fret. Strict alternate picking: down-up-down-up. Keep your wrist relaxed.",
+      "bpm": 80,
+      "targets": [
+        { "id": "s0f5", "string": 0, "fret": 5, "beat": 0, "duration": 0.5, "label": "A" },
+        { "id": "s0f6", "string": 0, "fret": 6, "beat": 0.5, "duration": 0.5, "label": "A#" },
+        { "id": "s0f7", "string": 0, "fret": 7, "beat": 1, "duration": 0.5, "label": "B" },
+        { "id": "s0f8", "string": 0, "fret": 8, "beat": 1.5, "duration": 0.5, "label": "C" },
+        { "id": "s1f5", "string": 1, "fret": 5, "beat": 2, "duration": 0.5, "label": "D" },
+        { "id": "s1f6", "string": 1, "fret": 6, "beat": 2.5, "duration": 0.5, "label": "D#" },
+        { "id": "s1f7", "string": 1, "fret": 7, "beat": 3, "duration": 0.5, "label": "E" },
+        { "id": "s1f8", "string": 1, "fret": 8, "beat": 3.5, "duration": 0.5, "label": "F" },
+        { "id": "s2f5", "string": 2, "fret": 5, "beat": 4, "duration": 0.5, "label": "G" },
+        { "id": "s2f6", "string": 2, "fret": 6, "beat": 4.5, "duration": 0.5, "label": "G#" },
+        { "id": "s2f7", "string": 2, "fret": 7, "beat": 5, "duration": 0.5, "label": "A" },
+        { "id": "s2f8", "string": 2, "fret": 8, "beat": 5.5, "duration": 0.5, "label": "A#" },
+        { "id": "s3f5", "string": 3, "fret": 5, "beat": 6, "duration": 0.5, "label": "C" },
+        { "id": "s3f6", "string": 3, "fret": 6, "beat": 6.5, "duration": 0.5, "label": "C#" },
+        { "id": "s3f7", "string": 3, "fret": 7, "beat": 7, "duration": 0.5, "label": "D" },
+        { "id": "s3f8", "string": 3, "fret": 8, "beat": 7.5, "duration": 0.5, "label": "D#" },
+        { "id": "s4f5", "string": 4, "fret": 5, "beat": 8, "duration": 0.5, "label": "E" },
+        { "id": "s4f6", "string": 4, "fret": 6, "beat": 8.5, "duration": 0.5, "label": "F" },
+        { "id": "s4f7", "string": 4, "fret": 7, "beat": 9, "duration": 0.5, "label": "F#" },
+        { "id": "s4f8", "string": 4, "fret": 8, "beat": 9.5, "duration": 0.5, "label": "G" },
+        { "id": "s5f5", "string": 5, "fret": 5, "beat": 10, "duration": 0.5, "label": "A" },
+        { "id": "s5f6", "string": 5, "fret": 6, "beat": 10.5, "duration": 0.5, "label": "A#" },
+        { "id": "s5f7", "string": 5, "fret": 7, "beat": 11, "duration": 0.5, "label": "B" },
+        { "id": "s5f8", "string": 5, "fret": 8, "beat": 11.5, "duration": 0.5, "label": "C" }
+      ]
+    }
+  ]
+}

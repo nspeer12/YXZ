@@ -1,0 +1,72 @@
+{
+  "id": "open-major-chords",
+  "title": "Open major chords — C, G, D, E, A",
+  "description": "The five essential open major chords. Every campfire song uses these — drill the shapes until they're automatic.",
+  "category": "chords",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.6,
+  "prerequisites": [],
+  "exercises": [
+    {
+      "id": "c-major-strums",
+      "title": "C major — 4 strums",
+      "instruction": "C major. Skip the low E. 1st finger on B fret 1, 2nd finger on D fret 2, 3rd finger on A fret 3. Strum from the A string down on each beat.",
+      "bpm": 70,
+      "targets": [
+        { "id": "c1", "string": 1, "fret": 3, "beat": 0, "duration": 1, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 1, "duration": 1, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "c3", "string": 1, "fret": 3, "beat": 2, "duration": 1, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "c4", "string": 1, "fret": 3, "beat": 3, "duration": 1, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "g-major-strums",
+      "title": "G major — 4 strums",
+      "instruction": "G major. All six strings ring. 2nd finger on low E fret 3, 1st finger on A fret 2, 3rd or 4th finger on high E fret 3. Strum all six strings.",
+      "bpm": 70,
+      "targets": [
+        { "id": "g1", "string": 0, "fret": 3, "beat": 0, "duration": 1, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 1, "duration": 1, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "g3", "string": 0, "fret": 3, "beat": 2, "duration": 1, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "g4", "string": 0, "fret": 3, "beat": 3, "duration": 1, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] }
+      ]
+    },
+    {
+      "id": "d-major-strums",
+      "title": "D major — 4 strums",
+      "instruction": "D major. Only four strings — skip low E and A. 1st finger on G fret 2, 2nd finger on high E fret 2, 3rd finger on B fret 3. Strum from D string down.",
+      "bpm": 70,
+      "targets": [
+        { "id": "d1", "string": 2, "fret": 0, "beat": 0, "duration": 1, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 1, "duration": 1, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "d3", "string": 2, "fret": 0, "beat": 2, "duration": 1, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "d4", "string": 2, "fret": 0, "beat": 3, "duration": 1, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] }
+      ]
+    },
+    {
+      "id": "e-major-strums",
+      "title": "E major — 4 strums",
+      "instruction": "E major. All six strings. 1st finger on G fret 1, 2nd finger on A fret 2, 3rd finger on D fret 2. Strum everything.",
+      "bpm": 70,
+      "targets": [
+        { "id": "e1", "string": 0, "fret": 0, "beat": 0, "duration": 1, "label": "E", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 1 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "e2", "string": 0, "fret": 0, "beat": 1, "duration": 1, "label": "E", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 1 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "e3", "string": 0, "fret": 0, "beat": 2, "duration": 1, "label": "E", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 1 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "e4", "string": 0, "fret": 0, "beat": 3, "duration": 1, "label": "E", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 1 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "a-major-strums",
+      "title": "A major — 4 strums",
+      "instruction": "A major. Skip the low E. Three fingers stacked on fret 2: D, G, B. Strum from the A string down.",
+      "bpm": 70,
+      "targets": [
+        { "id": "a1", "string": 1, "fret": 0, "beat": 0, "duration": 1, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "a2", "string": 1, "fret": 0, "beat": 1, "duration": 1, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "a3", "string": 1, "fret": 0, "beat": 2, "duration": 1, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "a4", "string": 1, "fret": 0, "beat": 3, "duration": 1, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

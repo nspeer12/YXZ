@@ -1,0 +1,35 @@
+{
+  "id": "power-chords-e5-a5",
+  "title": "Power chords — E5 and A5",
+  "description": "Two-finger power chords. The backbone of rock and punk. Strum and palm-mute these between notes.",
+  "category": "chords",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.6,
+  "exercises": [
+    {
+      "id": "e5-a5-alternation",
+      "title": "E5 / A5 alternation",
+      "instruction": "Power chord shape: root + 5th + octave. For E5, low E open + A fret 2 + D fret 2. For A5, A open + D fret 2 + G fret 2. Strum just those three strings; palm-mute everything else.",
+      "bpm": 70,
+      "targets": [
+        { "id": "t0",  "string": 0, "fret": 0, "beat": 0,  "duration": 1, "label": "E5", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }] },
+        { "id": "t1",  "string": 0, "fret": 0, "beat": 1,  "duration": 1, "label": "E5", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }] },
+        { "id": "t2",  "string": 0, "fret": 0, "beat": 2,  "duration": 1, "label": "E5", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }] },
+        { "id": "t3",  "string": 0, "fret": 0, "beat": 3,  "duration": 1, "label": "E5", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }] },
+        { "id": "t4",  "string": 1, "fret": 0, "beat": 4,  "duration": 1, "label": "A5", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }] },
+        { "id": "t5",  "string": 1, "fret": 0, "beat": 5,  "duration": 1, "label": "A5", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }] },
+        { "id": "t6",  "string": 1, "fret": 0, "beat": 6,  "duration": 1, "label": "A5", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }] },
+        { "id": "t7",  "string": 1, "fret": 0, "beat": 7,  "duration": 1, "label": "A5", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }] },
+        { "id": "t8",  "string": 0, "fret": 0, "beat": 8,  "duration": 1, "label": "E5", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }] },
+        { "id": "t9",  "string": 0, "fret": 0, "beat": 9,  "duration": 1, "label": "E5", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }] },
+        { "id": "t10", "string": 0, "fret": 0, "beat": 10, "duration": 1, "label": "E5", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }] },
+        { "id": "t11", "string": 0, "fret": 0, "beat": 11, "duration": 1, "label": "E5", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }] },
+        { "id": "t12", "string": 1, "fret": 0, "beat": 12, "duration": 1, "label": "A5", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }] },
+        { "id": "t13", "string": 1, "fret": 0, "beat": 13, "duration": 1, "label": "A5", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }] },
+        { "id": "t14", "string": 1, "fret": 0, "beat": 14, "duration": 1, "label": "A5", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }] },
+        { "id": "t15", "string": 1, "fret": 0, "beat": 15, "duration": 1, "label": "A5", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }] }
+      ]
+    }
+  ]
+}

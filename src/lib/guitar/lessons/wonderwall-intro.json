@@ -1,0 +1,49 @@
+{
+  "id": "wonderwall-intro",
+  "title": "Wonderwall — intro chords",
+  "description": "The iconic Oasis intro: Em7, G, Dsus4, A7sus4. Strum each chord once per bar and let them ring out.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "prerequisites": [],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=bx1Bh8ZvH84",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/oasis/wonderwall-chords-15596"
+  },
+  "credits": "Oasis — Wonderwall (1995)",
+  "exercises": [
+    {
+      "id": "intro-progression-slow",
+      "title": "Intro progression (slow practice)",
+      "instruction": "Half-speed practice. The progression is Em7 → G → Dsus4 → A7sus4. Strum once on beat 1 of each bar and let it ring. Capo 2 on the original recording, but no capo is fine for practice.",
+      "bpm": 44,
+      "targets": [
+        { "id": "em7-1", "string": 0, "fret": 0, "beat": 0, "duration": 4, "label": "Em7", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "g-1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "dsus4-1", "string": 2, "fret": 0, "beat": 8, "duration": 4, "label": "Dsus4", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "a7sus4-1", "string": 1, "fret": 0, "beat": 12, "duration": 4, "label": "A7sus4", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 0 }] },
+        { "id": "em7-2", "string": 0, "fret": 0, "beat": 16, "duration": 4, "label": "Em7", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "g-2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "dsus4-2", "string": 2, "fret": 0, "beat": 24, "duration": 4, "label": "Dsus4", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "a7sus4-2", "string": 1, "fret": 0, "beat": 28, "duration": 4, "label": "A7sus4", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "intro-progression-tempo",
+      "title": "Intro progression (target tempo)",
+      "instruction": "Full speed at 87 BPM. Same chord shapes — Em7 → G → Dsus4 → A7sus4. Once you've nailed the changes, try adding the strum pattern from the original.",
+      "bpm": 87,
+      "targets": [
+        { "id": "em7-1", "string": 0, "fret": 0, "beat": 0, "duration": 4, "label": "Em7", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "g-1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "dsus4-1", "string": 2, "fret": 0, "beat": 8, "duration": 4, "label": "Dsus4", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "a7sus4-1", "string": 1, "fret": 0, "beat": 12, "duration": 4, "label": "A7sus4", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 0 }] },
+        { "id": "em7-2", "string": 0, "fret": 0, "beat": 16, "duration": 4, "label": "Em7", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "g-2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "dsus4-2", "string": 2, "fret": 0, "beat": 24, "duration": 4, "label": "Dsus4", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 3 }] },
+        { "id": "a7sus4-2", "string": 1, "fret": 0, "beat": 28, "duration": 4, "label": "A7sus4", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

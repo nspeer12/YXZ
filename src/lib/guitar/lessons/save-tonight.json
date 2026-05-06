@@ -1,0 +1,52 @@
+{
+  "id": "save-tonight",
+  "title": "Save Tonight — chord progression",
+  "description": "Am-F-C-G the entire song — that's it. Four chords, identical pattern verse and chorus. Among the easiest 90s hits to learn end-to-end.",
+  "category": "song",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Eagle-Eye Cherry",
+  "year": 1997,
+  "tags": ["90s", "pop", "singer-songwriter", "campfire", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=2_zJBrtpL_Q",
+    "spotify": "https://open.spotify.com/track/1t2Hq2WIBcZINOEnK6mdJG",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/eagle-eye-cherry/save-tonight-chords-27651"
+  },
+  "credits": "Eagle-Eye Cherry — Save Tonight (1997)",
+  "exercises": [
+    {
+      "id": "verse-chorus-slow",
+      "title": "Am-F-C-G (slow practice)",
+      "instruction": "Half-speed practice. Each chord lasts 4 beats. F is shown as a mini F (top four strings) — use your first finger to barre strings 4 and 5 at fret 1.",
+      "bpm": 51,
+      "targets": [
+        { "id": "am1", "string": 1, "fret": 0, "beat": 0, "duration": 4, "label": "Am chord", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "f1", "string": 0, "fret": 1, "beat": 4, "duration": 4, "label": "F chord", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 8, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 12, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "am2", "string": 1, "fret": 0, "beat": 16, "duration": 4, "label": "Am chord", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "f2", "string": 0, "fret": 1, "beat": 20, "duration": 4, "label": "F chord", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 24, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 28, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] }
+      ]
+    },
+    {
+      "id": "verse-chorus-tempo",
+      "title": "Am-F-C-G (target tempo)",
+      "instruction": "Full speed (102 BPM). Same four chords on repeat for the whole song — get them under your fingers and you can play it end-to-end.",
+      "bpm": 102,
+      "targets": [
+        { "id": "am1", "string": 1, "fret": 0, "beat": 0, "duration": 4, "label": "Am chord", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "f1", "string": 0, "fret": 1, "beat": 4, "duration": 4, "label": "F chord", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 8, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 12, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "am2", "string": 1, "fret": 0, "beat": 16, "duration": 4, "label": "Am chord", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "f2", "string": 0, "fret": 1, "beat": 20, "duration": 4, "label": "F chord", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 24, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 28, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] }
+      ]
+    }
+  ]
+}

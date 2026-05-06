@@ -1,0 +1,48 @@
+{
+  "id": "knockin-on-heavens-door",
+  "title": "Knockin' on Heaven's Door — verse/chorus",
+  "description": "Four open chords in a slow, repeating cycle. Famously simple — the entire song is G-D-Am, G-D-C. Perfect first full song.",
+  "category": "song",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Bob Dylan",
+  "year": 1973,
+  "tags": ["70s", "folk", "rock-classic", "campfire", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=rnKbImRPhTE",
+    "spotify": "https://open.spotify.com/track/6HSXNV0b4M4cLJ7ljgVVeh",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/bob-dylan/knockin-on-heavens-door-chords-27585"
+  },
+  "credits": "Bob Dylan — Knockin' on Heaven's Door (1973)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Progression (slow practice)",
+      "instruction": "Half-speed practice. The two-bar cycle: G (4), D (4), Am (8) — then G (4), D (4), C (8). Strum each chord steadily across its bars.",
+      "bpm": 35,
+      "targets": [
+        { "id": "g1", "string": 0, "fret": 3, "beat": 0, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 4, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "am1", "string": 1, "fret": 0, "beat": 8, "duration": 8, "label": "Am", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 16, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 20, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 24, "duration": 8, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Progression (target tempo)",
+      "instruction": "Target tempo. G, D, Am — G, D, C. Two bars per chord on the Am and C. This is the entire song.",
+      "bpm": 70,
+      "targets": [
+        { "id": "g1", "string": 0, "fret": 3, "beat": 0, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 4, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "am1", "string": 1, "fret": 0, "beat": 8, "duration": 8, "label": "Am", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 16, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 20, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 24, "duration": 8, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "let-it-be",
+  "title": "Let It Be — verse progression",
+  "description": "Iconic four-chord cycle in C: C-G-Am-F (I-V-vi-IV). The F chord is the trickiest — small barre or simplified F shape both work.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "The Beatles",
+  "year": 1970,
+  "tags": ["70s", "rock-classic", "pop", "singalong", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=QDYfEBY9NM4",
+    "spotify": "https://open.spotify.com/track/5V1AHQugSTASVez5ffJtFo",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/the-beatles/let-it-be-chords-27533"
+  },
+  "credits": "The Beatles — Let It Be (1970)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Verse progression (slow practice)",
+      "instruction": "Half-speed practice. C-G-Am-F-C-G-F-C cycle, 4 beats per chord. The F is the hardest — try the mini-F shape on the top four strings.",
+      "bpm": 50,
+      "targets": [
+        { "id": "c1", "string": 1, "fret": 3, "beat": 0, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "am1", "string": 1, "fret": 0, "beat": 8, "duration": 4, "label": "Am", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "f1", "string": 0, "fret": 1, "beat": 12, "duration": 4, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 16, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "f2", "string": 0, "fret": 1, "beat": 24, "duration": 4, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c3", "string": 1, "fret": 3, "beat": 28, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Verse progression (target tempo)",
+      "instruction": "Full speed. Sing along — 'When I find myself in times of trouble...' Aim for clean transitions especially into and out of F.",
+      "bpm": 73,
+      "targets": [
+        { "id": "c1", "string": 1, "fret": 3, "beat": 0, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "am1", "string": 1, "fret": 0, "beat": 8, "duration": 4, "label": "Am", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "f1", "string": 0, "fret": 1, "beat": 12, "duration": 4, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 16, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "f2", "string": 0, "fret": 1, "beat": 24, "duration": 4, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c3", "string": 1, "fret": 3, "beat": 28, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

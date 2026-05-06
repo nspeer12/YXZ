@@ -1,0 +1,48 @@
+{
+  "id": "house-of-the-rising-sun",
+  "title": "House of the Rising Sun — chord progression",
+  "description": "Classic 6/8 arpeggio over Am-C-D-F-Am-E. Beautiful fingerpicking introduction — every beginner should learn this.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "The Animals",
+  "year": 1964,
+  "tags": ["60s", "folk", "rock-classic", "fingerpicking"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=N4bFqW_eu2I",
+    "spotify": "https://open.spotify.com/track/7BY005dacJkbO6EPiOh2wb",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/the-animals/house-of-the-rising-sun-chords-184858"
+  },
+  "credits": "The Animals — House of the Rising Sun (1964)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Verse progression (slow practice)",
+      "instruction": "Each chord gets 6 beats (one bar of 6/8). Progression: Am → C → D → F → Am → E. Fingerpick or arpeggiate slowly — let every note ring. The F is the trickiest; use a mini barre on the top two strings.",
+      "bpm": 50,
+      "targets": [
+        { "id": "am1", "string": 1, "fret": 0, "beat": 0, "duration": 6, "label": "Am", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 6, "duration": 6, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 12, "duration": 6, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "f1", "string": 0, "fret": 1, "beat": 18, "duration": 6, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "am2", "string": 1, "fret": 0, "beat": 24, "duration": 6, "label": "Am", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "e1", "string": 0, "fret": 0, "beat": 30, "duration": 6, "label": "E", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 1 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Verse progression (target tempo)",
+      "instruction": "Full speed in 6/8. Am → C → D → F → Am → E. Keep your fingerpicking even and let the arpeggios breathe between chord changes.",
+      "bpm": 76,
+      "targets": [
+        { "id": "am1", "string": 1, "fret": 0, "beat": 0, "duration": 6, "label": "Am", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 6, "duration": 6, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 12, "duration": 6, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "f1", "string": 0, "fret": 1, "beat": 18, "duration": 6, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "am2", "string": 1, "fret": 0, "beat": 24, "duration": 6, "label": "Am", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "e1", "string": 0, "fret": 0, "beat": 30, "duration": 6, "label": "E", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 1 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

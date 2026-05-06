@@ -1,0 +1,52 @@
+{
+  "id": "bad-moon-rising",
+  "title": "Bad Moon Rising — verse progression",
+  "description": "Three-chord D-A-G classic. Fast strum but the chord changes are dead simple — perfect for building chord-change speed.",
+  "category": "song",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Creedence Clearwater Revival",
+  "year": 1969,
+  "tags": ["60s", "rock-classic", "country", "campfire", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=5BmEGm-mraE",
+    "spotify": "https://open.spotify.com/track/20OFwXhEXf12DzwXmaV7fj",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/creedence-clearwater-revival/bad-moon-rising-chords-27584"
+  },
+  "credits": "Creedence Clearwater Revival — Bad Moon Rising (1969)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Verse progression (slow practice)",
+      "instruction": "Half-speed practice. D-A-G-D pattern repeats. Quick D to A to G changes (2-2-4 beats), then a longer D. Short durations test your chord change speed.",
+      "bpm": 90,
+      "targets": [
+        { "id": "d1", "string": 2, "fret": 0, "beat": 0, "duration": 2, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a1", "string": 1, "fret": 0, "beat": 2, "duration": 2, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 8, "duration": 8, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "d3", "string": 2, "fret": 0, "beat": 16, "duration": 2, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a2", "string": 1, "fret": 0, "beat": 18, "duration": 2, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d4", "string": 2, "fret": 0, "beat": 24, "duration": 8, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Verse progression (target tempo)",
+      "instruction": "Full speed. CCR's foot-stomping tempo. Lock in those quick D-A-G changes. Down-up strumming pattern works great.",
+      "bpm": 180,
+      "targets": [
+        { "id": "d1", "string": 2, "fret": 0, "beat": 0, "duration": 2, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a1", "string": 1, "fret": 0, "beat": 2, "duration": 2, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 8, "duration": 8, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "d3", "string": 2, "fret": 0, "beat": 16, "duration": 2, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a2", "string": 1, "fret": 0, "beat": 18, "duration": 2, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d4", "string": 2, "fret": 0, "beat": 24, "duration": 8, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] }
+      ]
+    }
+  ]
+}

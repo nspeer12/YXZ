@@ -1,0 +1,68 @@
+{
+  "id": "you-really-got-me",
+  "title": "You Really Got Me — main intro riff",
+  "description": "Two-chord proto-punk riff — F5 to G5 sliding power chords. Practically the easiest classic-rock riff in the canon.",
+  "category": "song",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "The Kinks",
+  "year": 1964,
+  "tags": ["60s", "rock-classic", "punk", "iconic-riff", "power-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=qy23kOY3SU4",
+    "spotify": "https://open.spotify.com/track/29SyMC0plk6qw8NMF7lfRL",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/the-kinks/you-really-got-me-tabs-12614"
+  },
+  "credits": "The Kinks — You Really Got Me (1964)",
+  "exercises": [
+    {
+      "id": "intro-riff-slow",
+      "title": "Intro riff (slow practice)",
+      "instruction": "Half-speed practice. Two power chords: F5 (root on low E, fret 1) then G5 (low E, fret 3). Eight eighth notes per bar — F F G G F F G G. Pitch grading targets the chord root on the low E string.",
+      "bpm": 70,
+      "targets": [
+        { "id": "n1", "string": 0, "fret": 1, "beat": 0, "duration": 0.5, "label": "F5" },
+        { "id": "n2", "string": 0, "fret": 1, "beat": 0.5, "duration": 0.5, "label": "F5" },
+        { "id": "n3", "string": 0, "fret": 3, "beat": 1, "duration": 0.5, "label": "G5" },
+        { "id": "n4", "string": 0, "fret": 3, "beat": 1.5, "duration": 0.5, "label": "G5" },
+        { "id": "n5", "string": 0, "fret": 1, "beat": 2, "duration": 0.5, "label": "F5" },
+        { "id": "n6", "string": 0, "fret": 1, "beat": 2.5, "duration": 0.5, "label": "F5" },
+        { "id": "n7", "string": 0, "fret": 3, "beat": 3, "duration": 0.5, "label": "G5" },
+        { "id": "n8", "string": 0, "fret": 3, "beat": 3.5, "duration": 0.5, "label": "G5" },
+        { "id": "n9", "string": 0, "fret": 1, "beat": 4, "duration": 0.5, "label": "F5" },
+        { "id": "n10", "string": 0, "fret": 1, "beat": 4.5, "duration": 0.5, "label": "F5" },
+        { "id": "n11", "string": 0, "fret": 3, "beat": 5, "duration": 0.5, "label": "G5" },
+        { "id": "n12", "string": 0, "fret": 3, "beat": 5.5, "duration": 0.5, "label": "G5" },
+        { "id": "n13", "string": 0, "fret": 1, "beat": 6, "duration": 0.5, "label": "F5" },
+        { "id": "n14", "string": 0, "fret": 1, "beat": 6.5, "duration": 0.5, "label": "F5" },
+        { "id": "n15", "string": 0, "fret": 3, "beat": 7, "duration": 0.5, "label": "G5" },
+        { "id": "n16", "string": 0, "fret": 3, "beat": 7.5, "duration": 0.5, "label": "G5" }
+      ]
+    },
+    {
+      "id": "intro-riff-tempo",
+      "title": "Intro riff (target tempo)",
+      "instruction": "Full speed. Slide your hand cleanly between fret 1 (F) and fret 3 (G) on the low E string. Keep eighth notes steady and aggressive.",
+      "bpm": 138,
+      "targets": [
+        { "id": "n1", "string": 0, "fret": 1, "beat": 0, "duration": 0.5, "label": "F5" },
+        { "id": "n2", "string": 0, "fret": 1, "beat": 0.5, "duration": 0.5, "label": "F5" },
+        { "id": "n3", "string": 0, "fret": 3, "beat": 1, "duration": 0.5, "label": "G5" },
+        { "id": "n4", "string": 0, "fret": 3, "beat": 1.5, "duration": 0.5, "label": "G5" },
+        { "id": "n5", "string": 0, "fret": 1, "beat": 2, "duration": 0.5, "label": "F5" },
+        { "id": "n6", "string": 0, "fret": 1, "beat": 2.5, "duration": 0.5, "label": "F5" },
+        { "id": "n7", "string": 0, "fret": 3, "beat": 3, "duration": 0.5, "label": "G5" },
+        { "id": "n8", "string": 0, "fret": 3, "beat": 3.5, "duration": 0.5, "label": "G5" },
+        { "id": "n9", "string": 0, "fret": 1, "beat": 4, "duration": 0.5, "label": "F5" },
+        { "id": "n10", "string": 0, "fret": 1, "beat": 4.5, "duration": 0.5, "label": "F5" },
+        { "id": "n11", "string": 0, "fret": 3, "beat": 5, "duration": 0.5, "label": "G5" },
+        { "id": "n12", "string": 0, "fret": 3, "beat": 5.5, "duration": 0.5, "label": "G5" },
+        { "id": "n13", "string": 0, "fret": 1, "beat": 6, "duration": 0.5, "label": "F5" },
+        { "id": "n14", "string": 0, "fret": 1, "beat": 6.5, "duration": 0.5, "label": "F5" },
+        { "id": "n15", "string": 0, "fret": 3, "beat": 7, "duration": 0.5, "label": "G5" },
+        { "id": "n16", "string": 0, "fret": 3, "beat": 7.5, "duration": 0.5, "label": "G5" }
+      ]
+    }
+  ]
+}

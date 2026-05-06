@@ -1,0 +1,44 @@
+{
+  "id": "horse-with-no-name",
+  "title": "A Horse With No Name — verse",
+  "description": "Arguably the easiest two-chord song in classic rock. Em and a D-shape — entire song is just these two.",
+  "category": "song",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "America",
+  "year": 1971,
+  "tags": ["70s", "folk", "campfire", "singer-songwriter", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=zSAJ0l4OBHM",
+    "spotify": "https://open.spotify.com/track/3IniMhVtAD94ctx8Df4Fp3",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/america/a-horse-with-no-name-chords-27625"
+  },
+  "credits": "America — A Horse With No Name (1971)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Verse progression (slow practice)",
+      "instruction": "Half-speed practice. The whole song alternates Em and D — 4 beats each. Focus on getting your D-chord fingers down clean.",
+      "bpm": 60,
+      "targets": [
+        { "id": "em1", "string": 0, "fret": 0, "beat": 0, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 4, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "em2", "string": 0, "fret": 0, "beat": 8, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 12, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Verse progression (target tempo)",
+      "instruction": "Target tempo. Em - D - Em - D, 4 beats each. Keep it loose and breezy — that's the vibe of the song.",
+      "bpm": 122,
+      "targets": [
+        { "id": "em1", "string": 0, "fret": 0, "beat": 0, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 4, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "em2", "string": 0, "fret": 0, "beat": 8, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 12, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] }
+      ]
+    }
+  ]
+}

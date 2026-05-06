@@ -1,0 +1,52 @@
+{
+  "id": "im-yours",
+  "title": "I'm Yours — chord progression",
+  "description": "G-D-Em-C four-chord pop with a reggae upstroke feel. Same I-V-vi-IV cycle as Stand By Me — the most useful four chords in pop.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Jason Mraz",
+  "year": 2008,
+  "tags": ["00s", "pop", "singer-songwriter", "campfire", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=EkHTsc9PU2A",
+    "spotify": "https://open.spotify.com/track/1EzrEOXmMH3G43AXT1y7pA",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/jason-mraz/im-yours-chords-633053"
+  },
+  "credits": "Jason Mraz — I'm Yours (2008)",
+  "exercises": [
+    {
+      "id": "verse-slow",
+      "title": "G-D-Em-C (slow practice)",
+      "instruction": "Half-speed practice. Each chord lasts 4 beats. The recording uses a bouncy reggae upstroke — for now just strum on the beat.",
+      "bpm": 75,
+      "targets": [
+        { "id": "g1", "string": 0, "fret": 3, "beat": 0, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 4, "duration": 4, "label": "D chord", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "em1", "string": 0, "fret": 0, "beat": 8, "duration": 4, "label": "Em chord", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 12, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 16, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 20, "duration": 4, "label": "D chord", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "em2", "string": 0, "fret": 0, "beat": 24, "duration": 4, "label": "Em chord", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 28, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "verse-tempo",
+      "title": "G-D-Em-C (target tempo)",
+      "instruction": "Full speed (150 BPM). Try the reggae feel: down-up on every eighth, accenting the offbeats. Same four chords power the entire song.",
+      "bpm": 150,
+      "targets": [
+        { "id": "g1", "string": 0, "fret": 3, "beat": 0, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 4, "duration": 4, "label": "D chord", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "em1", "string": 0, "fret": 0, "beat": 8, "duration": 4, "label": "Em chord", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 12, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 16, "duration": 4, "label": "G chord", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 20, "duration": 4, "label": "D chord", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "em2", "string": 0, "fret": 0, "beat": 24, "duration": 4, "label": "Em chord", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 28, "duration": 4, "label": "C chord", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

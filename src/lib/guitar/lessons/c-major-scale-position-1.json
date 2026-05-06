@@ -1,0 +1,44 @@
+{
+  "id": "c-major-scale-position-1",
+  "title": "C major scale — open position",
+  "description": "The first scale every guitarist learns. Eight notes from C up to C using open strings and the first three frets.",
+  "category": "scales",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.65,
+  "prerequisites": [],
+  "exercises": [
+    {
+      "id": "ascending",
+      "title": "Ascending C major",
+      "instruction": "Low to high: C-D-E-F-G-A-B-C. Use 1st finger for fret 1, 2nd for fret 2, 3rd for fret 3. Pick each note cleanly.",
+      "bpm": 70,
+      "targets": [
+        { "id": "a0", "string": 1, "fret": 3, "beat": 0, "duration": 1, "label": "C" },
+        { "id": "a1", "string": 2, "fret": 0, "beat": 1, "duration": 1, "label": "D" },
+        { "id": "a2", "string": 2, "fret": 2, "beat": 2, "duration": 1, "label": "E" },
+        { "id": "a3", "string": 3, "fret": 0, "beat": 3, "duration": 1, "label": "F" },
+        { "id": "a4", "string": 3, "fret": 2, "beat": 4, "duration": 1, "label": "G" },
+        { "id": "a5", "string": 4, "fret": 0, "beat": 5, "duration": 1, "label": "A" },
+        { "id": "a6", "string": 4, "fret": 1, "beat": 6, "duration": 1, "label": "B" },
+        { "id": "a7", "string": 5, "fret": 0, "beat": 7, "duration": 1, "label": "C" }
+      ]
+    },
+    {
+      "id": "descending",
+      "title": "Descending C major",
+      "instruction": "Reverse: high C down to low C. Same fingering, opposite direction. Aim for even tone on every note.",
+      "bpm": 70,
+      "targets": [
+        { "id": "d0", "string": 5, "fret": 0, "beat": 0, "duration": 1, "label": "C" },
+        { "id": "d1", "string": 4, "fret": 1, "beat": 1, "duration": 1, "label": "B" },
+        { "id": "d2", "string": 4, "fret": 0, "beat": 2, "duration": 1, "label": "A" },
+        { "id": "d3", "string": 3, "fret": 2, "beat": 3, "duration": 1, "label": "G" },
+        { "id": "d4", "string": 3, "fret": 0, "beat": 4, "duration": 1, "label": "F" },
+        { "id": "d5", "string": 2, "fret": 2, "beat": 5, "duration": 1, "label": "E" },
+        { "id": "d6", "string": 2, "fret": 0, "beat": 6, "duration": 1, "label": "D" },
+        { "id": "d7", "string": 1, "fret": 3, "beat": 7, "duration": 1, "label": "C" }
+      ]
+    }
+  ]
+}

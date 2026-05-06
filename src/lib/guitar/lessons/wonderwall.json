@@ -1,0 +1,52 @@
+{
+  "id": "wonderwall",
+  "title": "Wonderwall — verse chord progression",
+  "description": "The campfire anthem of the 90s. Play with capo at fret 2 to match recording (these targets ignore capo and use the fingered shapes Em-G-D-C). Simple shapes, iconic strum.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Oasis",
+  "year": 1995,
+  "tags": ["90s", "rock-classic", "campfire", "singalong", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=bx1Bh8ZvH84",
+    "spotify": "https://open.spotify.com/track/1qPbGZqppFwLwcBC1JQ6Vr",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/oasis/wonderwall-chords-27596"
+  },
+  "credits": "Oasis — Wonderwall (1995)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Verse progression (slow practice)",
+      "instruction": "Half-speed practice. Each chord gets 4 beats — Em, G, D, C, then repeat. Capo on fret 2 to match the record (the targets here are the fingered shapes, not the sounding pitches).",
+      "bpm": 44,
+      "targets": [
+        { "id": "em1", "string": 0, "fret": 0, "beat": 0, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 8, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 12, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "em2", "string": 0, "fret": 0, "beat": 16, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 24, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 28, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Verse progression (target tempo)",
+      "instruction": "Target tempo. Strum each chord for 4 beats. Don't worry about Oasis's specific strum pattern — focus on clean chord changes.",
+      "bpm": 87,
+      "targets": [
+        { "id": "em1", "string": 0, "fret": 0, "beat": 0, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 4, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 8, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 12, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "em2", "string": 0, "fret": 0, "beat": 16, "duration": 4, "label": "Em", "chord": [{ "string": 0, "fret": 0 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 24, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 28, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

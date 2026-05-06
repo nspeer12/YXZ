@@ -13,8 +13,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WaveLab — Create. Publish. Remix.",
-  description: "A browser-based music creation studio with visual synthesis and music theory guidance",
+  title: "WaveLab — Learn. Create. Jam.",
+  description: "Web-based guitar learning, synthesis studio, and looper. Plug in, tune up, and play.",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",

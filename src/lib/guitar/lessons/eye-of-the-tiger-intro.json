@@ -1,0 +1,68 @@
+{
+  "id": "eye-of-the-tiger-intro",
+  "title": "Eye of the Tiger — intro stabs",
+  "description": "The iconic 16th-note stab pattern on Cm and Bb power chords. Great for practicing controlled palm-muted attacks.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Survivor",
+  "year": 1982,
+  "tags": ["80s", "rock-classic", "anthem", "iconic-riff", "power-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=btPJPFnesV4",
+    "spotify": "https://open.spotify.com/track/2KH16WveTQWT6KOG9Rg6e2",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/survivor/eye-of-the-tiger-tabs-12440"
+  },
+  "credits": "Survivor — Eye of the Tiger (1982)",
+  "exercises": [
+    {
+      "id": "intro-stabs-slow",
+      "title": "Intro stabs (slow practice)",
+      "instruction": "Half-speed practice. Four quick stabs on Cm (A-string fret 3) followed by four on Bb (A-string fret 1). Keep the wrist relaxed and palm-mute lightly for the iconic stab feel.",
+      "bpm": 55,
+      "targets": [
+        { "id": "cm1", "string": 1, "fret": 3, "beat": 0, "duration": 1, "label": "Cm" },
+        { "id": "cm2", "string": 1, "fret": 3, "beat": 1, "duration": 1, "label": "Cm" },
+        { "id": "cm3", "string": 1, "fret": 3, "beat": 2, "duration": 1, "label": "Cm" },
+        { "id": "cm4", "string": 1, "fret": 3, "beat": 3, "duration": 1, "label": "Cm" },
+        { "id": "bb1", "string": 1, "fret": 1, "beat": 4, "duration": 1, "label": "Bb" },
+        { "id": "bb2", "string": 1, "fret": 1, "beat": 5, "duration": 1, "label": "Bb" },
+        { "id": "bb3", "string": 1, "fret": 1, "beat": 6, "duration": 1, "label": "Bb" },
+        { "id": "bb4", "string": 1, "fret": 1, "beat": 7, "duration": 1, "label": "Bb" },
+        { "id": "cm5", "string": 1, "fret": 3, "beat": 8, "duration": 1, "label": "Cm" },
+        { "id": "cm6", "string": 1, "fret": 3, "beat": 9, "duration": 1, "label": "Cm" },
+        { "id": "cm7", "string": 1, "fret": 3, "beat": 10, "duration": 1, "label": "Cm" },
+        { "id": "cm8", "string": 1, "fret": 3, "beat": 11, "duration": 1, "label": "Cm" },
+        { "id": "bb5", "string": 1, "fret": 1, "beat": 12, "duration": 1, "label": "Bb" },
+        { "id": "bb6", "string": 1, "fret": 1, "beat": 13, "duration": 1, "label": "Bb" },
+        { "id": "bb7", "string": 1, "fret": 1, "beat": 14, "duration": 1, "label": "Bb" },
+        { "id": "bb8", "string": 1, "fret": 1, "beat": 15, "duration": 1, "label": "Bb" }
+      ]
+    },
+    {
+      "id": "intro-stabs-tempo",
+      "title": "Intro stabs (target tempo)",
+      "instruction": "Full speed. Stab each chord with conviction — short, punchy hits. Cm to Bb on the A string.",
+      "bpm": 109,
+      "targets": [
+        { "id": "cm1", "string": 1, "fret": 3, "beat": 0, "duration": 1, "label": "Cm" },
+        { "id": "cm2", "string": 1, "fret": 3, "beat": 1, "duration": 1, "label": "Cm" },
+        { "id": "cm3", "string": 1, "fret": 3, "beat": 2, "duration": 1, "label": "Cm" },
+        { "id": "cm4", "string": 1, "fret": 3, "beat": 3, "duration": 1, "label": "Cm" },
+        { "id": "bb1", "string": 1, "fret": 1, "beat": 4, "duration": 1, "label": "Bb" },
+        { "id": "bb2", "string": 1, "fret": 1, "beat": 5, "duration": 1, "label": "Bb" },
+        { "id": "bb3", "string": 1, "fret": 1, "beat": 6, "duration": 1, "label": "Bb" },
+        { "id": "bb4", "string": 1, "fret": 1, "beat": 7, "duration": 1, "label": "Bb" },
+        { "id": "cm5", "string": 1, "fret": 3, "beat": 8, "duration": 1, "label": "Cm" },
+        { "id": "cm6", "string": 1, "fret": 3, "beat": 9, "duration": 1, "label": "Cm" },
+        { "id": "cm7", "string": 1, "fret": 3, "beat": 10, "duration": 1, "label": "Cm" },
+        { "id": "cm8", "string": 1, "fret": 3, "beat": 11, "duration": 1, "label": "Cm" },
+        { "id": "bb5", "string": 1, "fret": 1, "beat": 12, "duration": 1, "label": "Bb" },
+        { "id": "bb6", "string": 1, "fret": 1, "beat": 13, "duration": 1, "label": "Bb" },
+        { "id": "bb7", "string": 1, "fret": 1, "beat": 14, "duration": 1, "label": "Bb" },
+        { "id": "bb8", "string": 1, "fret": 1, "beat": 15, "duration": 1, "label": "Bb" }
+      ]
+    }
+  ]
+}

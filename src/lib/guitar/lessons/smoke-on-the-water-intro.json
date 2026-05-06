@@ -1,0 +1,56 @@
+{
+  "id": "smoke-on-the-water-intro",
+  "title": "Smoke on the Water — main riff",
+  "description": "The most famous rock riff ever. Played on the D and G strings as power-chord-style double-stops.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=zUwEIt9ez7M",
+    "tabSource": "https://www.ultimate-guitar.com/"
+  },
+  "credits": "Deep Purple — Smoke on the Water (1972)",
+  "exercises": [
+    {
+      "id": "main-riff-slow",
+      "title": "Main riff (slow practice)",
+      "instruction": "Half-speed practice. The original is a double-stop on D and G strings — for pitch detection, just hit the lower G-string note. Frets: 0, 3, 5 — 0, 3, 6, 5 — 0, 3, 5 — 3, 0.",
+      "bpm": 56,
+      "targets": [
+        { "id": "n1", "string": 3, "fret": 0, "beat": 0, "duration": 0.5, "label": "G (open)" },
+        { "id": "n2", "string": 3, "fret": 3, "beat": 0.5, "duration": 0.5, "label": "Bb" },
+        { "id": "n3", "string": 3, "fret": 5, "beat": 1, "duration": 0.5, "label": "C" },
+        { "id": "n4", "string": 3, "fret": 0, "beat": 2, "duration": 0.5, "label": "G (open)" },
+        { "id": "n5", "string": 3, "fret": 3, "beat": 2.5, "duration": 0.5, "label": "Bb" },
+        { "id": "n6", "string": 3, "fret": 6, "beat": 3, "duration": 0.5, "label": "Db" },
+        { "id": "n7", "string": 3, "fret": 5, "beat": 3.5, "duration": 0.5, "label": "C" },
+        { "id": "n8", "string": 3, "fret": 0, "beat": 4, "duration": 0.5, "label": "G (open)" },
+        { "id": "n9", "string": 3, "fret": 3, "beat": 4.5, "duration": 0.5, "label": "Bb" },
+        { "id": "n10", "string": 3, "fret": 5, "beat": 5, "duration": 0.5, "label": "C" },
+        { "id": "n11", "string": 3, "fret": 3, "beat": 6, "duration": 0.5, "label": "Bb" },
+        { "id": "n12", "string": 3, "fret": 0, "beat": 6.5, "duration": 0.5, "label": "G (open)" }
+      ]
+    },
+    {
+      "id": "main-riff-tempo",
+      "title": "Main riff (target tempo)",
+      "instruction": "Full speed. Keep your pick steady and let the open G ring out between fretted notes.",
+      "bpm": 112,
+      "targets": [
+        { "id": "n1", "string": 3, "fret": 0, "beat": 0, "duration": 0.5, "label": "G (open)" },
+        { "id": "n2", "string": 3, "fret": 3, "beat": 0.5, "duration": 0.5, "label": "Bb" },
+        { "id": "n3", "string": 3, "fret": 5, "beat": 1, "duration": 0.5, "label": "C" },
+        { "id": "n4", "string": 3, "fret": 0, "beat": 2, "duration": 0.5, "label": "G (open)" },
+        { "id": "n5", "string": 3, "fret": 3, "beat": 2.5, "duration": 0.5, "label": "Bb" },
+        { "id": "n6", "string": 3, "fret": 6, "beat": 3, "duration": 0.5, "label": "Db" },
+        { "id": "n7", "string": 3, "fret": 5, "beat": 3.5, "duration": 0.5, "label": "C" },
+        { "id": "n8", "string": 3, "fret": 0, "beat": 4, "duration": 0.5, "label": "G (open)" },
+        { "id": "n9", "string": 3, "fret": 3, "beat": 4.5, "duration": 0.5, "label": "Bb" },
+        { "id": "n10", "string": 3, "fret": 5, "beat": 5, "duration": 0.5, "label": "C" },
+        { "id": "n11", "string": 3, "fret": 3, "beat": 6, "duration": 0.5, "label": "Bb" },
+        { "id": "n12", "string": 3, "fret": 0, "beat": 6.5, "duration": 0.5, "label": "G (open)" }
+      ]
+    }
+  ]
+}

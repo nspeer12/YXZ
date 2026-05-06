@@ -1,0 +1,40 @@
+{
+  "id": "open-strings-warmup",
+  "title": "Open strings warm-up",
+  "description": "Pluck each open string in time with the metronome. Builds picking accuracy.",
+  "category": "notes",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.7,
+  "prerequisites": [],
+  "exercises": [
+    {
+      "id": "ascending",
+      "title": "Low to high",
+      "instruction": "Pluck open low E, then A, D, G, B, high E — one per beat.",
+      "bpm": 60,
+      "targets": [
+        { "id": "e1", "string": 0, "fret": 0, "beat": 0, "duration": 1 },
+        { "id": "a1", "string": 1, "fret": 0, "beat": 1, "duration": 1 },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 2, "duration": 1 },
+        { "id": "g1", "string": 3, "fret": 0, "beat": 3, "duration": 1 },
+        { "id": "b1", "string": 4, "fret": 0, "beat": 4, "duration": 1 },
+        { "id": "e2", "string": 5, "fret": 0, "beat": 5, "duration": 1 }
+      ]
+    },
+    {
+      "id": "descending",
+      "title": "High to low",
+      "instruction": "Now reverse it — high E down to low E.",
+      "bpm": 60,
+      "targets": [
+        { "id": "e1", "string": 5, "fret": 0, "beat": 0, "duration": 1 },
+        { "id": "b1", "string": 4, "fret": 0, "beat": 1, "duration": 1 },
+        { "id": "g1", "string": 3, "fret": 0, "beat": 2, "duration": 1 },
+        { "id": "d1", "string": 2, "fret": 0, "beat": 3, "duration": 1 },
+        { "id": "a1", "string": 1, "fret": 0, "beat": 4, "duration": 1 },
+        { "id": "e2", "string": 0, "fret": 0, "beat": 5, "duration": 1 }
+      ]
+    }
+  ]
+}

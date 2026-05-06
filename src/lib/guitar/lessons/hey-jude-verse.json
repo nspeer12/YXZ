@@ -1,0 +1,46 @@
+{
+  "id": "hey-jude-verse",
+  "title": "Hey Jude — verse progression",
+  "description": "Verse uses F-C-G-F-C — simple I-IV-V in F. The verse is far more accessible than the long outro. F is the hardest chord; mini-F shape works.",
+  "category": "song",
+  "difficulty": "beginner",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "The Beatles",
+  "year": 1968,
+  "tags": ["60s", "rock-classic", "pop", "singalong", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=A_MjCqQoLLA",
+    "spotify": "https://open.spotify.com/track/0aym2LBJBk9DAYuHHutrIl",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/the-beatles/hey-jude-chords-12361"
+  },
+  "credits": "The Beatles — Hey Jude (1968)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Verse progression (slow practice)",
+      "instruction": "Half-speed practice. F-C-G-F-C — 4 beats each except final C which holds for 8. Use the mini-F (top 4 strings) if full barre is hard.",
+      "bpm": 50,
+      "targets": [
+        { "id": "f1", "string": 0, "fret": 1, "beat": 0, "duration": 4, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 4, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 8, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "f2", "string": 0, "fret": 1, "beat": 12, "duration": 4, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 16, "duration": 8, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Verse progression (target tempo)",
+      "instruction": "Full speed. McCartney's gentle tempo — 'Hey Jude, don't make it bad...' Take the song's simple feel and let the chords ring.",
+      "bpm": 73,
+      "targets": [
+        { "id": "f1", "string": 0, "fret": 1, "beat": 0, "duration": 4, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c1", "string": 1, "fret": 3, "beat": 4, "duration": 4, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 8, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "f2", "string": 0, "fret": 1, "beat": 12, "duration": 4, "label": "F", "chord": [{ "string": 2, "fret": 3 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 1 }] },
+        { "id": "c2", "string": 1, "fret": 3, "beat": 16, "duration": 8, "label": "C", "chord": [{ "string": 1, "fret": 3 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 1 }, { "string": 5, "fret": 0 }] }
+      ]
+    }
+  ]
+}

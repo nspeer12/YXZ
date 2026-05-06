@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { getLooper, Looper, LooperState, LoopTrack } from '@/lib/looper';
+import { getLooper, Looper, LooperState, LoopTrack, type MidiTrigger, type TrackKind } from '@/lib/looper';
 import * as Tone from 'tone';
 
 export function useLooper(inputNode: Tone.Gain | null) {
@@ -42,6 +42,14 @@ export function useLooper(inputNode: Tone.Gain | null) {
 
     return () => {
       cancelAnimationFrame(animationRef.current);
+      // Stop transport + all track players so audio doesn't keep playing
+      // after the consumer (e.g. StudioMode) unmounts — otherwise switching
+      // away to another mode leaves a track looping in the background.
+      try {
+        looper.stop();
+      } catch {
+        /* looper may already be stopped */
+      }
     };
   }, [inputNode]);
 
@@ -115,8 +123,24 @@ export function useLooper(inputNode: Tone.Gain | null) {
     looperRef.current?.setLoopEnabled(enabled);
   }, []);
 
-  const addTrack = useCallback(() => {
-    return looperRef.current?.addTrack();
+  const addTrack = useCallback((kind: TrackKind = 'audio', name?: string) => {
+    return looperRef.current?.addTrack(kind, name);
+  }, []);
+
+  const addMidiTrack = useCallback((name?: string) => {
+    return looperRef.current?.addMidiTrack(name);
+  }, []);
+
+  const armTrack = useCallback((trackId: string | null) => {
+    looperRef.current?.armTrack(trackId);
+  }, []);
+
+  const setMidiTrigger = useCallback((trigger: MidiTrigger | null) => {
+    looperRef.current?.setMidiTrigger(trigger);
+  }, []);
+
+  const addTrackFromBlob = useCallback(async (blob: Blob, name?: string) => {
+    return looperRef.current?.addTrackFromBlob(blob, name);
   }, []);
 
   const removeTrack = useCallback((trackId: string) => {
@@ -161,6 +185,10 @@ export function useLooper(inputNode: Tone.Gain | null) {
     setMetronomeEnabled,
     setLoopEnabled,
     addTrack,
+    addMidiTrack,
+    armTrack,
+    setMidiTrigger,
+    addTrackFromBlob,
     removeTrack,
     clearTrack,
     clearAllTracks,

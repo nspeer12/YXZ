@@ -1,0 +1,48 @@
+{
+  "id": "free-fallin",
+  "title": "Free Fallin' — verse progression",
+  "description": "Three chords forever: D-A-G. The same cycle drives the entire song. Sparse strum makes timing easy.",
+  "category": "song",
+  "difficulty": "starter",
+  "tuning": "standard",
+  "passAccuracy": 0.55,
+  "artist": "Tom Petty",
+  "year": 1989,
+  "tags": ["80s", "rock-classic", "campfire", "singalong", "open-chords"],
+  "media": {
+    "youtube": "https://www.youtube.com/watch?v=1lWJXDG2i0A",
+    "spotify": "https://open.spotify.com/track/5tVA6TkbaAH9QMITTQRrNv",
+    "tabSource": "https://tabs.ultimate-guitar.com/tab/tom-petty/free-fallin-chords-26690"
+  },
+  "credits": "Tom Petty — Free Fallin' (1989)",
+  "exercises": [
+    {
+      "id": "verse-progression-slow",
+      "title": "Verse progression (slow practice)",
+      "instruction": "Each chord lasts 4 beats. The cycle: D → A → G → D → A → G. Strum once per beat. Tom Petty's whole song is built on this loop.",
+      "bpm": 50,
+      "targets": [
+        { "id": "d1", "string": 2, "fret": 0, "beat": 0, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a1", "string": 1, "fret": 0, "beat": 4, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 8, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 12, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a2", "string": 1, "fret": 0, "beat": 16, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] }
+      ]
+    },
+    {
+      "id": "verse-progression-tempo",
+      "title": "Verse progression (target tempo)",
+      "instruction": "Full speed. D → A → G — the cycle never stops. Keep the strum loose and easy.",
+      "bpm": 84,
+      "targets": [
+        { "id": "d1", "string": 2, "fret": 0, "beat": 0, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a1", "string": 1, "fret": 0, "beat": 4, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "g1", "string": 0, "fret": 3, "beat": 8, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] },
+        { "id": "d2", "string": 2, "fret": 0, "beat": 12, "duration": 4, "label": "D", "chord": [{ "string": 2, "fret": 0 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 3 }, { "string": 5, "fret": 2 }] },
+        { "id": "a2", "string": 1, "fret": 0, "beat": 16, "duration": 4, "label": "A", "chord": [{ "string": 1, "fret": 0 }, { "string": 2, "fret": 2 }, { "string": 3, "fret": 2 }, { "string": 4, "fret": 2 }, { "string": 5, "fret": 0 }] },
+        { "id": "g2", "string": 0, "fret": 3, "beat": 20, "duration": 4, "label": "G", "chord": [{ "string": 0, "fret": 3 }, { "string": 1, "fret": 2 }, { "string": 2, "fret": 0 }, { "string": 3, "fret": 0 }, { "string": 4, "fret": 0 }, { "string": 5, "fret": 3 }] }
+      ]
+    }
+  ]
+}
